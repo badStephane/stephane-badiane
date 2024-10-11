@@ -1,10 +1,15 @@
 /** @type {import('tailwindcss').Config} */
-export const content = ["./src/**/*.{html,js}"];
-export const theme = {
-  extend: {
-    fontFamily:{
-      'sans':['Inter', 'sans-serif']
-    }
+export default {
+  content: [
+    "./src/**/*.{html,js,ts,jsx,tsx}"
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        'sans' : ['Inter', 'sans-serif']
+      }
+    },
   },
-};
-export const plugins = [];
+  plugins: [],
+}
+
