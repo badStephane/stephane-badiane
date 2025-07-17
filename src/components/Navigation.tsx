@@ -40,7 +40,7 @@ const Navigation = () => {
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
-              {['Home', 'About', 'Projects', 'Services'].map((item) => (
+              {['Home', 'About', 'Services'].map((item) => (
                 <button 
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -73,7 +73,7 @@ const Navigation = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-slate-900/98 backdrop-blur-xl border-t border-blue-500/20">
           <div className="px-4 pt-4 pb-6 space-y-3">
-            {['Home', 'About', 'Projects', 'Services'].map((item) => (
+            {['Home', 'About', 'Services'].map((item) => (
               <button 
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
