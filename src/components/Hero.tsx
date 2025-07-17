@@ -68,7 +68,7 @@ const Hero = () => {
             <div className="relative">
               <div className="w-48 h-48 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm flex items-center justify-center overflow-hidden border-4 border-blue-400/30 shadow-2xl">
                 <img 
-                  src="/public/sbadiane.jpg"
+                  src="/sbadiane.jpg"
                   alt="GDNIGHTMARE - Creative Professional"
                   className="w-full h-full object-cover rounded-full transform hover:scale-110 transition-transform duration-500"
                   loading="lazy"

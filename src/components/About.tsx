@@ -16,7 +16,7 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/10 rounded-3xl backdrop-blur-sm transform rotate-6"></div>
               <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-2 border border-white/20">
                 <img 
-                  src="/public/sbadiane.jpg"
+                  src="/sbadiane.jpg"
                   alt="GDNIGHTMARE - Creative Professional"
                   className="w-100 h-86 object-cover rounded-2xl transform scale-x-[-1]"
                 />
