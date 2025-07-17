@@ -1,0 +1,101 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.env
+.venv
+
+# Node.js
+node_modules/
+dist/
+build/
+
+# Fichiers temporaires et logs
+*.log
+*.tmp
+*.bak
+
+# Fichiers systèmes
+.DS_Store
+Thumbs.db
+
+# Fichiers d’éditeur
+.vscode/
+*.swp
+*~
+
+# vuepress build output
+.vuepress/dist
+
+# vuepress v2.x temp and cache directory
+.temp
+.cache
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Vite
+dist/
+dist-ssr/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Build outputs
+build/
+out/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Local environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Package manager lock files (choose one)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+
+# Vercel
+.vercel
+
+# Netlify
+.netlify
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+
+# Local Netlify folder
+.netlify
