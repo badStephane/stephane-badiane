@@ -1,5 +1,5 @@
 import React from 'react';
-import { Palette, Code, Package, Play, ArrowRight, Zap, Tangent } from 'lucide-react';
+import { Palette, Code, Zap, Tangent } from 'lucide-react';
 
 const Services = () => {
   const services = [
