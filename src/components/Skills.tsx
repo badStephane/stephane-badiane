@@ -1,7 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import { Code, Palette, Shield, Database, Server, Globe, Zap, Star, Award, Target, Monitor } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Code, Palette, Database, Server, Globe, Zap, Star, Award } from 'lucide-react';
+import { useLanguageAndTheme } from './LanguageAndThemeContext';
 
+const translations = {
+  en: {
+    sectionTitle: 'Skills & ',
+    sectionSubtitle: 'Technologies',
+    badge: 'My Technical Expertise',
+    description: 'Fullstack developer and designer passionate about cybersecurity, I used a wide range of modern technologies.',
+    categories: {
+      languages: "Programming Languages",
+      frontend: "Frontend Development",
+      database: "Databases",
+      design: "Design",
+      tools: "Tools & Systems",
+    },
+    achievements: [
+      { number: "10+", label: "Technologies explored", icon: <Award size={20} /> },
+      { number: "3+", label: "Years of Experience", icon: <Star size={20} /> },
+      { number: "70%", label: "Design Level", icon: <Palette size={20} /> },
+      { number: "50%", label: "Backend Level", icon: <Server size={20} /> }
+    ]
+  },
+  fr: {
+    sectionTitle: 'Compétences & ',
+    sectionSubtitle: 'Technologies',
+    badge: 'Mon Expertise Technique',
+    description: "Développeur et designer fullstack passionné par la cybersécurité, j'ai utilisé un large éventail de technologies modernes.",
+    categories: {
+      languages: "Langages de programmation",
+      frontend: "Développement Frontend",
+      database: "Bases de données",
+      design: "Design",
+      tools: "Outils & Systèmes",
+    },
+    achievements: [
+      { number: "10+", label: "Technologies utilisées", icon: <Award size={20} /> },
+      { number: "3+", label: "Années d'expérience", icon: <Star size={20} /> },
+      { number: "70%", label: "Niveau Design", icon: <Palette size={20} /> },
+      { number: "50%", label: "Niveau Backend", icon: <Server size={20} /> }
+    ]
+  },
+};
 const Skills = () => {
+  const { language } = useLanguageAndTheme();
+  const t = translations[language];
   const [activeCategory, setActiveCategory] = useState('languages');
   const [animatedBars, setAnimatedBars] = useState(false);
 
@@ -12,7 +55,7 @@ const Skills = () => {
 
   const skillCategories = {
     languages: {
-      title: "Programming Languages",
+      title: t.categories.languages,
       icon: <Code size={24} />,
       color: "from-blue-500 to-blue-600",
       skills: [
@@ -23,7 +66,7 @@ const Skills = () => {
       ]
     },
     frontend: {
-      title: "Frontend Development",
+      title: t.categories.frontend,
       icon: <Globe size={24} />,
       color: "from-blue-600 to-blue-700",
       skills: [
@@ -33,7 +76,7 @@ const Skills = () => {
       ]
     },
     database: {
-      title: "Databases",
+      title: t.categories.database,
       icon: <Database size={24} />,
       color: "from-blue-700 to-blue-800",
       skills: [
@@ -44,7 +87,7 @@ const Skills = () => {
       ]
     },
     design: {
-      title: "Design & Creativity",
+      title: t.categories.design,
       icon: <Palette size={24} />,
       color: "from-blue-400 to-blue-500",
       skills: [
@@ -54,7 +97,7 @@ const Skills = () => {
       ]
     },
     tools: {
-      title: "Tools & Systems",
+      title: t.categories.tools,
       icon: <Server size={24} />,
       color: "from-blue-800 to-blue-900",
       skills: [
@@ -64,14 +107,6 @@ const Skills = () => {
       ]
     }
   };
-
-  const achievements = [
-    { number: "10+", label: "Technologies explored", icon: <Award size={20} /> },
-    { number: "3+", label: "Years of Experience", icon: <Star size={20} /> },
-    { number: "70%", label: "Design Level", icon: <Palette size={20} /> },
-    { number: "50%", label: "Backend Level", icon: <Server size={20} /> }
-  ];
-
   const getSkillColor = (level: number) => {
     if (level >= 80) return "from-orange-500 to-orange-600";
     if (level >= 70) return "from-orange-600 to-orange-700";
@@ -93,26 +128,25 @@ const Skills = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-6 py-3 mb-8">
             <Zap className="text-blue-400" size={18} />
-            <span className="text-blue-300 font-semibold">My Technical Expertise</span>
+            <span className="text-blue-300 font-semibold">{t.badge}</span>
           </div>
           
           <h2 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
-            Skills &
+            {t.sectionTitle}
             <br />
             <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-blue-200 bg-clip-text text-transparent">
-              Technologies
+              {t.sectionSubtitle}
             </span>
           </h2>
           
           <p className="text-xl text-blue-200 max-w-3xl mx-auto leading-relaxed">
-            Fullstack developer and designer passionate about cybersecurity, 
-            I used a wide range of modern technologies.
+            {t.description}
           </p>
         </div>
 
         {/* Achievements Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {achievements.map((achievement, index) => (
+          {t.achievements.map((achievement, index) => (
             <div key={index} className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-blue-500/20 p-6 hover:bg-white/10 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative text-center">

@@ -1,7 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowRight, Download } from 'lucide-react';
+import { useLanguageAndTheme } from './LanguageAndThemeContext';
+
+const translations = {
+  en: {
+    sectionTitle: 'Welcome',
+    sectionSubtitle: 'I AM STEPHANE BADIANE',
+    description: 'Creative designer & developer crafting exceptional digital experiences with passion, innovation, and cutting-edge technology.',
+    alt: 'GDNIGHTMARE - Creative Professional',
+  },
+  fr: {
+    sectionTitle: 'Bienvenue',
+    sectionSubtitle: 'JE SUIS STEPHANE BADIANE',
+    description: 'Concepteur et développeur créatif qui conçoit des expériences numériques exceptionnelles avec passion, innovation et technologie de pointe.',
+    alt: 'GDNIGHTMARE - Professionnel Créatif',
+  },
+};
 
 const Hero = () => {
+  const { language } = useLanguageAndTheme();
+  const t = translations[language];
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -42,14 +60,14 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 gap-x-12 items-center">
           <div className="text-white text-center lg:text-left">            
             <h1 className=" font-black mb-8 leading-tight">
-              <span className="text-xl sm:text-3xl md:text-5xl lg:text-6xl block">WELCOME </span>
+              <span className="text-xl sm:text-3xl md:text-5xl lg:text-6xl block">{t.sectionTitle}</span>
               <span className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-300 bg-clip-text text-transparent">
-                I AM STEPHANE BADIANE
+                {t.sectionSubtitle}
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl mb-10 text-blue-100 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Creative designer & developer crafting exceptional digital experiences with passion, innovation, and cutting-edge technology.
+              {t.description}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
@@ -69,7 +87,7 @@ const Hero = () => {
               <div className="w-48 h-48 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm flex items-center justify-center overflow-hidden border-4 border-blue-400/30 shadow-2xl">
                 <img 
                   src="/mypp.jpg"
-                  alt="GDNIGHTMARE - Creative Professional"
+                  alt={t.alt}
                   className="w-full h-full object-cover rounded-full transform hover:scale-110 transition-transform duration-500"
                   loading="lazy"
                 />

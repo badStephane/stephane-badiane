@@ -7,18 +7,22 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Skills from './components/Skills';
 
+import { LanguageAndThemeProvider } from './components/LanguageAndThemeContext';
+
 function App() {
   return (
-    <div className="min-h-screen">
-      <Navigation />
-      <Hero />
-      <About />
-      <Skills />
-      {/* <Projects /> */}
-      <Services />
-      <Contact />
-      <Footer />
-    </div>
+    <LanguageAndThemeProvider>
+      <div className="min-h-screen">
+        <Navigation />
+        <Hero />
+        <About />
+        <Skills />
+        {/* <Projects /> */}
+        <Services />
+        <Contact />
+        <Footer />
+      </div>
+    </LanguageAndThemeProvider>
   );
 }
 

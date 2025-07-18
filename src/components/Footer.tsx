@@ -1,7 +1,35 @@
 import React from 'react';
 import { Github, Linkedin, Twitter, Heart, ArrowUp, Instagram } from 'lucide-react';
+import { useLanguageAndTheme } from './LanguageAndThemeContext';
+
+const translations = {
+  en: {
+    description: 'Creative designer and developer passionate about crafting exceptional digital experiences that inspire, engage, and drive results.',
+    quickLinks: 'Quick Links',
+    quickLinksList: ['#home', '#about', '#services', '#contact'],
+    quickLinksLabels: ['Home', 'About', 'Services', 'Contact'],
+    services: 'Services',
+    servicesList: ['UI/UX Design', 'FullStack Development', 'Graphic Design', 'IT Maintenance'],
+    copyright: 'Made with',
+    copyrightEnd: 'and lots of coffee.',
+    scrollTop: 'Scroll to top',
+  },
+  fr: {
+    description: 'Designer et développeur passionné par la création d’expériences numériques exceptionnelles qui inspirent, engagent et apportent des résultats.',
+    quickLinks: 'Liens rapides',
+    quickLinksList: ['#home', '#about', '#services', '#contact'],
+    quickLinksLabels: ['Accueil', 'À propos', 'Services', 'Contact'],
+    services: 'Services',
+    servicesList: ['UI/UX Design', 'Développement FullStack', 'Design Graphique', 'Maintenance IT'],
+    copyright: 'Réalisé avec',
+    copyrightEnd: 'et beaucoup de café.',
+    scrollTop: 'Remonter en haut',
+  },
+};
 
 const Footer = () => {
+  const { language } = useLanguageAndTheme();
+  const t = translations[language];
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -26,7 +54,7 @@ const Footer = () => {
                   GDNIGHTMARE
                 </h3>
                 <p className="text-blue-200 mb-8 max-w-md leading-relaxed">
-                  Creative designer and developer passionate about crafting exceptional digital experiences that inspire, engage, and drive results.
+                  {t.description}
                 </p>
               </div>
               
@@ -35,7 +63,7 @@ const Footer = () => {
                   { icon: <Github size={20} />, href: "https://github.com/badStephane", label: "GitHub" },
                   { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/st%C3%A9phane-badiane-652812287/", label: "LinkedIn" },
                   { icon: <Twitter size={20} />, href: "https://twitter.com/badiane_steph", label: "Twitter" },
-                  { icon: <Instagram size={20} />, href: "https://www.instagram.com/gdnightmare", label: "Instagram" }
+                  { icon: <Instagram size={20} />, href: "https://www.instagram.com/gd_nightmare", label: "Instagram" }
                 ].map((social, index) => (
                   <a 
                     key={index}
@@ -52,16 +80,16 @@ const Footer = () => {
             </div>
             
             <div>
-              <h4 className="text-xl font-bold mb-8 text-white">Quick Links</h4>
+              <h4 className="text-xl font-bold mb-8 text-white">{t.quickLinks}</h4>
               <ul className="space-y-4">
-                {['Home', 'About', 'Projects', 'Services', 'Contact'].map((link) => (
+                {t.quickLinksList.map((link, index) => (
                   <li key={link}>
                     <a 
-                      href={`#${link.toLowerCase()}`} 
+                      href={link} 
                       className="text-blue-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
                     >
                       <span className="w-2 h-2 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                      {link}
+                      {t.quickLinksLabels[index]}
                     </a>
                   </li>
                 ))}
@@ -69,9 +97,9 @@ const Footer = () => {
             </div>
             
             <div>
-              <h4 className="text-xl font-bold mb-8 text-white">Services</h4>
+              <h4 className="text-xl font-bold mb-8 text-white">{t.services}</h4>
               <ul className="space-y-4">
-                {['UI/UX Design', 'Frontend Development', 'Product Design'].map((service) => (
+                {t.servicesList.map((service) => (
                   <li key={service}>
                     <a 
                       href="#services" 
@@ -90,13 +118,13 @@ const Footer = () => {
         <div className="border-t border-blue-500/20 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-blue-300 flex items-center gap-2">
-              © {currentYear} GDNIGHTMARE Portfolio. Made with <Heart className="text-red-500" size={16} /> and lots of coffee.
+              &copy; {currentYear} GDNIGHTMARE Portfolio. {t.copyright} <Heart className="text-red-500" size={16} /> {t.copyrightEnd}
             </p>
             
             <button 
               onClick={scrollToTop}
               className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-3 rounded-full hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 transform hover:scale-110 shadow-lg"
-              aria-label="Scroll to top"
+              aria-label={t.scrollTop}
             >
               <ArrowUp size={20} />
             </button>

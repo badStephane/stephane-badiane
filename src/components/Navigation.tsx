@@ -1,7 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import LanguageAndThemeSwitcher from './LanguageAndThemeSwitcher';
+import { useLanguageAndTheme } from './LanguageAndThemeContext';
+
+const translations = {
+  en: {
+    navLinks: ['Home', 'About', 'Services'],
+    talk: "Let's Talk",
+  },
+  fr: {
+    navLinks: ['Accueil', 'À propos', 'Services'],
+    talk: 'Contactez-moi',
+  },
+};
 
 const Navigation = () => {
+  const { language } = useLanguageAndTheme();
+  const t = translations[language];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -40,10 +55,10 @@ const Navigation = () => {
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
-              {['Home', 'About', 'Services'].map((item) => (
+              {t.navLinks.map((item) => (
                 <button 
                   key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
+                  onClick={() => scrollToSection(item.toLowerCase().replace(/[^a-zA-ZÀ-ÿ]+/g, ''))}
                   className="relative text-blue-200 hover:text-white transition-all duration-300 font-medium group"
                 >
                   {item}
@@ -54,8 +69,9 @@ const Navigation = () => {
                 onClick={() => scrollToSection('contact')}
                 className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-3 rounded-full hover:from-blue-500 hover:to-blue-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
               >
-                Let's Talk
+                {t.talk}
               </button>
+              <LanguageAndThemeSwitcher />
             </div>
           </div>
           
@@ -73,10 +89,10 @@ const Navigation = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-slate-900/98 backdrop-blur-xl border-t border-blue-500/20">
           <div className="px-4 pt-4 pb-6 space-y-3">
-            {['Home', 'About', 'Services'].map((item) => (
+            {t.navLinks.map((item) => (
               <button 
                 key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
+                onClick={() => scrollToSection(item.toLowerCase().replace(/[^a-zA-ZÀ-ÿ]+/g, ''))}
                 className="block text-blue-200 hover:text-white px-4 py-3 w-full text-left transition-colors duration-300 rounded-lg hover:bg-blue-500/10"
               >
                 {item}
@@ -86,8 +102,11 @@ const Navigation = () => {
               onClick={() => scrollToSection('contact')}
               className="block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-4 py-3 rounded-lg hover:from-blue-500 hover:to-blue-400 transition-all duration-300 mx-4 mt-4 text-center"
             >
-              Let's Talk
+              {t.talk}
             </button>
+            <div className="mt-6 flex justify-center">
+              <LanguageAndThemeSwitcher />
+            </div>
           </div>
         </div>
       )}

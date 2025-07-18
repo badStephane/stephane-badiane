@@ -1,7 +1,86 @@
 import React, { useState } from 'react';
 import { Mail, Phone, Send, MessageCircle } from 'lucide-react';
+import { useLanguageAndTheme } from './LanguageAndThemeContext';
+
+const translations = {
+  en: {
+    badge: 'Get In Touch',
+    title: "Let's Work ",
+    highlight: 'Together',
+    intro: "Have an exciting project in mind? I'd love to hear about it and discuss how we can bring your vision to life with exceptional design and development.",
+    contactCards: [
+      {
+        title: 'Email Me',
+        subtitle: 'badstephane14@gmail.com',
+        description: 'Send me an email anytime',
+        action: 'Send Email',
+      },
+      {
+        title: 'Call Me',
+        subtitle: '+221 77 354 83 42',
+        description: 'Mon-Fri from 10am to 5pm',
+        action: 'Call Now',
+      },
+    ],
+    formTitle: 'Send Me a Message',
+    formSubtitle: "Fill out the form below and I'll get back to you within 24 hours",
+    labels: {
+      name: 'Full Name',
+      email: 'Email Address',
+      subject: 'Subject',
+      message: 'Message',
+    },
+    placeholders: {
+      name: 'John Doe',
+      email: 'john@example.com',
+      subject: 'Project Discussion',
+      message: 'Tell me about your project...',
+    },
+    sendButton: 'Send Message',
+    mailSubjectFallback: 'New contact message',
+  },
+  fr: {
+    badge: 'Contactez-moi',
+    title: 'Travaillons ',
+    highlight: 'Ensemble',
+    intro: "Vous avez un projet passionnant en tête ? Je serais ravi d'en discuter et de voir comment nous pouvons concrétiser votre vision avec un design et un développement exceptionnels.",
+    contactCards: [
+      {
+        title: 'Envoyer un email',
+        subtitle: 'badstephane14@gmail.com',
+        description: 'Envoyez-moi un email à tout moment',
+        action: 'Envoyer',
+      },
+      {
+        title: 'Appeler',
+        subtitle: '+221 77 354 83 42',
+        description: 'Lun-Ven de 10h à 17h',
+        action: 'Appeler',
+      },
+    ],
+    formTitle: 'Envoyez-moi un message',
+    formSubtitle: 'Remplissez le formulaire ci-dessous et je vous répondrai sous 24h',
+    labels: {
+      name: 'Nom complet',
+      email: 'Adresse email',
+      subject: 'Sujet',
+      message: 'Message',
+    },
+    placeholders: {
+      name: 'Jean Dupont',
+      email: 'jean@example.com',
+      subject: 'Discussion de projet',
+      message: 'Parlez-moi de votre projet...',
+    },
+    sendButton: 'Envoyer',
+    mailSubjectFallback: 'Nouveau message de contact',
+  },
+};
 
 const Contact = () => {
+  const { language } = useLanguageAndTheme();
+  const t = translations[language];
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,10 +92,10 @@ const Contact = () => {
     e.preventDefault();
     
     // Créer le contenu de l'email
-    const emailSubject = formData.subject || 'Nouveau message de contact';
+    const emailSubject = formData.subject || t.mailSubjectFallback;
     const emailBody = `
-      Nom: ${formData.name}
-      Message:
+      ${t.labels.name}: ${formData.name}
+      ${t.labels.message}:
       ${formData.message}
     `;
     
@@ -42,21 +121,15 @@ const Contact = () => {
 
   const contactCards = [
     {
-      title: "Email Me",
-      subtitle: "badstephane14@gmail.com",
-      description: "Send me an email anytime",
+      ...t.contactCards[0],
       icon: <Mail size={24} />,
       gradient: "from-blue-600 to-blue-500",
-      action: "Send Email",
       onClick: handleEmailClick
     },
     {
-      title: "Call Me",
-      subtitle: "+221 77 354 83 42",
-      description: "Mon-Fri from 10am to 5pm",
+      ...t.contactCards[1],
       icon: <Phone size={24} />,
       gradient: "from-cyan-600 to-blue-500",
-      action: "Call Now",
       onClick: handlePhoneClick
     }
   ];
@@ -73,13 +146,14 @@ const Contact = () => {
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-6 py-2 mb-6">
             <MessageCircle className="text-blue-400" size={16} />
-            <span className="text-blue-300 font-medium">Get In Touch</span>
+            <span className="text-blue-300 font-medium">{t.badge}</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
-            Let's Work <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Together</span>
+            {t.title}
+            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">{t.highlight}</span>
           </h2>
           <p className="text-xl text-blue-200 max-w-3xl mx-auto leading-relaxed">
-            Have an exciting project in mind? I'd love to hear about it and discuss how we can bring your vision to life with exceptional design and development.
+            {t.intro}
           </p>
         </div>
         
@@ -110,18 +184,18 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto">
           <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-blue-500/20">
             <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-white mb-4">Send Me a Message</h3>
-              <p className="text-blue-200">Fill out the form below and I'll get back to you within 24 hours</p>
+              <h3 className="text-3xl font-bold text-white mb-4">{t.formTitle}</h3>
+              <p className="text-blue-200">{t.formSubtitle}</p>
             </div>
             
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
-                  <label className="text-blue-300 font-medium">Full Name</label>
+                  <label className="text-blue-300 font-medium">{t.labels.name}</label>
                   <input
                     type="text"
                     name="name"
-                    placeholder="John Doe"
+                    placeholder={t.placeholders.name}
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full px-6 py-4 bg-white/10 backdrop-blur-sm text-white rounded-2xl focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-blue-300/50 border border-blue-500/20 transition-all duration-300"
@@ -129,11 +203,11 @@ const Contact = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-blue-300 font-medium">Email Address</label>
+                  <label className="text-blue-300 font-medium">{t.labels.email}</label>
                   <input
                     type="email"
                     name="email"
-                    placeholder="john@example.com"
+                    placeholder={t.placeholders.email}
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-6 py-4 bg-white/10 backdrop-blur-sm text-white rounded-2xl focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-blue-300/50 border border-blue-500/20 transition-all duration-300"
@@ -143,11 +217,11 @@ const Contact = () => {
               </div>
               
               <div className="space-y-2">
-                <label className="text-blue-300 font-medium">Subject</label>
+                <label className="text-blue-300 font-medium">{t.labels.subject}</label>
                 <input
                   type="text"
                   name="subject"
-                  placeholder="Project Discussion"
+                  placeholder={t.placeholders.subject}
                   value={formData.subject}
                   onChange={handleChange}
                   className="w-full px-6 py-4 bg-white/10 backdrop-blur-sm text-white rounded-2xl focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-blue-300/50 border border-blue-500/20 transition-all duration-300"
@@ -156,10 +230,10 @@ const Contact = () => {
               </div>
               
               <div className="space-y-2">
-                <label className="text-blue-300 font-medium">Message</label>
+                <label className="text-blue-300 font-medium">{t.labels.message}</label>
                 <textarea
                   name="message"
-                  placeholder="Tell me about your project..."
+                  placeholder={t.placeholders.message}
                   rows={6}
                   value={formData.message}
                   onChange={handleChange}
@@ -173,7 +247,7 @@ const Contact = () => {
                   type="submit"
                   className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-12 py-4 rounded-full font-bold hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 flex items-center justify-center gap-3 mx-auto"
                 >
-                  Send Message <Send size={20} />
+                  {t.sendButton} <Send size={20} />
                 </button>
               </div>
             </form>
