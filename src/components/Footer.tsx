@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Twitter, Mail, Heart, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Twitter, Heart, ArrowUp, Instagram } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -32,10 +32,10 @@ const Footer = () => {
               
               <div className="flex space-x-4">
                 {[
-                  { icon: <Github size={20} />, href: "#", label: "GitHub" },
-                  { icon: <Linkedin size={20} />, href: "#", label: "LinkedIn" },
-                  { icon: <Twitter size={20} />, href: "#", label: "Twitter" },
-                  { icon: <Mail size={20} />, href: "#", label: "Email" }
+                  { icon: <Github size={20} />, href: "https://github.com/badStephane", label: "GitHub" },
+                  { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/st%C3%A9phane-badiane-652812287/", label: "LinkedIn" },
+                  { icon: <Twitter size={20} />, href: "https://twitter.com/badiane_steph", label: "Twitter" },
+                  { icon: <Instagram size={20} />, href: "https://www.instagram.com/gdnightmare", label: "Instagram" }
                 ].map((social, index) => (
                   <a 
                     key={index}
@@ -71,7 +71,7 @@ const Footer = () => {
             <div>
               <h4 className="text-xl font-bold mb-8 text-white">Services</h4>
               <ul className="space-y-4">
-                {['UI/UX Design', 'Frontend Development', 'Product Design', 'Motion Design'].map((service) => (
+                {['UI/UX Design', 'Frontend Development', 'Product Design'].map((service) => (
                   <li key={service}>
                     <a 
                       href="#services" 
