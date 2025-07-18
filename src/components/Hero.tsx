@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, Download } from 'lucide-react';
 import { useLanguageAndTheme } from './LanguageAndThemeContext';
 
 const translations = {

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import LanguageAndThemeSwitcher from './LanguageAndThemeSwitcher';
 import { useLanguageAndTheme } from './LanguageAndThemeContext';
+import LanguageSwitcher from './LanguageAndThemeSwitcher';
 
 const translations = {
   en: {
@@ -71,7 +71,7 @@ const Navigation = () => {
               >
                 {t.talk}
               </button>
-              <LanguageAndThemeSwitcher />
+              <LanguageSwitcher />
             </div>
           </div>
           
@@ -105,7 +105,7 @@ const Navigation = () => {
               {t.talk}
             </button>
             <div className="mt-6 flex justify-center">
-              <LanguageAndThemeSwitcher />
+              <LanguageSwitcher />
             </div>
           </div>
         </div>
