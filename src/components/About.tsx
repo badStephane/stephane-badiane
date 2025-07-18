@@ -21,11 +21,11 @@ const About = () => {
   const { language } = useLanguageAndTheme();
   const t = translations[language];
   return (
-    <section id="about" className="py-20 flex items-center relative overflow-hidden bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-900 dark:to-slate-800 text-slate-900 dark:text-white">
-      {/* Background Elements */}
+    <section id="about" className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 flex items-center relative overflow-hidden">      
+    {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 right-20 w-80 h-80 bg-blue-100 dark:bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-cyan-100 dark:bg-white/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -43,17 +43,17 @@ const About = () => {
             </div>
           </div>
           
-          <div className="order-1 lg:order-2 text-slate-900 dark:text-white">
-            <div className="inline-flex items-center gap-2 bg-blue-100 dark:bg-white/10 backdrop-blur-sm border border-blue-200 dark:border-white/20 rounded-full px-6 py-2 mb-8">
-              <Target className="text-blue-600 dark:text-white" size={16} />
-              <span className="text-blue-700 dark:text-white font-medium">{t.badge}</span>
+          <div className="text-white order-1 lg:order-2">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2 mb-8">
+              <Target size={16} />
+              <span className="font-medium">{t.badge}</span>
             </div>
             
             <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
               {t.title}
             </h2>
             
-            <p className="text-xl text-slate-700 dark:text-white/90 mb-8 leading-relaxed">
+            <p className="text-xl text-white/90 mb-8 leading-relaxed">
               {t.description}
             </p>
           </div>

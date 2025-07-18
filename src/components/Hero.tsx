@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ArrowRight, Download } from 'lucide-react';
 import { useLanguageAndTheme } from './LanguageAndThemeContext';
 
 const translations = {
@@ -69,7 +70,7 @@ const Hero = () => {
               {t.description}
             </p>
             
-            {/* <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
               <button className="group bg-gradient-to-r from-blue-600 to-blue-500 text-white px-8 py-4 rounded-full font-semibold hover:from-blue-500 hover:to-blue-400 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 flex items-center justify-center gap-3">
                 View My Work 
                 <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
@@ -78,7 +79,7 @@ const Hero = () => {
                 Download CV 
                 <Download className="group-hover:translate-y-1 transition-transform duration-300" size={20} />
               </button>
-            </div> */}
+            </div>
           </div>
           
           <div className="flex justify-center lg:justify-end mt-8">

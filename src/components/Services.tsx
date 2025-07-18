@@ -14,8 +14,8 @@ const translations = {
         features: ['React/Vue.js', 'TypeScript', 'Responsive Design', 'Performance'],
         gradient: 'from-blue-500 to-cyan-600',
         bgColor: 'bg-white',
-        darkBg: 'dark:bg-slate-800',
-        darkText: 'dark:text-white',
+        darkBg: '',
+        darkText: '',
       },
       {
         id: 2,
@@ -25,8 +25,8 @@ const translations = {
         features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
         gradient: 'from-blue-600 to-blue-700',
         bgColor: 'bg-slate-900',
-        darkBg: 'dark:bg-slate-900',
-        darkText: 'dark:text-white',
+        darkBg: '',
+        darkText: '',
       },
       {
         id: 3,
@@ -36,8 +36,8 @@ const translations = {
         features: ['Social Media Graphics', 'Business Cards', 'Logo Design', 'Photo Retouching'],
         gradient: 'from-cyan-600 to-blue-600',
         bgColor: 'bg-white',
-        darkBg: 'dark:bg-slate-800',
-        darkText: 'dark:text-white',
+        darkBg: '',
+        darkText: '',
       },
       {
         id: 4,
@@ -47,8 +47,8 @@ const translations = {
         features: ['PC Troubleshooting', 'Software Installation', 'Security & Antivirus', 'Remote Assistance'],
         gradient: 'from-cyan-700 to-blue-800',
         bgColor: 'bg-slate-900',
-        darkBg: 'dark:bg-slate-900',
-        darkText: 'dark:text-white',
+        darkBg: '',
+        darkText: '',
       }
     ]
   },
@@ -64,8 +64,8 @@ const translations = {
         features: ['React/Vue.js', 'TypeScript', 'Design Responsive', 'Performance'],
         gradient: 'from-blue-500 to-cyan-600',
         bgColor: 'bg-white',
-        darkBg: 'dark:bg-slate-800',
-        darkText: 'dark:text-white',
+        darkBg: '',
+        darkText: '',
       },
       {
         id: 2,
@@ -75,8 +75,8 @@ const translations = {
         features: ['Recherche utilisateur', 'Wireframing', 'Prototypage', 'Design Systems'],
         gradient: 'from-blue-600 to-blue-700',
         bgColor: 'bg-slate-900',
-        darkBg: 'dark:bg-slate-900',
-        darkText: 'dark:text-white',
+        darkBg: '',
+        darkText: '',
       },
       {
         id: 3,
@@ -86,8 +86,8 @@ const translations = {
         features: ['Visuels réseaux sociaux', 'Cartes de visite', 'Logo', 'Retouche photo'],
         gradient: 'from-cyan-600 to-blue-600',
         bgColor: 'bg-white',
-        darkBg: 'dark:bg-slate-800',
-        darkText: 'dark:text-white',
+        darkBg: '',
+        darkText: '',
       },
       {
         id: 4,
@@ -97,8 +97,8 @@ const translations = {
         features: ['Dépannage PC', 'Installation logicielle', 'Sécurité & Antivirus', 'Assistance à distance'],
         gradient: 'from-cyan-700 to-blue-800',
         bgColor: 'bg-slate-900',
-        darkBg: 'dark:bg-slate-900',
-        darkText: 'dark:text-white',
+        darkBg: '',
+        darkText: '',
       }
     ]
   }
@@ -108,11 +108,11 @@ const Services = () => {
   const { language } = useLanguageAndTheme();
   const t = translations[language];
   return (
-    <section id="services" className="py-20 relative overflow-hidden bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-900 dark:to-slate-800 text-slate-900 dark:text-white">
+    <section id="services" className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-blue-100 dark:bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-100 dark:bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

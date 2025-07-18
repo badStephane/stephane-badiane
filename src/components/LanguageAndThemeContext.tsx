@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 
 // Supported languages
 export type Language = 'en' | 'fr';
@@ -6,8 +6,6 @@ export type Language = 'en' | 'fr';
 interface LanguageAndThemeContextProps {
   language: Language;
   setLanguage: (lang: Language) => void;
-  theme: 'light' | 'dark';
-  toggleTheme: () => void;
 }
 
 const LanguageAndThemeContext = createContext<LanguageAndThemeContextProps | undefined>(undefined);
@@ -23,20 +21,8 @@ export const LanguageAndThemeProvider = ({ children }: { children: ReactNode }) 
   // Language state
   const [language, setLanguage] = useState<Language>('en');
 
-  // Theme state
-  const [theme, setTheme] = useState<'light' | 'dark'>(
-    typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  );
-
-  useEffect(() => {
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add(theme);
-  }, [theme]);
-
-  const toggleTheme = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-
   return (
-    <LanguageAndThemeContext.Provider value={{ language, setLanguage, theme, toggleTheme }}>
+    <LanguageAndThemeContext.Provider value={{ language, setLanguage }}>
       {children}
     </LanguageAndThemeContext.Provider>
   );
