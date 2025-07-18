@@ -12,6 +12,7 @@ interface LanguageAndThemeContextProps {
 
 const LanguageAndThemeContext = createContext<LanguageAndThemeContextProps | undefined>(undefined);
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useLanguageAndTheme = () => {
   const context = useContext(LanguageAndThemeContext);
   if (!context) throw new Error('useLanguageAndTheme must be used within LanguageAndThemeProvider');

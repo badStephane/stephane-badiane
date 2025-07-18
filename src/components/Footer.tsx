@@ -37,12 +37,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-slate-950 text-white relative overflow-hidden">
+    <footer className="bg-white dark:bg-slate-950 text-slate-900 dark:text-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500"></div>
-        <div className="absolute top-20 right-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-300 via-cyan-300 to-blue-400 dark:from-blue-500 dark:via-cyan-500 dark:to-blue-500"></div>
+        <div className="absolute top-20 right-20 w-64 h-64 bg-blue-100 dark:bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-cyan-100 dark:bg-cyan-500/5 rounded-full blur-3xl"></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -50,10 +50,10 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-2">
               <div className="mb-8">
-                <h3 className="text-3xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4">
+                <h3 className="text-3xl font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4 dark:from-blue-400 dark:to-cyan-400">
                   GDNIGHTMARE
                 </h3>
-                <p className="text-blue-200 mb-8 max-w-md leading-relaxed">
+                <p className="text-blue-700 dark:text-blue-200 mb-8 max-w-md leading-relaxed">
                   {t.description}
                 </p>
               </div>
@@ -86,9 +86,9 @@ const Footer = () => {
                   <li key={link}>
                     <a 
                       href={link} 
-                      className="text-blue-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
+                      className="text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-white transition-colors duration-300 flex items-center gap-2 group"
                     >
-                      <span className="w-2 h-2 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                      <span className="w-2 h-2 bg-blue-300 dark:bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                       {t.quickLinksLabels[index]}
                     </a>
                   </li>
@@ -103,9 +103,9 @@ const Footer = () => {
                   <li key={service}>
                     <a 
                       href="#services" 
-                      className="text-blue-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
+                      className="text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-white transition-colors duration-300 flex items-center gap-2 group"
                     >
-                      <span className="w-2 h-2 bg-cyan-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                      <span className="w-2 h-2 bg-cyan-300 dark:bg-cyan-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                       {service}
                     </a>
                   </li>
