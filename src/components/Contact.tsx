@@ -100,7 +100,7 @@ const Contact = () => {
     `;
     
     // Ouvrir le client email par défaut
-    const mailtoLink = `mailto:badstephane14@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    const mailtoLink = `mailto:stephane.badiane.dev@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
     window.location.href = mailtoLink;
   };
 
@@ -112,7 +112,7 @@ const Contact = () => {
   };
 
   const handleEmailClick = () => {
-    window.location.href = 'mailto:badstephane14@gmail.com';
+    window.location.href = 'mailto:stephane.badiane.dev@gmail.com';
   };
 
   const handlePhoneClick = () => {
