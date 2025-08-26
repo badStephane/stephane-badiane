@@ -11,7 +11,7 @@ const translations = {
     contactCards: [
       {
         title: 'Email Me',
-        subtitle: 'badstephane14@gmail.com',
+        subtitle: 'stephane.badiane.dev@gmail.com',
         description: 'Send me an email anytime',
         action: 'Send Email',
       },
@@ -47,7 +47,7 @@ const translations = {
     contactCards: [
       {
         title: 'Envoyer un email',
-        subtitle: 'badstephane14@gmail.com',
+        subtitle: 'stephane.badiane.dev@gmail.com',
         description: 'Envoyez-moi un email à tout moment',
         action: 'Envoyer',
       },
