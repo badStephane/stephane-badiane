@@ -9,16 +9,18 @@ const translations = {
     badge: 'My Technical Expertise',
     description: 'Fullstack developer and designer passionate about cybersecurity, I used a wide range of modern technologies.',
     categories: {
-      languages: "Programming Languages",
-      frontend: "Frontend Development",
+      backend: "Backend",
+      frontend: "Frontend",
       database: "Databases",
       design: "Design",
+      Api: "API",
       tools: "Tools & Systems",
     },
     achievements: [
       { number: "10+", label: "Technologies explored", icon: <Award size={20} /> },
       { number: "3+", label: "Years of Experience", icon: <Star size={20} /> },
       { number: "70%", label: "Design Level", icon: <Palette size={20} /> },
+      { number: "65%", label: "Frontend Level", icon: <Globe size={20} /> },
       { number: "50%", label: "Backend Level", icon: <Server size={20} /> }
     ]
   },
@@ -28,16 +30,18 @@ const translations = {
     badge: 'Mon Expertise Technique',
     description: "Développeur et designer fullstack passionné par la cybersécurité, j'ai utilisé un large éventail de technologies modernes.",
     categories: {
-      languages: "Langages de programmation",
-      frontend: "Développement Frontend",
+      backend: "Backend",
+      frontend: "Frontend",
       database: "Bases de données",
       design: "Design",
+      Api: "API",
       tools: "Outils & Systèmes",
     },
     achievements: [
       { number: "10+", label: "Technologies utilisées", icon: <Award size={20} /> },
       { number: "3+", label: "Années d'expérience", icon: <Star size={20} /> },
       { number: "70%", label: "Niveau Design", icon: <Palette size={20} /> },
+      { number: "65%", label: "Niveau Frontend", icon: <Globe size={20} /> },
       { number: "50%", label: "Niveau Backend", icon: <Server size={20} /> }
     ]
   },
@@ -54,15 +58,17 @@ const Skills = () => {
   }, []);
 
   const skillCategories = {
-    languages: {
-      title: t.categories.languages,
+    backend: {
+      title: t.categories.backend,
       icon: <Code size={24} />,
       color: "from-blue-500 to-blue-600",
       skills: [
-        { name: "Python", logo: "https://images.icon-icons.com/2699/PNG/512/python_logo_icon_168886.png", level: 75 },
-        { name: "JavaScript", logo: "https://images.icon-icons.com/2108/PNG/512/javascript_icon_130900.png", level: 75 },
-        { name: "Go", logo: "https://images.icon-icons.com/2699/PNG/512/golang_official_logo_icon_169092.png", level: 80 },
-        { name: "Rust", logo: "https://images.icon-icons.com/2699/PNG/512/rust_lang_logo_icon_169776.png", level: 80 }
+        { name: "Django", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_django_icon_130645.png", level: 60 },
+        { name: "Node.js", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_node_icon_130301.png", level: 70 },
+        { name: "Go", logo: "https://images.icon-icons.com/2699/PNG/512/golang_official_logo_icon_169092.png", level: 70 },
+        { name: "Rust", logo: "https://images.icon-icons.com/2699/PNG/512/rust_lang_logo_icon_169776.png", level: 70 },
+        { name: "REST", logo: "https://www.opc-router.com/wp-content/uploads/2020/04/icon_rest_webservice_600x400px-300x200.png", level: 70 },
+        { name: "GraphQL", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_graphql_icon_130564.png", level: 70 }
       ]
     },
     frontend: {
@@ -70,9 +76,11 @@ const Skills = () => {
       icon: <Globe size={24} />,
       color: "from-blue-600 to-blue-700",
       skills: [
+        { name: "JavaScript", logo: "https://images.icon-icons.com/2108/PNG/512/javascript_icon_130900.png", level: 75 },
         { name: "React", logo: "https://images.icon-icons.com/2415/PNG/512/react_original_logo_icon_146374.png", level: 70 },
         { name: "Angular", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_angular_icon_130754.png", level: 60 },
-        { name: "Tailwind CSS", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_tailwind_icon_130128.png", level: 45 }
+        { name: "Tailwind CSS", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_tailwind_icon_130128.png", level: 45 },
+        
       ]
     },
     database: {
@@ -80,8 +88,7 @@ const Skills = () => {
       icon: <Database size={24} />,
       color: "from-blue-700 to-blue-800",
       skills: [
-        { name: "MySQL", logo: "https://images.icon-icons.com/2415/PNG/512/mysql_original_wordmark_logo_icon_146417.png", level: 70 },
-        { name: "SQLite", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_sqlite_icon_130153.png", level: 75 },
+        { name: "SQLite", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_sqlite_icon_130153.png", level: 70 },
         { name: "PostgreSQL", logo: "https://images.icon-icons.com/2415/PNG/512/postgresql_original_wordmark_logo_icon_146392.png", level: 50 },
         { name: "MongoDB", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_mongo_icon_130383.png", level: 50 }
       ]
@@ -91,9 +98,9 @@ const Skills = () => {
       icon: <Palette size={24} />,
       color: "from-blue-400 to-blue-500",
       skills: [
-        { name: "Photoshop", logo: "https://images.icon-icons.com/3053/PNG/512/adobe_photoshop_macos_bigsur_icon_190436.png", level: 80 },
-        { name: "Illustrator", logo: "https://images.icon-icons.com/3053/PNG/512/adobe_illustrator_macos_bigsur_icon_190447.png", level: 80 },
-        { name: "Figma", logo: "https://images.icon-icons.com/3053/PNG/512/figma_macos_bigsur_icon_190183.png", level: 65 }
+        { name: "Photoshop", logo: "https://images.icon-icons.com/3053/PNG/512/adobe_photoshop_macos_bigsur_icon_190436.png", level: 75 },
+        { name: "Illustrator", logo: "https://images.icon-icons.com/3053/PNG/512/adobe_illustrator_macos_bigsur_icon_190447.png", level: 75 },
+        { name: "Figma", logo: "https://images.icon-icons.com/3053/PNG/512/figma_macos_bigsur_icon_190183.png", level: 60 }
       ]
     },
     tools: {
@@ -101,9 +108,9 @@ const Skills = () => {
       icon: <Server size={24} />,
       color: "from-blue-800 to-blue-900",
       skills: [
-        { name: "Docker", logo: "https://images.icon-icons.com/2415/PNG/512/docker_original_wordmark_logo_icon_146557.png", level: 80 },
-        { name: "Windows", logo: "https://images.icon-icons.com/836/PNG/512/Windows_Phone_icon-icons.com_66782.png", level: 90 },
-        { name: "Ubuntu", logo: "https://images.icon-icons.com/195/PNG/256/OS_Linux_23399.png", level: 85 }
+        { name: "Docker", logo: "https://images.icon-icons.com/2415/PNG/512/docker_original_wordmark_logo_icon_146557.png", level: 60 },
+        { name: "Windows", logo: "https://images.icon-icons.com/836/PNG/512/Windows_Phone_icon-icons.com_66782.png", level: 70 },
+        { name: "Ubuntu", logo: "https://images.icon-icons.com/195/PNG/256/OS_Linux_23399.png", level: 70 }
       ]
     }
   };
@@ -145,7 +152,7 @@ const Skills = () => {
         </div>
 
         {/* Achievements Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-16">
           {t.achievements.map((achievement, index) => (
             <div key={index} className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-blue-500/20 p-6 hover:bg-white/10 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
