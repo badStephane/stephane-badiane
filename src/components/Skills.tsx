@@ -49,7 +49,7 @@ const translations = {
 const Skills = () => {
   const { language } = useLanguageAndTheme();
   const t = translations[language];
-  const [activeCategory, setActiveCategory] = useState('languages');
+  const [activeCategory, setActiveCategory] = useState('backend');
   const [animatedBars, setAnimatedBars] = useState(false);
 
   useEffect(() => {
@@ -193,6 +193,7 @@ const Skills = () => {
 
         {/* Skills Grid */}
         <div className="max-w-6xl mx-auto">
+          {!(activeCategory in skillCategories) ? null : (
           <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-blue-500/20">
             <div className="text-center mb-8">
               <h3 className="text-3xl font-bold text-white mb-2 flex items-center justify-center gap-3">
@@ -277,6 +278,7 @@ const Skills = () => {
               ))}
             </div>
           </div>
+          )}
         </div>
       </div>
     </section>
