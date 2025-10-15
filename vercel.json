@@ -2,6 +2,8 @@
   "buildCommand": "npm ci && npm run build",
   "outputDirectory": "dist",
   "rewrites": [
+    { "source": "/assets/(.*)", "destination": "/assets/$1" },
+    { "source": "/favicon.ico", "destination": "/favicon.ico" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
