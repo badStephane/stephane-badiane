@@ -36,6 +36,19 @@ const Hero = () => {
   return (
     <section id="home" className="pt-20 min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 flex items-center relative overflow-hidden">
       {/* Animated Background */}
+      {/* Video Background Positioned Absolutely */}
+      <video 
+        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
+        role="presentation"
+        autoPlay 
+        loop 
+        muted 
+        playsInline
+        src="/6036381_Keyboard_Laptop_3840x2160.mp4"
+      />
+      {/* Content container with relative to keep content above the video */}
+      <div className='flex relative z-10 w-full'>
+
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]"></div>
         {/* Effets visuels lourds désactivés sur mobile */}
@@ -118,6 +131,7 @@ const Hero = () => {
         <div className="w-6 h-10 border-2 border-blue-400 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-blue-400 rounded-full mt-2 animate-pulse"></div>
         </div>
+      </div>
       </div>
     </section>
   );

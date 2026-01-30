@@ -11,7 +11,7 @@ import { LanguageAndThemeProvider } from './components/LanguageAndThemeContext';
 
 function App() {
   return (
-    <div style={{fontFamily: 'SyZne'}}>
+    <div style={{fontFamily: 'Syne'}}>
     <LanguageAndThemeProvider>
       <div className="min-h-screen">
         <Navigation />
