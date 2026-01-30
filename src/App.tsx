@@ -11,6 +11,7 @@ import { LanguageAndThemeProvider } from './components/LanguageAndThemeContext';
 
 function App() {
   return (
+    <div style={{fontFamily: 'SyZne'}}>
     <LanguageAndThemeProvider>
       <div className="min-h-screen">
         <Navigation />
@@ -23,6 +24,7 @@ function App() {
         <Footer />
       </div>
     </LanguageAndThemeProvider>
+    </div>
   );
 }
 

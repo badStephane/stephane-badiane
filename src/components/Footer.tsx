@@ -30,7 +30,7 @@ const translations = {
 const Footer = () => {
   const { language } = useLanguageAndTheme();
   const t = translations[language];
-  const currentYear = new Date().getFullYear();
+  const currentYear = 2025;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -50,9 +50,10 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-2">
               <div className="mb-8">
-                <h3 className="text-3xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4">
-                  GDNIGHTMARE
-                </h3>
+                <div className="mb-8">
+
+              <img src="/monlogo.png" width={150} height={100} alt="" />  
+                </div>
                 <p className="text-blue-200 mb-8 max-w-md leading-relaxed">
                   {t.description}
                 </p>
@@ -118,7 +119,7 @@ const Footer = () => {
         <div className="border-t border-blue-500/20 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-blue-300 flex items-center gap-2">
-              &copy; {currentYear} GDNIGHTMARE Portfolio. {t.copyright} <Heart className="text-red-500" size={16} /> {t.copyrightEnd}
+              &copy; {currentYear} Stephane Portfolio. {t.copyright} <Heart className="text-red-500" size={16} /> {t.copyrightEnd}
             </p>
             
             <button 

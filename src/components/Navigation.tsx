@@ -46,10 +46,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
             <div className="relative">
-              <span className="text-2xl font-black bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-300 bg-clip-text text-transparent">
-                GDNIGHTMARE
-              </span>
-              <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                <img src="/monlogo.png" width={150} height={100} alt="" />  
             </div>
           </div>
           

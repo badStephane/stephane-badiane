@@ -60,7 +60,7 @@ const Hero = () => {
           <div className="text-white text-center lg:text-left">            
             <h1 className=" font-black mb-8 leading-tight">
               <span className="text-xl sm:text-3xl md:text-5xl lg:text-6xl block">{t.sectionTitle}</span>
-              <span className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-300 bg-clip-text text-transparent">
+              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-300 bg-clip-text text-transparent">
                 {t.sectionSubtitle}
               </span>
             </h1>
