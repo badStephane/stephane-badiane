@@ -111,11 +111,6 @@ const Hero = () => {
                 </div>
               </div>
               
-              <div className="absolute -bottom-8 -left-8 bg-gradient-to-r from-cyan-600 to-blue-500 p-4 rounded-2xl shadow-2xl animate-float-delayed">
-                <div className="text-white text-center">
-                </div>
-              </div>
-              
               <div className="absolute top-1/2 -left-12 bg-gradient-to-r from-blue-500 to-cyan-500 p-3 rounded-xl shadow-2xl animate-pulse">
                 <div className="text-white text-center">
                   <div className="text-lg font-bold">💡</div>
@@ -134,6 +129,7 @@ const Hero = () => {
       </div>
       </div>
     </section>
+    
   );
 };
 
