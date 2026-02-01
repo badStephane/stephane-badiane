@@ -83,7 +83,7 @@ const Hero = () => {
             </p>
             
             {/* <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
-              <button className="group bg-gradient-to-r from-blue-600 to-blue-500 text-white px-8 py-4 rounded-full font-semibold hover:from-blue-500 hover:to-blue-400 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 flex items-center justify-center gap-3">
+              <button className="group bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-8 py-4 rounded-full font-semibold hover:from-blue-500 hover:to-blue-400 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 flex items-center justify-center gap-3">
                 View My Work 
                 <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
               </button>
@@ -106,7 +106,7 @@ const Hero = () => {
               </div>
               
               {/* Floating Cards */}
-              <div className="absolute -top-8 -right-8 bg-gradient-to-r from-blue-600 to-blue-500 p-4 rounded-2xl shadow-2xl animate-float">
+              <div className="absolute -top-8 -right-8 bg-gradient-to-r from-blue-500 to-cyan-600 p-4 rounded-2xl shadow-2xl animate-float">
                 <div className="text-white text-center">
                 </div>
               </div>

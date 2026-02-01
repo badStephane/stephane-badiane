@@ -21,7 +21,7 @@ const About = () => {
   const { language } = useLanguageAndTheme();
   const t = translations[language];
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 flex items-center relative overflow-hidden">      
+    <section id="about" className="py-20 flex items-center relative overflow-hidden">      
     {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>

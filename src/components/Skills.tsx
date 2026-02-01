@@ -61,7 +61,7 @@ const Skills = () => {
     backend: {
       title: t.categories.backend,
       icon: <Code size={24} />,
-      color: "from-blue-500 to-blue-600",
+      color: "from-blue-500 to-cyan-600",
       skills: [
         { name: "Django", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_django_icon_130645.png", level: 60 },
         { name: "Node.js", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_node_icon_130301.png", level: 70 },
@@ -74,7 +74,7 @@ const Skills = () => {
     frontend: {
       title: t.categories.frontend,
       icon: <Globe size={24} />,
-      color: "from-blue-600 to-blue-700",
+      color: "from-blue-500 to-cyan-600",
       skills: [
         { name: "JavaScript", logo: "https://images.icon-icons.com/2108/PNG/512/javascript_icon_130900.png", level: 75 },
         { name: "React", logo: "https://images.icon-icons.com/2415/PNG/512/react_original_logo_icon_146374.png", level: 70 },
@@ -85,8 +85,8 @@ const Skills = () => {
     },
     database: {
       title: t.categories.database,
-      icon: <Database size={24} />,
-      color: "from-blue-700 to-blue-800",
+      icon: <Database size={24} />, 
+      color: "from-blue-500 to-cyan-600",
       skills: [
         { name: "SQLite", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_sqlite_icon_130153.png", level: 70 },
         { name: "PostgreSQL", logo: "https://images.icon-icons.com/2415/PNG/512/postgresql_original_wordmark_logo_icon_146392.png", level: 50 },
@@ -96,7 +96,7 @@ const Skills = () => {
     design: {
       title: t.categories.design,
       icon: <Palette size={24} />,
-      color: "from-blue-400 to-blue-500",
+      color: "from-blue-500 to-cyan-600",
       skills: [
         { name: "Photoshop", logo: "https://images.icon-icons.com/3053/PNG/512/adobe_photoshop_macos_bigsur_icon_190436.png", level: 75 },
         { name: "Illustrator", logo: "https://images.icon-icons.com/3053/PNG/512/adobe_illustrator_macos_bigsur_icon_190447.png", level: 75 },
@@ -106,7 +106,7 @@ const Skills = () => {
     tools: {
       title: t.categories.tools,
       icon: <Server size={24} />,
-      color: "from-blue-800 to-blue-900",
+      color: "from-blue-500 to-cyan-600",
       skills: [
         { name: "Docker", logo: "https://images.icon-icons.com/2415/PNG/512/docker_original_wordmark_logo_icon_146557.png", level: 60 },
         { name: "Windows", logo: "https://images.icon-icons.com/836/PNG/512/Windows_Phone_icon-icons.com_66782.png", level: 70 },
@@ -122,7 +122,7 @@ const Skills = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>

@@ -123,7 +123,7 @@ const Contact = () => {
     {
       ...t.contactCards[0],
       icon: <Mail size={24} />,
-      gradient: "from-blue-600 to-blue-500",
+      gradient: "from-blue-500 to-cyan-600",
       onClick: handleEmailClick
     },
     {
@@ -135,7 +135,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
+    <section id="contact" className="py-20 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>

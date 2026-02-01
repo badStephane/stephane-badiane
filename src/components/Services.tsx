@@ -23,7 +23,7 @@ const translations = {
         description: 'Designing intuitive and visually appealing user interfaces for outstanding experiences across all platforms and devices.',
         icon: <Palette size={32} />, 
         features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
-        gradient: 'from-blue-600 to-blue-700',
+        gradient: 'from-blue-500 to-cyan-600',
         bgColor: 'bg-slate-900',
         darkBg: '',
         darkText: '',
@@ -34,7 +34,7 @@ const translations = {
         description: 'Creating visually engaging graphics that communicate ideas effectively and capture attention.',
         icon: <Tangent size={32} />, 
         features: ['Social Media Graphics', 'Business Cards', 'Logo Design', 'Photo Retouching'],
-        gradient: 'from-cyan-600 to-blue-600',
+        gradient: 'from-cyan-500 to-blue-600',
         bgColor: 'bg-white',
         darkBg: '',
         darkText: '',
@@ -45,7 +45,7 @@ const translations = {
         description: 'Support, troubleshooting, and maintenance of your IT equipment to ensure optimal performance and security.',
         icon: <Zap size={32} />, 
         features: ['PC Troubleshooting', 'Software Installation', 'Security & Antivirus', 'Remote Assistance'],
-        gradient: 'from-cyan-700 to-blue-800',
+        gradient: 'from-blue-500 to-cyan-600',
         bgColor: 'bg-slate-900',
         darkBg: '',
         darkText: '',
@@ -73,7 +73,7 @@ const translations = {
         description: 'Conception d’interfaces intuitives et esthétiques pour des expériences remarquables sur tous supports.',
         icon: <Palette size={32} />, 
         features: ['Recherche utilisateur', 'Wireframing', 'Prototypage', 'Design Systems'],
-        gradient: 'from-blue-600 to-blue-700',
+        gradient: 'from-blue-500 to-cyan-600',
         bgColor: 'bg-slate-900',
         darkBg: '',
         darkText: '',
@@ -84,7 +84,7 @@ const translations = {
         description: 'Création de visuels impactants pour communiquer efficacement et capter l’attention.',
         icon: <Tangent size={32} />, 
         features: ['Visuels réseaux sociaux', 'Cartes de visite', 'Logo', 'Retouche photo'],
-        gradient: 'from-cyan-600 to-blue-600',
+        gradient: 'from-cyan-500 to-blue-600',
         bgColor: 'bg-white',
         darkBg: '',
         darkText: '',
@@ -95,7 +95,7 @@ const translations = {
         description: 'Assistance, dépannage et maintenance de vos équipements informatiques pour garantir leur bon fonctionnement et leur sécurité.',
         icon: <Zap size={32} />, 
         features: ['Dépannage PC', 'Installation logicielle', 'Sécurité & Antivirus', 'Assistance à distance'],
-        gradient: 'from-cyan-700 to-blue-800',
+        gradient: 'from-blue-500 to-cyan-600',
         bgColor: 'bg-slate-900',
         darkBg: '',
         darkText: '',
@@ -108,7 +108,7 @@ const Services = () => {
   const { language } = useLanguageAndTheme();
   const t = translations[language];
   return (
-    <section id="services" className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
+    <section id="services" className="py-20 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>

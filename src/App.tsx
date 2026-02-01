@@ -16,11 +16,16 @@ function App() {
       <div className="min-h-screen">
         <Navigation />
         <Hero />
-        <About />
-        <Skills />
-        {/* <Projects /> */}
-        <Services />
-        <Contact />
+        <div className='flex justify-center items-center flex-col bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800'>
+          <About />
+          {/* <hr className='w-full border-blue-500' /> */}
+          <Skills />
+          {/* <hr className='w-full border-blue-500' /> */}
+          {/* <Projects /> */}
+          <Services />
+          {/* <hr className='w-full border-blue-500' /> */}
+          <Contact />
+        </div>
         <Footer />
       </div>
     </LanguageAndThemeProvider>

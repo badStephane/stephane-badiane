@@ -39,7 +39,7 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-slate-900/95 backdrop-blur-xl shadow-2xl border-b border-blue-500/20' 
+        ? 'bg-slate-950 backdrop-blur-xl shadow-2xl border-b border-blue-500/20' 
         : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,7 +64,22 @@ const Navigation = () => {
               ))}
               <button 
                 onClick={() => scrollToSection('contact')}
-                className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-3 rounded-full hover:from-blue-500 hover:to-blue-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
+                className="
+                    relative overflow-hidden
+                    px-6 py-3 rounded-full shadow-lg font-medium
+
+                    bg-gradient-to-r from-blue-500 to-cyan-600
+                    bg-[length:200%_200%] bg-left
+
+                    text-white
+                    transition-all duration-500 ease-out
+
+                    hover:scale-105
+                    hover:bg-white/95
+                    hover:text-transparent
+                    hover:bg-clip-text
+                  "
+
               >
                 {t.talk}
               </button>
@@ -90,14 +105,14 @@ const Navigation = () => {
               <button 
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase().replace(/[^a-zA-ZÀ-ÿ]+/g, ''))}
-                className="block text-blue-200 hover:text-white px-4 py-3 w-full text-left transition-colors duration-300 rounded-lg hover:bg-blue-500/10"
+                className="block text-blue-200 hover:text-white px-4 py-3 w-full text-left transition-colors duration-300 rounded-lg hover:bg-white hover:text-blue-500"
               >
                 {item}
               </button>
             ))}
             <button 
               onClick={() => scrollToSection('contact')}
-              className="block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-4 py-3 rounded-lg hover:from-blue-500 hover:to-blue-400 transition-all duration-300 mx-4 mt-4 text-center"
+              className="block bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-4 py-3 rounded-lg hover:bg-white hover:text-blue-500 transition-all duration-300 mx-4 mt-4 text-center"
             >
               {t.talk}
             </button>
