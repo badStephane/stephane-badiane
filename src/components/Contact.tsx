@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { Mail, Phone, Send, MessageCircle } from 'lucide-react';
 import { useLanguageAndTheme } from './LanguageAndThemeContext';
+import emailjs from '@emailjs/browser';
+
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+const AUTO_REPLY_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_AUTO_REPLY_TEMPLATE_ID;
 
 const translations = {
   en: {
@@ -88,20 +95,36 @@ const Contact = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+console.log("Public Key:", PUBLIC_KEY);
+
+
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject || t.mailSubjectFallback,
+      message: formData.message,
+    };  
     
-    // Créer le contenu de l'email
-    const emailSubject = formData.subject || t.mailSubjectFallback;
-    const emailBody = `
-      ${t.labels.name}: ${formData.name}
-      ${t.labels.message}:
-      ${formData.message}
-    `;
-    
-    // Ouvrir le client email par défaut
-    const mailtoLink = `mailto:stephane.badiane.dev@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-    window.location.href = mailtoLink;
+    try {
+      // 1️⃣ Envoi vers toi
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+  
+      // 2️⃣ Auto-reply vers l'utilisateur
+      // IMPORTANT: dans ton template auto-reply, le "To" doit être {{email}}
+      await emailjs.send(SERVICE_ID, AUTO_REPLY_TEMPLATE_ID, templateParams, PUBLIC_KEY);
+  
+      alert(language === 'fr' ? 'Message envoyé avec succès !' : 'Message sent successfully!');
+      setFormData({ name: '', email: '', subject: '', message: '' }); // Vide le formulaire
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert(
+        language === 'fr'
+          ? "Erreur lors de l'envoi du message. Essayez à nouveau."
+          : 'Error sending message. Please try again.'
+      );
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
