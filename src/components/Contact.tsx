@@ -97,7 +97,6 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-console.log("Public Key:", PUBLIC_KEY);
 
 
     const templateParams = {
