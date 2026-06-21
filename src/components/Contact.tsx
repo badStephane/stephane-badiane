@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Mail, Phone, Send, MessageCircle } from 'lucide-react';
+import { Mail, Phone, Send, MessageCircle, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useLanguageAndTheme } from './LanguageAndThemeContext';
 import emailjs from '@emailjs/browser';
+import Reveal from './Reveal';
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -95,9 +96,20 @@ const Contact = () => {
     message: ''
   });
 
+  // État d'envoi : pilote le bouton + le message de retour (sans alert bloquant)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const feedback = {
+    success: language === 'fr' ? 'Message envoyé ! Je vous réponds sous 24h.' : "Message sent! I'll reply within 24h.",
+    error: language === 'fr' ? "Échec de l'envoi. Réessayez ou écrivez-moi directement." : 'Sending failed. Try again or email me directly.',
+    sending: language === 'fr' ? 'Envoi…' : 'Sending…',
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (status === 'sending') return; // évite les doubles envois
 
+    setStatus('sending');
 
     const templateParams = {
       name: formData.name,
@@ -114,15 +126,11 @@ const Contact = () => {
       // IMPORTANT: dans ton template auto-reply, le "To" doit être {{email}}
       await emailjs.send(SERVICE_ID, AUTO_REPLY_TEMPLATE_ID, templateParams, PUBLIC_KEY);
   
-      alert(language === 'fr' ? 'Message envoyé avec succès !' : 'Message sent successfully!');
+      setStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' }); // Vide le formulaire
     } catch (error) {
       console.error('Error sending message:', error);
-      alert(
-        language === 'fr'
-          ? "Erreur lors de l'envoi du message. Essayez à nouveau."
-          : 'Error sending message. Please try again.'
-      );
+      setStatus('error'); // on conserve la saisie de l'utilisateur
     }
   };
 
@@ -165,7 +173,7 @@ const Contact = () => {
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-20">
+        <Reveal className="text-center mb-20">
           <div className="inline-flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-6 py-2 mb-6">
             <MessageCircle className="text-blue-400" size={16} />
             <span className="text-blue-300 font-medium">{t.badge}</span>
@@ -177,12 +185,12 @@ const Contact = () => {
           <p className="text-xl text-blue-200 max-w-3xl mx-auto leading-relaxed">
             {t.intro}
           </p>
-        </div>
+        </Reveal>
         
         {/* Contact Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {contactCards.map((card, index) => (
-            <div key={index} className="group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-sm border border-blue-500/20 p-8 hover:bg-white/10 transition-all duration-500">
+            <Reveal key={index} delay={index * 100} className="group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-sm border border-blue-500/20 p-8 hover:bg-white/10 transition-all duration-320 ease-out-expo hover:-translate-y-1">
               <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
               <div className="relative">
                 <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${card.gradient} text-white mb-6`}>
@@ -193,17 +201,17 @@ const Contact = () => {
                 <p className="text-blue-200 mb-6">{card.description}</p>
                 <button 
                   onClick={card.onClick}
-                  className={`inline-flex items-center gap-2 bg-gradient-to-r ${card.gradient} text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105`}
+                  className={`inline-flex items-center gap-2 bg-gradient-to-r ${card.gradient} text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-240 ease-out-expo transform hover:scale-105 active:scale-95`}
                 >
                   {card.action}
                 </button>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
         
         {/* Contact Form */}
-        <div className="max-w-4xl mx-auto">
+        <Reveal className="max-w-4xl mx-auto">
           <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-blue-500/20">
             <div className="text-center mb-12">
               <h3 className="text-3xl font-bold text-white mb-4">{t.formTitle}</h3>
@@ -264,17 +272,40 @@ const Contact = () => {
                 ></textarea>
               </div>
               
+              {/* Message de retour (annoncé aux lecteurs d'écran) */}
+              <div aria-live="polite" className="min-h-[1.5rem]">
+                {status === 'success' && (
+                  <p className="flex items-center justify-center gap-2 text-green-400 font-medium animate-fade-up">
+                    <CheckCircle2 size={20} /> {feedback.success}
+                  </p>
+                )}
+                {status === 'error' && (
+                  <p className="flex items-center justify-center gap-2 text-red-400 font-medium animate-fade-up">
+                    <AlertCircle size={20} /> {feedback.error}
+                  </p>
+                )}
+              </div>
+
               <div className="text-center">
                 <button
                   type="submit"
-                  className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-12 py-4 rounded-full font-bold hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 flex items-center justify-center gap-3 mx-auto"
+                  disabled={status === 'sending'}
+                  className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-12 py-4 rounded-full font-bold hover:from-blue-500 hover:to-cyan-500 transition-all duration-240 ease-out-expo transform hover:scale-105 active:scale-[0.98] shadow-2xl hover:shadow-blue-500/25 flex items-center justify-center gap-3 mx-auto disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  {t.sendButton} <Send size={20} />
+                  {status === 'sending' ? (
+                    <>
+                      {feedback.sending} <Loader2 size={20} className="animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      {t.sendButton} <Send size={20} />
+                    </>
+                  )}
                 </button>
               </div>
             </form>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

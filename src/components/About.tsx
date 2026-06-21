@@ -1,6 +1,7 @@
 import { Target } from 'lucide-react';
 
 import { useLanguageAndTheme } from './LanguageAndThemeContext';
+import Reveal from './Reveal';
 
 const translations = {
   en: {
@@ -30,33 +31,34 @@ const About = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="relative order-2 lg:order-1">
-            <div className="relative w-full max-w-lg mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/10 rounded-3xl backdrop-blur-sm transform rotate-6"></div>
+          <Reveal className="relative order-2 lg:order-1">
+            <div className="relative w-full max-w-lg mx-auto group">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/10 rounded-3xl backdrop-blur-sm transform rotate-6 transition-transform duration-500 ease-out-expo group-hover:rotate-3"></div>
               <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-2 border border-white/20">
-                <img 
-                  src="/metoo.jpg"
+                <img
+                  src="/metoo.webp"
                   alt={t.alt}
+                  loading="lazy"
                   className="w-100 h-86 object-cover rounded-2xl transform scale-x-[-1]"
                 />
               </div>
             </div>
-          </div>
-          
-          <div className="text-white order-1 lg:order-2">
+          </Reveal>
+
+          <Reveal delay={120} className="text-white order-1 lg:order-2">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2 mb-8">
               <Target size={16} />
               <span className="font-medium">{t.badge}</span>
             </div>
-            
+
             <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
               {t.title}
             </h2>
-            
+
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
               {t.description}
             </p>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

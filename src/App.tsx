@@ -11,12 +11,12 @@ import { LanguageAndThemeProvider } from './components/LanguageAndThemeContext';
 
 function App() {
   return (
-    <div style={{fontFamily: 'Syne'}}>
+    <div style={{fontFamily: "'Syne', system-ui, -apple-system, sans-serif"}}>
     <LanguageAndThemeProvider>
       <div className="min-h-screen">
         <Navigation />
         <Hero />
-        <div className='flex justify-center items-center flex-col bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800'>
+        <div className='flex flex-col w-full bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800'>
           <About />
           {/* <hr className='w-full border-blue-500' /> */}
           <Skills />

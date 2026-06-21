@@ -52,7 +52,7 @@ const Footer = () => {
               <div className="mb-8">
                 <div className="mb-8">
 
-              <img src="/monlogo.png" width={150} height={100} alt="" />  
+              <img src="/monlogo.webp" width={150} height={100} loading="lazy" alt="Logo Stephane Badiane" />
                 </div>
                 <p className="text-blue-200 mb-8 max-w-md leading-relaxed">
                   {t.description}

@@ -99,3 +99,5 @@ firestore-debug.log
 
 # Local Netlify folder
 .netlify
+# Sauvegarde des médias originaux non optimisés
+_original-media/

@@ -1,5 +1,6 @@
 import { Palette, Code, Zap, Tangent } from 'lucide-react';
 import { useLanguageAndTheme } from './LanguageAndThemeContext';
+import Reveal from './Reveal';
 
 const translations = {
   en: {
@@ -116,7 +117,7 @@ const Services = () => {
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-20">
+        <Reveal className="text-center mb-20">
           <div className="inline-flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-6 py-2 mb-6">
             <Zap className="text-blue-400" size={16} />
             <span className="text-blue-300 font-medium">{t.sectionSubtitle}</span>
@@ -125,13 +126,14 @@ const Services = () => {
             {t.sectionTitle}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
-        </div>
-        
+        </Reveal>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {t.services.map((service) => (
-            <div 
-              key={service.id} 
-              className={`group relative overflow-hidden rounded-3xl ${service.bgColor} hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-2 ${
+          {t.services.map((service, index) => (
+            <Reveal
+              key={service.id}
+              delay={(index % 2) * 100}
+              className={`group relative overflow-hidden rounded-3xl ${service.bgColor} hover:shadow-2xl transition-all duration-320 ease-out-expo transform hover:-translate-y-2 ${
                 service.bgColor === 'bg-slate-900' ? 'border border-blue-500/20' : 'shadow-xl'
               }`}
             >
@@ -180,7 +182,7 @@ const Services = () => {
               
               {/* Hover Effect */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -46,7 +46,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
             <div className="relative">
-                <img src="/monlogo.png" width={150} height={100} alt="" />  
+                <img src="/monlogo.webp" width={150} height={100} alt="Logo Stephane Badiane" />
             </div>
           </div>
           
@@ -56,7 +56,7 @@ const Navigation = () => {
                 <button 
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase().replace(/[^a-zA-ZÀ-ÿ]+/g, ''))}
-                  className="relative text-blue-200 hover:text-white transition-all duration-300 font-medium group"
+                  className="relative text-blue-200 hover:text-white transition-colors duration-240 font-medium group py-2"
                 >
                   {item}
                   <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
@@ -72,12 +72,10 @@ const Navigation = () => {
                     bg-[length:200%_200%] bg-left
 
                     text-white
-                    transition-all duration-500 ease-out
+                    transition-all duration-240 ease-out-expo
 
-                    hover:scale-105
-                    hover:bg-white/95
-                    hover:text-transparent
-                    hover:bg-clip-text
+                    hover:scale-105 active:scale-95
+                    hover:shadow-lg hover:shadow-blue-500/30
                   "
 
               >
@@ -99,7 +97,7 @@ const Navigation = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-slate-900/98 backdrop-blur-xl border-t border-blue-500/20">
+        <div className="md:hidden bg-slate-900/98 backdrop-blur-xl border-t border-blue-500/20 motion-safe:animate-fade-up">
           <div className="px-4 pt-4 pb-6 space-y-3">
             {t.navLinks.map((item) => (
               <button 

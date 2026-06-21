@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLanguageAndTheme } from './LanguageAndThemeContext';
 
 const translations = {
@@ -19,65 +19,97 @@ const translations = {
 const Hero = () => {
   const { language } = useLanguageAndTheme();
   const t = translations[language];
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  // Halo qui suit la souris : piloté en direct via ref + rAF (aucun re-render React)
+  const blobRef = useRef<HTMLDivElement>(null);
+  // La vidéo n'est chargée que sur desktop (économie de data sur mobile / bas débit)
+  const [showVideo, setShowVideo] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(min-width: 640px)').matches
+  );
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    const mql = window.matchMedia('(min-width: 640px)');
+    const update = () => setShowVideo(mql.matches);
+    mql.addEventListener('change', update);
+    return () => mql.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
+    // Pas de parallaxe sur écran tactile ou si l'utilisateur réduit les animations
+    if (
+      !window.matchMedia('(pointer: fine)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      return;
+    }
+
+    let raf = 0;
     const handleMouseMove = (e: MouseEvent) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        setMousePosition({ x: e.clientX, y: e.clientY });
-      }, 16); // ~60fps
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        if (blobRef.current) {
+          // translate3d = composité sur le GPU → pas de layout/paint
+          blobRef.current.style.transform = `translate3d(${e.clientX * 0.02}px, ${e.clientY * 0.02}px, 0)`;
+        }
+      });
     };
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
     <section id="home" className="pt-20 min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 flex items-center relative overflow-hidden">
       {/* Animated Background */}
       {/* Video Background Positioned Absolutely */}
-      <video 
-        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
-        role="presentation"
-        autoPlay 
-        loop 
-        muted 
-        playsInline
-        src="/6036381_Keyboard_Laptop_3840x2160.mp4"
-      />
+      {showVideo ? (
+        <video
+          className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
+          role="presentation"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster="/hero-poster.jpg"
+          src="/hero-bg.mp4"
+        />
+      ) : (
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center z-0 pointer-events-none"
+          style={{ backgroundImage: 'url(/hero-poster.jpg)' }}
+          role="presentation"
+        />
+      )}
       {/* Content container with relative to keep content above the video */}
       <div className='flex relative z-10 w-full'>
 
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]"></div>
-        {/* Effets visuels lourds désactivés sur mobile */}
-        <div 
-          className="absolute w-96 h-96 bg-blue-500/10 rounded-full blur-xl animate-pulse hidden sm:block"
-          style={{
-            left: mousePosition.x * 0.02,
-            top: mousePosition.y * 0.02,
-          }}
+        {/* Halo qui suit la souris — animé via ref (cf. plus haut), désactivé sur mobile */}
+        <div
+          ref={blobRef}
+          className="absolute left-1/4 top-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-xl animate-pulse hidden sm:block will-change-transform"
         ></div>
-        <div className="absolute top-20 right-20 w-72 h-72 bg-cyan-500/5 rounded-full blur-lg animate-bounce hidden md:block"></div>
+        <div className="absolute top-20 right-20 w-72 h-72 bg-cyan-500/5 rounded-full blur-lg animate-pulse hidden md:block"></div>
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-blue-600/5 rounded-full blur-lg animate-pulse hidden md:block"></div>
       </div>
-      
+
       {/* Floating Elements */}
-      <div className="absolute top-1/4 left-10 w-4 h-4 bg-blue-400 rounded-full animate-ping"></div>
-      <div className="absolute top-1/3 right-20 w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-10 w-5 h-5 bg-blue-300 rounded-full animate-bounce"></div>
-      
+      <div className="absolute top-1/4 left-10 w-3 h-3 bg-blue-400 rounded-full animate-ping hidden sm:block"></div>
+      <div className="absolute bottom-1/4 right-10 w-4 h-4 bg-blue-300 rounded-full animate-pulse hidden sm:block"></div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 gap-x-12 items-center">
-          <div className="text-white text-center lg:text-left">            
+          <div className="text-white text-center lg:text-left motion-safe:animate-fade-up">
             <h1 className=" font-black mb-8 leading-tight">
               <span className="text-xl sm:text-3xl md:text-5xl lg:text-6xl block">{t.sectionTitle}</span>
               <span className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-300 bg-clip-text text-transparent">
                 {t.sectionSubtitle}
               </span>
             </h1>
-            
+
             <p className="text-xl md:text-2xl mb-10 text-blue-100 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
               {t.description}
             </p>
@@ -97,11 +129,12 @@ const Hero = () => {
           <div className="flex justify-center lg:justify-end mt-8">
             <div className="relative">
               <div className="w-48 h-48 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm flex items-center justify-center overflow-hidden border-4 border-blue-400/30 shadow-2xl">
-                <img 
-                  src="/mypp.jpg"
+                <img
+                  src="/mypp.webp"
                   alt={t.alt}
+                  width={384}
+                  height={384}
                   className="w-full h-full object-cover rounded-full transform hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
                 />
               </div>
               

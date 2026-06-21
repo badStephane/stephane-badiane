@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Garde-fou anti-débordement horizontal (mobile) */
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  /* Les ancres ne se cachent pas sous la navigation fixe (h-20 = 5rem) */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  /* Focus visible cohérent au clavier (sans gêner la souris) */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgb(15 23 42), 0 0 0 4px rgb(96 165 250);
+    border-radius: 0.5rem;
+  }
+}
+
+/* Respect des préférences système : on coupe les animations */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

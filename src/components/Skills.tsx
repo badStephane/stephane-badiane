@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Code, Palette, Database, Server, Globe, Zap, Star, Award } from 'lucide-react';
 import { useLanguageAndTheme } from './LanguageAndThemeContext';
+import Reveal from './Reveal';
 
 const translations = {
   en: {
@@ -132,12 +133,12 @@ const Skills = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-6 py-3 mb-8">
             <Zap className="text-blue-400" size={18} />
             <span className="text-blue-300 font-semibold">{t.badge}</span>
           </div>
-          
+
           <h2 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
             {t.sectionTitle}
             <br />
@@ -145,16 +146,16 @@ const Skills = () => {
               {t.sectionSubtitle}
             </span>
           </h2>
-          
+
           <p className="text-xl text-blue-200 max-w-3xl mx-auto leading-relaxed">
             {t.description}
           </p>
-        </div>
+        </Reveal>
 
         {/* Achievements Stats */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-16">
           {t.achievements.map((achievement, index) => (
-            <div key={index} className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-blue-500/20 p-6 hover:bg-white/10 transition-all duration-500">
+            <Reveal key={index} delay={index * 80} className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-blue-500/20 p-6 hover:bg-white/10 transition-all duration-320 ease-out-expo hover:-translate-y-1">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative text-center">
                 <div className="flex justify-center mb-3 text-blue-400">
@@ -167,7 +168,7 @@ const Skills = () => {
                   {achievement.label}
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
@@ -177,7 +178,7 @@ const Skills = () => {
             <button
               key={key}
               onClick={() => setActiveCategory(key)}
-              className={`group relative overflow-hidden px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${
+              className={`group relative overflow-hidden px-6 py-3 rounded-full font-semibold transition-all duration-240 ease-out-expo transform hover:scale-105 active:scale-95 ${
                 activeCategory === key
                   ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
                   : 'bg-white/10 backdrop-blur-sm text-blue-300 hover:bg-white/20 border border-blue-500/20'
@@ -208,9 +209,12 @@ const Skills = () => {
                 <div key={index} className="group bg-white/5 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/10 transition-all duration-500 border border-blue-500/10">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden">
-                      <img 
-                        src={skill.logo} 
+                      <img
+                        src={skill.logo}
                         alt={skill.name}
+                        loading="lazy"
+                        width={32}
+                        height={32}
                         className="w-8 h-8 object-contain"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
