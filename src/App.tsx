@@ -1,4 +1,3 @@
-import React from 'react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -6,6 +5,7 @@ import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Skills from './components/Skills';
+import Projects from './components/Projects';
 
 import { LanguageAndThemeProvider } from './components/LanguageAndThemeContext';
 
@@ -20,8 +20,7 @@ function App() {
           <About />
           {/* <hr className='w-full border-blue-500' /> */}
           <Skills />
-          {/* <hr className='w-full border-blue-500' /> */}
-          {/* <Projects /> */}
+          <Projects />
           <Services />
           {/* <hr className='w-full border-blue-500' /> */}
           <Contact />

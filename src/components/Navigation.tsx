@@ -5,11 +5,21 @@ import LanguageSwitcher from './LanguageAndThemeSwitcher';
 
 const translations = {
   en: {
-    navLinks: ['Home', 'About', 'Services'],
+    navLinks: [
+      { id: 'home', label: 'Home' },
+      { id: 'about', label: 'About' },
+      { id: 'projects', label: 'Projects' },
+      { id: 'services', label: 'Services' },
+    ],
     talk: "Let's Talk",
   },
   fr: {
-    navLinks: ['Accueil', 'À propos', 'Services'],
+    navLinks: [
+      { id: 'home', label: 'Accueil' },
+      { id: 'about', label: 'À propos' },
+      { id: 'projects', label: 'Projets' },
+      { id: 'services', label: 'Services' },
+    ],
     talk: 'Contactez-moi',
   },
 };
@@ -53,12 +63,12 @@ const Navigation = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
               {t.navLinks.map((item) => (
-                <button 
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase().replace(/[^a-zA-ZÀ-ÿ]+/g, ''))}
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
                   className="relative text-blue-200 hover:text-white transition-colors duration-240 font-medium group py-2"
                 >
-                  {item}
+                  {item.label}
                   <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
                 </button>
               ))}
@@ -100,12 +110,12 @@ const Navigation = () => {
         <div className="md:hidden bg-slate-900/98 backdrop-blur-xl border-t border-blue-500/20 motion-safe:animate-fade-up">
           <div className="px-4 pt-4 pb-6 space-y-3">
             {t.navLinks.map((item) => (
-              <button 
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase().replace(/[^a-zA-ZÀ-ÿ]+/g, ''))}
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
                 className="block text-blue-200 hover:text-white px-4 py-3 w-full text-left transition-colors duration-300 rounded-lg hover:bg-white hover:text-blue-500"
               >
-                {item}
+                {item.label}
               </button>
             ))}
             <button 

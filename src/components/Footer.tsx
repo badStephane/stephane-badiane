@@ -1,4 +1,3 @@
-import React from 'react';
 import { Github, Linkedin, Twitter, Heart, ArrowUp, Instagram } from 'lucide-react';
 import { useLanguageAndTheme } from './LanguageAndThemeContext';
 
@@ -6,8 +5,8 @@ const translations = {
   en: {
     description: 'Creative designer and developer passionate about crafting exceptional digital experiences that inspire, engage, and drive results.',
     quickLinks: 'Quick Links',
-    quickLinksList: ['#home', '#about', '#services', '#contact'],
-    quickLinksLabels: ['Home', 'About', 'Services', 'Contact'],
+    quickLinksList: ['#home', '#about', '#projects', '#services', '#contact'],
+    quickLinksLabels: ['Home', 'About', 'Projects', 'Services', 'Contact'],
     services: 'Services',
     servicesList: ['UI/UX Design', 'FullStack Development', 'Graphic Design', 'IT Maintenance'],
     copyright: 'Made with',
@@ -17,8 +16,8 @@ const translations = {
   fr: {
     description: 'Designer et développeur passionné par la création d’expériences numériques exceptionnelles qui inspirent, engagent et apportent des résultats.',
     quickLinks: 'Liens rapides',
-    quickLinksList: ['#home', '#about', '#services', '#contact'],
-    quickLinksLabels: ['Accueil', 'À propos', 'Services', 'Contact'],
+    quickLinksList: ['#home', '#about', '#projects', '#services', '#contact'],
+    quickLinksLabels: ['Accueil', 'À propos', 'Projets', 'Services', 'Contact'],
     services: 'Services',
     servicesList: ['UI/UX Design', 'Développement FullStack', 'Design Graphique', 'Maintenance IT'],
     copyright: 'Réalisé avec',

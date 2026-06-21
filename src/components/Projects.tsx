@@ -1,252 +1,256 @@
-import React, { useState } from 'react';
-import { ExternalLink, Github, Eye, ArrowRight, Code, Palette, Shield, Database } from 'lucide-react';
+import { useState } from 'react';
+import { ExternalLink, Github, ArrowRight, FolderGit2 } from 'lucide-react';
+import { useLanguageAndTheme } from './LanguageAndThemeContext';
+import Reveal from './Reveal';
+
+type Project = {
+  id: number;
+  title: string;
+  /** Image de l'aperçu : dépose un screenshot dans /public/projects/ */
+  image: string;
+  /** Logo de marque (/public/projects/logos/) · badge sur la capture, ou cover si coverLogo */
+  logo?: string;
+  /** Si vrai : affiche le logo centré sur fond clair au lieu de la capture */
+  coverLogo?: boolean;
+  /** Lien vers le site en ligne (laisser vide pour masquer le bouton) */
+  url?: string;
+  /** Lien vers le code source (optionnel) */
+  github?: string;
+  tech: string[];
+  year: string;
+  /** Description traduite */
+  description: { fr: string; en: string };
+};
+
+const translations = {
+  en: {
+    badge: 'Featured Work',
+    title: 'My Latest ',
+    highlight: 'Projects',
+    intro: 'A selection of websites and applications I have designed and developed, from concept to deployment.',
+    visit: 'Visit site',
+    code: 'Code',
+    soon: 'Coming soon',
+  },
+  fr: {
+    badge: 'Mes réalisations',
+    title: 'Mes Derniers ',
+    highlight: 'Projets',
+    intro: "Une sélection de sites et d'applications que j'ai conçus et développés, de l'idée jusqu'à la mise en ligne.",
+    visit: 'Voir le site',
+    code: 'Code',
+    soon: 'Bientôt en ligne',
+  },
+};
+
+// Pour ajouter un projet : duplique une entrée. Captures dans /public/projects/ (.webp).
+const projects: Project[] = [
+  {
+    id: 1,
+    title: 'LaB · Événementiel & billetterie',
+    image: '/projects/lab.webp',
+    logo: '/projects/logos/lab.webp',
+    coverLogo: true,
+    url: 'https://paskclab.com',
+    tech: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind'],
+    year: '2026',
+    description: {
+      fr: "Plateforme événementielle nightlife à Dakar : découverte des soirées, billetterie en ligne et réservation de tables VIP, avec paiement et gestion des commandes.",
+      en: 'Dakar nightlife events platform: browse parties, buy tickets online and book VIP tables, with payments and order management.',
+    },
+  },
+  {
+    id: 2,
+    title: 'Atypix · Formations certifiantes',
+    image: '/projects/atypix.webp',
+    logo: '/projects/logos/atypix.webp',
+    coverLogo: true,
+    url: 'https://atypix.com',
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Supabase'],
+    year: '2026',
+    description: {
+      fr: "Site d'un organisme de formation certifiante (PMP, Scrum, Agile), partenaire agréé PMI ATP et Scrum.org : catalogue de formations et inscription en ligne.",
+      en: 'Website for a certified training provider (PMP, Scrum, Agile), an authorized PMI ATP & Scrum.org partner: course catalog and online enrollment.',
+    },
+  },
+  {
+    id: 3,
+    title: 'Emargix · Émargement numérique',
+    image: '/projects/emargix.webp',
+    logo: '/projects/logos/emargix.webp',
+    coverLogo: true,
+    url: 'https://emargix.onrender.com',
+    tech: ['Next.js', 'TypeScript', 'Tailwind', 'Render', 'Supabase'],
+    year: '2026',
+    description: {
+      fr: "Application d'émargement en ligne : feuilles de présence numériques, collecte de signatures électroniques en temps réel et export PDF, sans installation.",
+      en: 'Online attendance app: digital sign-in sheets, real-time e-signature collection and PDF export, with no installation.',
+    },
+  },
+];
 
 const Projects = () => {
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-
-  const projects = [
-    {
-      id: 1,
-      title: "SecureBank Pro",
-      subtitle: "Cybersecurity Banking Platform",
-      description: "Advanced banking platform with multi-layer security, real-time threat detection, and encrypted transactions. Built with cutting-edge cybersecurity protocols.",
-      image: "https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      gradient: "from-blue-600 via-blue-700 to-blue-800",
-      category: "Cybersecurity",
-      tech: ["React", "Node.js", "Blockchain", "AI Security"],
-      features: ["End-to-End Encryption", "Biometric Auth", "Real-time Monitoring"],
-      status: "Live",
-      year: "2024"
-    },
-    {
-      id: 2,
-      title: "CyberShield Dashboard",
-      subtitle: "Network Security Monitoring",
-      description: "Real-time cybersecurity dashboard for monitoring network threats, analyzing vulnerabilities, and managing security incidents with AI-powered insights.",
-      image: "https://images.pexels.com/photos/5380792/pexels-photo-5380792.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      gradient: "from-blue-700 via-blue-800 to-slate-800",
-      category: "Security Dashboard",
-      tech: ["Vue.js", "Python", "TensorFlow", "Docker"],
-      features: ["Threat Detection", "Vulnerability Scanner", "Incident Response"],
-      status: "Development",
-      year: "2024"
-    },
-    {
-      id: 3,
-      title: "DevSecOps Platform",
-      subtitle: "Secure Development Pipeline",
-      description: "Complete DevSecOps platform integrating security into the development lifecycle with automated testing, code analysis, and deployment security.",
-      image: "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      gradient: "from-slate-700 via-blue-800 to-blue-900",
-      category: "DevSecOps",
-      tech: ["React", "Kubernetes", "Jenkins", "SonarQube"],
-      features: ["Automated Security", "Code Analysis", "CI/CD Pipeline"],
-      status: "Live",
-      year: "2023"
-    },
-    {
-      id: 4,
-      title: "Quantum Encrypt",
-      subtitle: "Next-Gen Encryption Tool",
-      description: "Revolutionary encryption application using quantum-resistant algorithms to secure sensitive data against future quantum computing threats.",
-      image: "https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      gradient: "from-blue-800 via-blue-900 to-slate-900",
-      category: "Encryption",
-      tech: ["C++", "Quantum Algorithms", "Cryptography", "OpenSSL"],
-      features: ["Quantum-Resistant", "Zero-Knowledge", "Multi-Platform"],
-      status: "Research",
-      year: "2024"
-    },
-    {
-      id: 5,
-      title: "AI Threat Hunter",
-      subtitle: "Machine Learning Security",
-      description: "Advanced AI-powered threat hunting platform that uses machine learning to detect, analyze, and respond to sophisticated cyber attacks in real-time.",
-      image: "https://images.pexels.com/photos/5380792/pexels-photo-5380792.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      gradient: "from-blue-600 via-blue-700 to-blue-800",
-      category: "AI Security",
-      tech: ["Python", "TensorFlow", "Elasticsearch", "Kafka"],
-      features: ["ML Detection", "Behavioral Analysis", "Auto Response"],
-      status: "Live",
-      year: "2023"
-    },
-    {
-      id: 6,
-      title: "Blockchain Audit Suite",
-      subtitle: "Smart Contract Security",
-      description: "Comprehensive blockchain security suite for auditing smart contracts, detecting vulnerabilities, and ensuring DeFi protocol security.",
-      image: "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      gradient: "from-blue-700 via-blue-800 to-slate-800",
-      category: "Blockchain Security",
-      tech: ["Solidity", "Web3.js", "Hardhat", "Slither"],
-      features: ["Smart Contract Audit", "Gas Optimization", "Security Reports"],
-      status: "Live",
-      year: "2024"
-    }
-  ];
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'Live': return 'bg-green-500';
-      case 'Development': return 'bg-yellow-500';
-      case 'Research': return 'bg-purple-500';
-      default: return 'bg-blue-500';
-    }
-  };
-
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case 'Cybersecurity': return <Shield size={20} />;
-      case 'Security Dashboard': return <Eye size={20} />;
-      case 'DevSecOps': return <Code size={20} />;
-      case 'Encryption': return <Database size={20} />;
-      case 'AI Security': return <Shield size={20} />;
-      case 'Blockchain Security': return <Database size={20} />;
-      default: return <Palette size={20} />;
-    }
-  };
+  const { language } = useLanguageAndTheme();
+  const t = translations[language];
+  // Suit l'image en erreur pour basculer sur un fond dégradé + initiale
+  const [brokenImages, setBrokenImages] = useState<Record<number, boolean>>({});
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 relative overflow-hidden">
+    <section id="projects" className="py-20 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-blue-300/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-100/30 to-blue-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 bg-blue-100/80 backdrop-blur-sm border border-blue-200/50 rounded-full px-6 py-3 mb-8">
-            <Eye className="text-blue-600" size={18} />
-            <span className="text-blue-700 font-semibold">Featured Work</span>
+        <Reveal className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-6 py-2 mb-6">
+            <FolderGit2 className="text-blue-400" size={16} />
+            <span className="text-blue-300 font-medium">{t.badge}</span>
           </div>
-          
-          <h2 className="text-5xl md:text-7xl font-black text-slate-800 mb-8 leading-tight">
-            My Latest
-            <br />
-            <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent">
-              Projects
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
+            {t.title}
+            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              {t.highlight}
             </span>
           </h2>
-          
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8">
-            Explore my portfolio of cutting-edge cybersecurity solutions, full-stack applications, 
-            and innovative designs that push the boundaries of technology.
+          <p className="text-xl text-blue-200 max-w-3xl mx-auto leading-relaxed">
+            {t.intro}
           </p>
-          
-          <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 mx-auto rounded-full"></div>
-        </div>
-        
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full mt-8"></div>
+        </Reveal>
+
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div 
+            <Reveal
               key={project.id}
-              className={`group relative overflow-hidden rounded-3xl bg-white shadow-xl hover:shadow-3xl transition-all duration-700 transform hover:-translate-y-6 hover:scale-105 ${
-                index % 3 === 1 ? 'lg:mt-12' : index % 3 === 2 ? 'lg:mt-6' : ''
-              }`}
-              onMouseEnter={() => setHoveredProject(project.id)}
-              onMouseLeave={() => setHoveredProject(null)}
+              delay={(index % 3) * 100}
+              className="group relative flex flex-col overflow-hidden rounded-3xl bg-white/5 backdrop-blur-sm border border-blue-500/20 hover:bg-white/10 transition-all duration-320 ease-out-expo hover:-translate-y-2"
             >
-              {/* Project Image */}
-              <div className="relative h-64 overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90`}></div>
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                
-                {/* Status Badge */}
-                <div className="absolute top-4 left-4">
-                  <div className={`${getStatusColor(project.status)} text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1`}>
-                    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                    {project.status}
+              {/* Aperçu */}
+              <div className="relative h-52 overflow-hidden bg-gradient-to-br from-slate-800 to-blue-900">
+                {project.coverLogo && project.logo ? (
+                  /* Logo de marque centré sur fond clair */
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-white to-blue-50 p-8">
+                    <img
+                      src={project.logo}
+                      alt={`Logo ${project.title}`}
+                      loading="lazy"
+                      className="max-h-24 w-auto object-contain transition-transform duration-500 ease-out-expo group-hover:scale-110"
+                    />
                   </div>
-                </div>
-                
-                {/* Year Badge */}
-                <div className="absolute top-4 right-4">
-                  <div className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
-                    {project.year}
+                ) : !brokenImages[project.id] ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out-expo group-hover:scale-105"
+                    onError={() =>
+                      setBrokenImages((prev) => ({ ...prev, [project.id]: true }))
+                    }
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className="text-6xl font-black text-blue-400/40">
+                      {project.title.charAt(0)}
+                    </span>
                   </div>
+                )}
+
+                {/* Badge logo de marque (uniquement sur les cartes avec capture) */}
+                {project.logo && !project.coverLogo && (
+                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl px-3 py-2 shadow-lg flex items-center justify-center">
+                    <img
+                      src={project.logo}
+                      alt={`Logo ${project.title}`}
+                      loading="lazy"
+                      className="h-6 w-auto object-contain"
+                    />
+                  </div>
+                )}
+
+                {/* Année */}
+                <div className="absolute top-4 right-4 bg-slate-900/60 backdrop-blur-sm text-blue-200 px-3 py-1 rounded-full text-xs font-semibold border border-blue-500/20">
+                  {project.year}
                 </div>
-                
-                {/* Hover Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-500 ${
-                  hoveredProject === project.id ? 'opacity-100' : 'opacity-0'
-                }`}>
+
+                {/* Overlay au survol */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-320">
                   <div className="absolute bottom-4 left-4 right-4 flex gap-3">
-                    <button className="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white py-2 px-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2">
-                      <ExternalLink size={16} />
-                      Live Demo
-                    </button>
-                    <button className="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white py-2 px-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2">
-                      <Github size={16} />
-                      Code
-                    </button>
+                    {project.url ? (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 bg-gradient-to-r from-blue-500 to-cyan-600 text-white py-2 px-4 rounded-xl font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+                      >
+                        <ExternalLink size={16} />
+                        {t.visit}
+                      </a>
+                    ) : (
+                      <span className="flex-1 bg-white/10 text-blue-200 py-2 px-4 rounded-xl font-semibold flex items-center justify-center gap-2">
+                        {t.soon}
+                      </span>
+                    )}
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${t.code} · ${project.title}`}
+                        className="bg-white/10 hover:bg-white/20 text-white py-2 px-4 rounded-xl font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+                      >
+                        <Github size={16} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
-              
-              {/* Project Content */}
-              <div className="p-6">
-                {/* Category */}
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="text-blue-600">
-                    {getCategoryIcon(project.category)}
-                  </div>
-                  <span className="text-blue-600 font-semibold text-sm">{project.category}</span>
-                </div>
-                
-                {/* Title & Subtitle */}
-                <h3 className="text-xl font-bold text-slate-800 mb-1 group-hover:text-blue-600 transition-colors duration-300">
+
+              {/* Contenu */}
+              <div className="flex flex-col flex-1 p-6">
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-240">
                   {project.title}
                 </h3>
-                <p className="text-blue-600 font-medium text-sm mb-3">{project.subtitle}</p>
-                
-                {/* Description */}
-                <p className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">
-                  {project.description}
+                <p className="text-blue-200 text-sm leading-relaxed mb-4 flex-1">
+                  {project.description[language]}
                 </p>
-                
+
                 {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.slice(0, 3).map((tech, i) => (
-                    <span key={i} className="bg-blue-50 text-blue-700 px-2 py-1 rounded-lg text-xs font-medium">
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {project.tech.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="bg-blue-500/10 text-blue-300 border border-blue-500/20 px-3 py-1 rounded-lg text-xs font-medium"
+                    >
                       {tech}
                     </span>
                   ))}
-                  {project.tech.length > 3 && (
-                    <span className="bg-slate-100 text-slate-600 px-2 py-1 rounded-lg text-xs font-medium">
-                      +{project.tech.length - 3} more
-                    </span>
-                  )}
                 </div>
-                
-                {/* Features */}
-                <div className="space-y-1 mb-4">
-                  {project.features.slice(0, 2).map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs text-slate-600">
-                      <div className="w-1 h-1 bg-blue-500 rounded-full"></div>
-                      {feature}
-                    </div>
-                  ))}
-                </div>
-                
-                {/* View More Button */}
-                <button className="group/btn w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-2 px-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2">
-                  View Details
-                  <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                </button>
+
+                {/* Lien principal */}
+                {project.url && (
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/btn inline-flex items-center gap-2 text-blue-300 hover:text-white font-semibold text-sm transition-colors duration-240"
+                  >
+                    {t.visit}
+                    <ArrowRight
+                      size={16}
+                      className="group-hover/btn:translate-x-1 transition-transform duration-240"
+                    />
+                  </a>
+                )}
               </div>
-              
-              {/* Decorative Elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500/20 rounded-full blur-sm"></div>
-              <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-blue-400/20 rounded-full blur-sm"></div>
-            </div>
+
+              {/* Lueur au survol */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-600 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none"></div>
+            </Reveal>
           ))}
         </div>
       </div>
