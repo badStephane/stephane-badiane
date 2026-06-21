@@ -139,7 +139,7 @@ const Skills = () => {
             <span className="text-blue-300 font-semibold">{t.badge}</span>
           </div>
 
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-8 leading-tight break-words">
             {t.sectionTitle}
             <br />
             <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-blue-200 bg-clip-text text-transparent">
