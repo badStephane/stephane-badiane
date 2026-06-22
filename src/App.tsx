@@ -28,6 +28,8 @@ function App() {
         <Footer />
       </div>
     </LanguageProvider>
+    {/* Signature : grain/texture global */}
+    <div aria-hidden="true" className="grain-overlay" />
     </div>
   );
 }
