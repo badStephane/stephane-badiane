@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 // Supported languages
 export type Language = 'en' | 'fr';
@@ -17,9 +17,27 @@ export const useLanguage = () => {
   return context;
 };
 
+// Choix initial : préférence mémorisée > langue du navigateur > anglais
+const getInitialLanguage = (): Language => {
+  if (typeof window === 'undefined') return 'en';
+  const saved = window.localStorage.getItem('lang');
+  if (saved === 'fr' || saved === 'en') return saved;
+  return navigator.language?.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+};
+
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  // Language state
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguageState] = useState<Language>(getInitialLanguage);
+
+  // Persiste le choix et synchronise l'attribut <html lang>
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    window.localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang;
+  };
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>

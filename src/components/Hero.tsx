@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Code2, Palette } from 'lucide-react';
+import { Code2, Palette, ArrowRight, Send } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 
 const translations = {
@@ -8,12 +8,16 @@ const translations = {
     sectionSubtitle: 'I AM STEPHANE BADIANE',
     description: 'Creative designer & developer crafting exceptional digital experiences with passion, innovation, and cutting-edge technology.',
     alt: 'GDNIGHTMARE - Creative Professional',
+    viewWork: 'View my work',
+    contact: 'Contact me',
   },
   fr: {
     sectionTitle: 'Bienvenue',
     sectionSubtitle: 'JE SUIS STEPHANE BADIANE',
     description: 'Concepteur et développeur créatif qui conçoit des expériences numériques exceptionnelles avec passion, innovation et technologie de pointe.',
     alt: 'GDNIGHTMARE - Professionnel Créatif',
+    viewWork: 'Voir mes projets',
+    contact: 'Me contacter',
   },
 };
 
@@ -115,16 +119,22 @@ const Hero = () => {
               {t.description}
             </p>
             
-            {/* <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
-              <button className="group bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-8 py-4 rounded-full font-semibold hover:from-blue-500 hover:to-blue-400 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 flex items-center justify-center gap-3">
-                View My Work 
-                <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
-              </button>
-              <button className="group border-2 border-blue-400 text-blue-200 px-8 py-4 rounded-full font-semibold hover:bg-blue-400 hover:text-slate-900 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm flex items-center justify-center gap-3">
-                Download CV 
-                <Download className="group-hover:translate-y-1 transition-transform duration-300" size={20} />
-              </button>
-            </div> */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a
+                href="#projects"
+                className="group bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-blue-400/30 text-white px-8 py-4 rounded-full font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+              >
+                {t.viewWork}
+                <ArrowRight className="group-hover:translate-x-1 transition-transform duration-240" size={20} />
+              </a>
+              <a
+                href="#contact"
+                className="group bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 px-8 py-4 rounded-full font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 hover:shadow-lg hover:shadow-amber-500/30 flex items-center justify-center gap-2"
+              >
+                {t.contact}
+                <Send className="group-hover:translate-x-0.5 transition-transform duration-240" size={18} />
+              </a>
+            </div>
           </div>
           
           <div className="flex justify-center lg:justify-end mt-8">
