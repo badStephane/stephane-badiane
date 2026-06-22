@@ -7,6 +7,12 @@
     scroll-behavior: smooth;
   }
 
+  /* Corps de texte : Inter (lisible). Titres : Syne (police display = signature) */
+  h1, h2, h3 {
+    font-family: 'Syne', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
   /* Garde-fou anti-débordement horizontal (mobile) */
   html,
   body {

@@ -11,7 +11,7 @@ import { LanguageProvider } from './components/LanguageContext';
 
 function App() {
   return (
-    <div style={{fontFamily: "'Syne', system-ui, -apple-system, sans-serif"}}>
+    <div style={{fontFamily: "'Inter', system-ui, -apple-system, sans-serif"}}>
     <LanguageProvider>
       <div className="min-h-screen">
         <Navigation />
