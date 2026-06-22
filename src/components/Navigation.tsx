@@ -76,16 +76,16 @@ const Navigation = () => {
                 onClick={() => scrollToSection('contact')}
                 className="
                     relative overflow-hidden
-                    px-6 py-3 rounded-full shadow-lg font-medium
+                    px-6 py-3 rounded-full shadow-lg font-semibold
 
-                    bg-gradient-to-r from-blue-500 to-cyan-600
+                    bg-gradient-to-r from-amber-400 to-orange-500
                     bg-[length:200%_200%] bg-left
 
-                    text-white
+                    text-slate-900
                     transition-all duration-240 ease-out-expo
 
                     hover:scale-105 active:scale-95
-                    hover:shadow-lg hover:shadow-blue-500/30
+                    hover:shadow-lg hover:shadow-amber-500/30
                   "
 
               >
@@ -120,7 +120,7 @@ const Navigation = () => {
             ))}
             <button 
               onClick={() => scrollToSection('contact')}
-              className="block bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-4 py-3 rounded-lg hover:bg-white hover:text-blue-500 transition-all duration-300 mx-4 mt-4 text-center"
+              className="block bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 font-semibold px-4 py-3 rounded-lg hover:from-amber-300 hover:to-orange-400 transition-all duration-300 mx-4 mt-4 text-center"
             >
               {t.talk}
             </button>

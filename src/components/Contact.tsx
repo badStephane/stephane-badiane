@@ -294,7 +294,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-12 py-4 rounded-full font-bold hover:from-blue-500 hover:to-cyan-500 transition-all duration-240 ease-out-expo transform hover:scale-105 active:scale-[0.98] shadow-2xl hover:shadow-blue-500/25 flex items-center justify-center gap-3 mx-auto disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 px-12 py-4 rounded-full font-bold hover:from-amber-300 hover:to-orange-400 transition-all duration-240 ease-out-expo transform hover:scale-105 active:scale-[0.98] shadow-2xl hover:shadow-amber-500/25 flex items-center justify-center gap-3 mx-auto disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {status === 'sending' ? (
                     <>
