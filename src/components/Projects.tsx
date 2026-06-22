@@ -92,6 +92,51 @@ const projects: Project[] = [
       en: 'Online attendance app: digital sign-in sheets, real-time e-signature collection and PDF export, with no installation.',
     },
   },
+  {
+    id: 4,
+    title: 'RestoPro · Gestion de restaurant',
+    image: '/projects/restopro.webp',
+    logo: '/projects/logos/restopro.svg',
+    coverLogo: true,
+    url: 'https://restopro-demo.vercel.app',
+    role: { fr: 'Conçu et développé en solo', en: 'Designed & built solo', type: 'solo' },
+    tech: ['React', 'TypeScript', 'Tauri', 'Supabase', 'Tailwind'],
+    year: '2026',
+    description: {
+      fr: "Logiciel complet de gestion de restaurant : caisse (POS), affichage cuisine en temps réel, suivi du service et administration. Disponible en web et en application desktop native (macOS, Windows, Linux).",
+      en: 'Full restaurant management software: POS, real-time kitchen display, service tracking and admin. Available on the web and as a native desktop app (macOS, Windows, Linux).',
+    },
+  },
+  {
+    id: 5,
+    title: 'Patho-LIS · Système de laboratoire',
+    image: '/projects/patho-lis.webp',
+    logo: '/projects/logos/patho-lis.svg',
+    coverLogo: true,
+    url: 'https://patho-lis-demo.vercel.app',
+    role: { fr: 'Conçu et développé en solo', en: 'Designed & built solo', type: 'solo' },
+    tech: ['React', 'TypeScript', 'Vite', 'Supabase', 'Tailwind'],
+    year: '2026',
+    description: {
+      fr: "Système d'information pour laboratoire d'anatomopathologie : gestion des patients et des dossiers, worklist, contrôle qualité, reporting et archivage, avec authentification et gestion des rôles.",
+      en: 'Information system for a pathology lab: patient and case management, worklist, quality control, reporting and archiving, with authentication and role management.',
+    },
+  },
+  {
+    id: 6,
+    title: 'Actio · Gestion des inscriptions',
+    image: '/projects/gestion-inscription.webp',
+    logo: '/projects/logos/actio.svg',
+    coverLogo: true,
+    url: 'https://actio-demo.vercel.app',
+    role: { fr: 'Conçu et développé en solo', en: 'Designed & built solo', type: 'solo' },
+    tech: ['React', 'TypeScript', 'Tauri', 'SQLite', 'Tailwind'],
+    year: '2026',
+    description: {
+      fr: "Application de gestion des inscriptions aux activités : enregistrement des participants, statistiques et journal d'audit. Disponible en web et en application desktop native (base SQLite locale).",
+      en: 'Activity registration management app: participant enrollment, statistics and audit log. Available on the web and as a native desktop app (local SQLite database).',
+    },
+  },
 ];
 
 const Projects = () => {
