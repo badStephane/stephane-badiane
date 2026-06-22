@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ExternalLink, Github, ArrowRight, FolderGit2 } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, FolderGit2, User, Users, CreditCard } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import Reveal from './Reveal';
 
@@ -12,6 +12,8 @@ type Project = {
   logo?: string;
   /** Si vrai : affiche le logo centré sur fond clair au lieu de la capture */
   coverLogo?: boolean;
+  /** Rôle sur le projet (traduit) + type pour l'icône */
+  role?: { fr: string; en: string; type: 'solo' | 'collab' | 'frontend' };
   /** Lien vers le site en ligne (laisser vide pour masquer le bouton) */
   url?: string;
   /** Lien vers le code source (optionnel) */
@@ -52,6 +54,7 @@ const projects: Project[] = [
     logo: '/projects/logos/lab.webp',
     coverLogo: true,
     url: 'https://paskclab.com',
+    role: { fr: 'Conçu et développé en solo', en: 'Designed & built solo', type: 'solo' },
     tech: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind'],
     year: '2026',
     description: {
@@ -66,6 +69,7 @@ const projects: Project[] = [
     logo: '/projects/logos/atypix.webp',
     coverLogo: true,
     url: 'https://atypix.com',
+    role: { fr: 'Collaboration · intégration du paiement', en: 'Collaboration · payment integration', type: 'collab' },
     tech: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Supabase'],
     year: '2026',
     description: {
@@ -80,6 +84,7 @@ const projects: Project[] = [
     logo: '/projects/logos/emargix.webp',
     coverLogo: true,
     url: 'https://emargix.onrender.com',
+    role: { fr: 'Conçu et développé en solo', en: 'Designed & built solo', type: 'solo' },
     tech: ['Next.js', 'TypeScript', 'Tailwind', 'Render', 'Supabase'],
     year: '2026',
     description: {
@@ -215,6 +220,18 @@ const Projects = () => {
                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-200 transition-colors duration-240">
                   {project.title}
                 </h3>
+                {project.role && (
+                  <div className="flex items-center gap-1.5 text-blue-300 text-xs font-semibold mb-3">
+                    {project.role.type === 'solo' ? (
+                      <User size={14} />
+                    ) : project.role.type === 'collab' ? (
+                      <Users size={14} />
+                    ) : (
+                      <CreditCard size={14} />
+                    )}
+                    {project.role[language]}
+                  </div>
+                )}
                 <p className="text-blue-200 text-sm leading-relaxed mb-4 flex-1">
                   {project.description[language]}
                 </p>
