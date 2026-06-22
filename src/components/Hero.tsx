@@ -120,7 +120,7 @@ const Hero = () => {
                 View My Work 
                 <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
               </button>
-              <button className="group border-2 border-blue-400 text-blue-300 px-8 py-4 rounded-full font-semibold hover:bg-blue-400 hover:text-slate-900 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm flex items-center justify-center gap-3">
+              <button className="group border-2 border-blue-400 text-blue-200 px-8 py-4 rounded-full font-semibold hover:bg-blue-400 hover:text-slate-900 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm flex items-center justify-center gap-3">
                 Download CV 
                 <Download className="group-hover:translate-y-1 transition-transform duration-300" size={20} />
               </button>

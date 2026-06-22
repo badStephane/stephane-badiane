@@ -121,7 +121,7 @@ const Skills = () => {
   };
 
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden bg-slate-950">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -134,7 +134,7 @@ const Skills = () => {
         <Reveal className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-6 py-3 mb-8">
             <Zap className="text-blue-400" size={18} />
-            <span className="text-blue-300 font-semibold">{t.badge}</span>
+            <span className="text-blue-200 font-semibold">{t.badge}</span>
           </div>
 
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-8 leading-tight break-words">
@@ -162,7 +162,7 @@ const Skills = () => {
                 <div className="text-3xl md:text-4xl font-black text-white mb-2">
                   {achievement.number}
                 </div>
-                <div className="text-sm text-blue-300 font-medium">
+                <div className="text-sm text-blue-200 font-medium">
                   {achievement.label}
                 </div>
               </div>
@@ -179,7 +179,7 @@ const Skills = () => {
               className={`group relative overflow-hidden px-6 py-3 rounded-full font-semibold transition-all duration-240 ease-out-expo transform hover:scale-105 active:scale-95 ${
                 activeCategory === key
                   ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
-                  : 'bg-white/10 backdrop-blur-sm text-blue-300 hover:bg-white/20 border border-blue-500/20'
+                  : 'bg-white/10 backdrop-blur-sm text-blue-200 hover:bg-white/20 border border-blue-500/20'
               }`}
             >
               <div className="flex items-center gap-2">
@@ -224,7 +224,7 @@ const Skills = () => {
                     </div>
                     <div className="flex-1">
                       <h4 className="text-white font-semibold text-lg">{skill.name}</h4>
-                      <span className="text-blue-300 font-bold text-sm">{skill.level}%</span>
+                      <span className="text-blue-200 font-bold text-sm">{skill.level}%</span>
                     </div>
                   </div>
                   
@@ -255,7 +255,7 @@ const Skills = () => {
                   <div className="mt-4 flex justify-between items-center">
                     <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                       skill.level >= 75 ? 'bg-cyan-500/20 text-cyan-300' :
-                      skill.level >= 65 ? 'bg-blue-500/20 text-blue-300' :
+                      skill.level >= 65 ? 'bg-blue-500/20 text-blue-200' :
                       skill.level >= 50 ? 'bg-blue-600/20 text-blue-400' :
                       'bg-blue-700/20 text-blue-500'
                     }`}>

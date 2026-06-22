@@ -109,7 +109,7 @@ const Services = () => {
   const { language } = useLanguage();
   const t = translations[language];
   return (
-    <section id="services" className="py-20 relative overflow-hidden">
+    <section id="services" className="py-20 relative overflow-hidden bg-slate-950">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -120,7 +120,7 @@ const Services = () => {
         <Reveal className="text-center mb-20">
           <div className="inline-flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-6 py-2 mb-6">
             <Zap className="text-blue-400" size={16} />
-            <span className="text-blue-300 font-medium">{t.sectionSubtitle}</span>
+            <span className="text-blue-200 font-medium">{t.sectionSubtitle}</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
             {t.sectionTitle}
@@ -169,7 +169,7 @@ const Services = () => {
                       key={i} 
                       className={`px-3 py-2 rounded-lg text-sm font-medium ${
                         service.bgColor === 'bg-slate-900' 
-                          ? 'bg-blue-500/10 text-blue-300 border border-blue-500/20' 
+                          ? 'bg-blue-500/10 text-blue-200 border border-blue-500/20' 
                           : 'bg-blue-50 text-blue-700'
                       }`}
                     >

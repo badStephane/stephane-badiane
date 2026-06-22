@@ -108,7 +108,7 @@ const Projects = () => {
         <Reveal className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-6 py-2 mb-6">
             <FolderGit2 className="text-blue-400" size={16} />
-            <span className="text-blue-300 font-medium">{t.badge}</span>
+            <span className="text-blue-200 font-medium">{t.badge}</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
             {t.title}
@@ -212,7 +212,7 @@ const Projects = () => {
 
               {/* Contenu */}
               <div className="flex flex-col flex-1 p-6">
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-240">
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-200 transition-colors duration-240">
                   {project.title}
                 </h3>
                 <p className="text-blue-200 text-sm leading-relaxed mb-4 flex-1">
@@ -224,7 +224,7 @@ const Projects = () => {
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className="bg-blue-500/10 text-blue-300 border border-blue-500/20 px-3 py-1 rounded-lg text-xs font-medium"
+                      className="bg-blue-500/10 text-blue-200 border border-blue-500/20 px-3 py-1 rounded-lg text-xs font-medium"
                     >
                       {tech}
                     </span>
@@ -237,7 +237,7 @@ const Projects = () => {
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/btn inline-flex items-center gap-2 text-blue-300 hover:text-white font-semibold text-sm transition-colors duration-240"
+                    className="group/btn inline-flex items-center gap-2 text-blue-200 hover:text-white font-semibold text-sm transition-colors duration-240"
                   >
                     {t.visit}
                     <ArrowRight

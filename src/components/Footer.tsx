@@ -86,7 +86,7 @@ const Footer = () => {
                   <li key={link}>
                     <a 
                       href={link} 
-                      className="text-blue-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
+                      className="text-blue-200 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
                     >
                       <span className="w-2 h-2 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                       {t.quickLinksLabels[index]}
@@ -103,7 +103,7 @@ const Footer = () => {
                   <li key={service}>
                     <a 
                       href="#services" 
-                      className="text-blue-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
+                      className="text-blue-200 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
                     >
                       <span className="w-2 h-2 bg-cyan-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                       {service}
@@ -117,7 +117,7 @@ const Footer = () => {
         
         <div className="border-t border-blue-500/20 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-blue-300 flex items-center gap-2">
+            <p className="text-blue-200 flex items-center gap-2">
               &copy; {currentYear} Stephane Portfolio. {t.copyright} <Heart className="text-red-500" size={16} /> {t.copyrightEnd}
             </p>
             

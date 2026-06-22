@@ -176,7 +176,7 @@ const Contact = () => {
         <Reveal className="text-center mb-20">
           <div className="inline-flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-6 py-2 mb-6">
             <MessageCircle className="text-blue-400" size={16} />
-            <span className="text-blue-300 font-medium">{t.badge}</span>
+            <span className="text-blue-200 font-medium">{t.badge}</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
             {t.title}
@@ -197,7 +197,7 @@ const Contact = () => {
                   {card.icon}
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">{card.title}</h3>
-                <p className="text-blue-300 text-lg font-semibold mb-2">{card.subtitle}</p>
+                <p className="text-blue-200 text-lg font-semibold mb-2">{card.subtitle}</p>
                 <p className="text-blue-200 mb-6">{card.description}</p>
                 <button 
                   onClick={card.onClick}
@@ -221,7 +221,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-blue-300 font-medium">{t.labels.name}</label>
+                  <label htmlFor="name" className="text-blue-200 font-medium">{t.labels.name}</label>
                   <input
                     id="name"
                     type="text"
@@ -234,7 +234,7 @@ const Contact = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-blue-300 font-medium">{t.labels.email}</label>
+                  <label htmlFor="email" className="text-blue-200 font-medium">{t.labels.email}</label>
                   <input
                     id="email"
                     type="email"
@@ -249,7 +249,7 @@ const Contact = () => {
               </div>
               
               <div className="space-y-2">
-                <label htmlFor="subject" className="text-blue-300 font-medium">{t.labels.subject}</label>
+                <label htmlFor="subject" className="text-blue-200 font-medium">{t.labels.subject}</label>
                 <input
                   id="subject"
                   type="text"
@@ -263,7 +263,7 @@ const Contact = () => {
               </div>
               
               <div className="space-y-2">
-                <label htmlFor="message" className="text-blue-300 font-medium">{t.labels.message}</label>
+                <label htmlFor="message" className="text-blue-200 font-medium">{t.labels.message}</label>
                 <textarea
                   id="message"
                   name="message"
