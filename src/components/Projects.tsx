@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ExternalLink, Github, ArrowRight, FolderGit2 } from 'lucide-react';
-import { useLanguageAndTheme } from './LanguageAndThemeContext';
+import { useLanguage } from './LanguageContext';
 import Reveal from './Reveal';
 
 type Project = {
@@ -90,7 +90,7 @@ const projects: Project[] = [
 ];
 
 const Projects = () => {
-  const { language } = useLanguageAndTheme();
+  const { language } = useLanguage();
   const t = translations[language];
   // Suit l'image en erreur pour basculer sur un fond dégradé + initiale
   const [brokenImages, setBrokenImages] = useState<Record<number, boolean>>({});

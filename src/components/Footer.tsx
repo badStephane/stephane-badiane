@@ -1,5 +1,5 @@
 import { Github, Linkedin, Twitter, Heart, ArrowUp, Instagram } from 'lucide-react';
-import { useLanguageAndTheme } from './LanguageAndThemeContext';
+import { useLanguage } from './LanguageContext';
 
 const translations = {
   en: {
@@ -27,9 +27,9 @@ const translations = {
 };
 
 const Footer = () => {
-  const { language } = useLanguageAndTheme();
+  const { language } = useLanguage();
   const t = translations[language];
-  const currentYear = 2025;
+  const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

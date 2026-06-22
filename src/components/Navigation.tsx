@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { useLanguageAndTheme } from './LanguageAndThemeContext';
-import LanguageSwitcher from './LanguageAndThemeSwitcher';
+import { useLanguage } from './LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const translations = {
   en: {
@@ -25,7 +25,7 @@ const translations = {
 };
 
 const Navigation = () => {
-  const { language } = useLanguageAndTheme();
+  const { language } = useLanguage();
   const t = translations[language];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

@@ -1,6 +1,6 @@
 import { Target } from 'lucide-react';
 
-import { useLanguageAndTheme } from './LanguageAndThemeContext';
+import { useLanguage } from './LanguageContext';
 import Reveal from './Reveal';
 
 const translations = {
@@ -19,7 +19,7 @@ const translations = {
 };
 
 const About = () => {
-  const { language } = useLanguageAndTheme();
+  const { language } = useLanguage();
   const t = translations[language];
   return (
     <section id="about" className="py-20 flex items-center relative overflow-hidden">      
@@ -39,7 +39,7 @@ const About = () => {
                   src="/metoo.webp"
                   alt={t.alt}
                   loading="lazy"
-                  className="w-100 h-86 object-cover rounded-2xl transform scale-x-[-1]"
+                  className="w-full h-80 sm:h-96 object-cover rounded-2xl transform scale-x-[-1]"
                 />
               </div>
             </div>

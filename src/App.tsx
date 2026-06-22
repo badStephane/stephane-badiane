@@ -7,12 +7,12 @@ import Footer from './components/Footer';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 
-import { LanguageAndThemeProvider } from './components/LanguageAndThemeContext';
+import { LanguageProvider } from './components/LanguageContext';
 
 function App() {
   return (
     <div style={{fontFamily: "'Syne', system-ui, -apple-system, sans-serif"}}>
-    <LanguageAndThemeProvider>
+    <LanguageProvider>
       <div className="min-h-screen">
         <Navigation />
         <Hero />
@@ -27,7 +27,7 @@ function App() {
         </div>
         <Footer />
       </div>
-    </LanguageAndThemeProvider>
+    </LanguageProvider>
     </div>
   );
 }

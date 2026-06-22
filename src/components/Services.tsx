@@ -1,5 +1,5 @@
 import { Palette, Code, Zap, Tangent } from 'lucide-react';
-import { useLanguageAndTheme } from './LanguageAndThemeContext';
+import { useLanguage } from './LanguageContext';
 import Reveal from './Reveal';
 
 const translations = {
@@ -106,7 +106,7 @@ const translations = {
 };
 
 const Services = () => {
-  const { language } = useLanguageAndTheme();
+  const { language } = useLanguage();
   const t = translations[language];
   return (
     <section id="services" className="py-20 relative overflow-hidden">

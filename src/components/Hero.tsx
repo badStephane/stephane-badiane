@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { useLanguageAndTheme } from './LanguageAndThemeContext';
+import { Code2, Palette } from 'lucide-react';
+import { useLanguage } from './LanguageContext';
 
 const translations = {
   en: {
@@ -17,7 +18,7 @@ const translations = {
 };
 
 const Hero = () => {
-  const { language } = useLanguageAndTheme();
+  const { language } = useLanguage();
   const t = translations[language];
   // Halo qui suit la souris : piloté en direct via ref + rAF (aucun re-render React)
   const blobRef = useRef<HTMLDivElement>(null);
@@ -139,15 +140,12 @@ const Hero = () => {
               </div>
               
               {/* Floating Cards */}
-              <div className="absolute -top-8 -right-8 bg-gradient-to-r from-blue-500 to-cyan-600 p-4 rounded-2xl shadow-2xl animate-float">
-                <div className="text-white text-center">
-                </div>
+              <div className="absolute -top-6 -right-6 bg-gradient-to-r from-blue-500 to-cyan-600 p-4 rounded-2xl shadow-2xl animate-float">
+                <Code2 className="text-white" size={24} />
               </div>
-              
-              <div className="absolute top-1/2 -left-12 bg-gradient-to-r from-blue-500 to-cyan-500 p-3 rounded-xl shadow-2xl animate-pulse">
-                <div className="text-white text-center">
-                  <div className="text-lg font-bold">💡</div>
-                </div>
+
+              <div className="absolute bottom-6 -left-6 bg-gradient-to-r from-cyan-500 to-blue-500 p-4 rounded-2xl shadow-2xl animate-float [animation-delay:1.5s]">
+                <Palette className="text-white" size={24} />
               </div>
             </div>
           </div>

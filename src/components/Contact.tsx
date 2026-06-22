@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, Send, MessageCircle, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
-import { useLanguageAndTheme } from './LanguageAndThemeContext';
+import { useLanguage } from './LanguageContext';
 import emailjs from '@emailjs/browser';
 import Reveal from './Reveal';
 
@@ -86,7 +86,7 @@ const translations = {
 };
 
 const Contact = () => {
-  const { language } = useLanguageAndTheme();
+  const { language } = useLanguage();
   const t = translations[language];
 
   const [formData, setFormData] = useState({
@@ -221,8 +221,9 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
-                  <label className="text-blue-300 font-medium">{t.labels.name}</label>
+                  <label htmlFor="name" className="text-blue-300 font-medium">{t.labels.name}</label>
                   <input
+                    id="name"
                     type="text"
                     name="name"
                     placeholder={t.placeholders.name}
@@ -233,8 +234,9 @@ const Contact = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-blue-300 font-medium">{t.labels.email}</label>
+                  <label htmlFor="email" className="text-blue-300 font-medium">{t.labels.email}</label>
                   <input
+                    id="email"
                     type="email"
                     name="email"
                     placeholder={t.placeholders.email}
@@ -247,8 +249,9 @@ const Contact = () => {
               </div>
               
               <div className="space-y-2">
-                <label className="text-blue-300 font-medium">{t.labels.subject}</label>
+                <label htmlFor="subject" className="text-blue-300 font-medium">{t.labels.subject}</label>
                 <input
+                  id="subject"
                   type="text"
                   name="subject"
                   placeholder={t.placeholders.subject}
@@ -260,8 +263,9 @@ const Contact = () => {
               </div>
               
               <div className="space-y-2">
-                <label className="text-blue-300 font-medium">{t.labels.message}</label>
+                <label htmlFor="message" className="text-blue-300 font-medium">{t.labels.message}</label>
                 <textarea
+                  id="message"
                   name="message"
                   placeholder={t.placeholders.message}
                   rows={6}

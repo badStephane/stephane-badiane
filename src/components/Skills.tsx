@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Code, Palette, Database, Server, Globe, Zap, Star, Award } from 'lucide-react';
-import { useLanguageAndTheme } from './LanguageAndThemeContext';
+import { useLanguage } from './LanguageContext';
 import Reveal from './Reveal';
 
 const translations = {
@@ -14,8 +14,7 @@ const translations = {
       frontend: "Frontend",
       database: "Databases",
       design: "Design",
-      Api: "API",
-      tools: "Tools & Systems",
+      tools:"Tools & Systems",
     },
     achievements: [
       { number: "10+", label: "Technologies explored", icon: <Award size={20} /> },
@@ -35,8 +34,7 @@ const translations = {
       frontend: "Frontend",
       database: "Bases de données",
       design: "Design",
-      Api: "API",
-      tools: "Outils & Systèmes",
+      tools:"Outils & Systèmes",
     },
     achievements: [
       { number: "10+", label: "Technologies utilisées", icon: <Award size={20} /> },
@@ -48,7 +46,7 @@ const translations = {
   },
 };
 const Skills = () => {
-  const { language } = useLanguageAndTheme();
+  const { language } = useLanguage();
   const t = translations[language];
   const [activeCategory, setActiveCategory] = useState('backend');
   const [animatedBars, setAnimatedBars] = useState(false);
@@ -64,12 +62,12 @@ const Skills = () => {
       icon: <Code size={24} />,
       color: "from-blue-500 to-cyan-600",
       skills: [
-        { name: "Django", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_django_icon_130645.png", level: 60 },
-        { name: "Node.js", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_node_icon_130301.png", level: 70 },
-        { name: "Go", logo: "https://images.icon-icons.com/2699/PNG/512/golang_official_logo_icon_169092.png", level: 70 },
-        { name: "Rust", logo: "https://images.icon-icons.com/2699/PNG/512/rust_lang_logo_icon_169776.png", level: 70 },
-        { name: "REST", logo: "https://www.opc-router.com/wp-content/uploads/2020/04/icon_rest_webservice_600x400px-300x200.png", level: 70 },
-        { name: "GraphQL", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_graphql_icon_130564.png", level: 70 }
+        { name: "Django", logo: "/skills/django.webp", level: 60 },
+        { name: "Node.js", logo: "/skills/node.webp", level: 70 },
+        { name: "Go", logo: "/skills/go.webp", level: 70 },
+        { name: "Rust", logo: "/skills/rust.webp", level: 70 },
+        { name: "REST", logo: "/skills/rest.webp", level: 70 },
+        { name: "GraphQL", logo: "/skills/graphql.webp", level: 70 }
       ]
     },
     frontend: {
@@ -77,10 +75,10 @@ const Skills = () => {
       icon: <Globe size={24} />,
       color: "from-blue-500 to-cyan-600",
       skills: [
-        { name: "JavaScript", logo: "https://images.icon-icons.com/2108/PNG/512/javascript_icon_130900.png", level: 75 },
-        { name: "React", logo: "https://images.icon-icons.com/2415/PNG/512/react_original_logo_icon_146374.png", level: 70 },
-        { name: "Angular", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_angular_icon_130754.png", level: 60 },
-        { name: "Tailwind CSS", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_tailwind_icon_130128.png", level: 45 },
+        { name: "JavaScript", logo: "/skills/javascript.webp", level: 75 },
+        { name: "React", logo: "/skills/react.webp", level: 70 },
+        { name: "Angular", logo: "/skills/angular.webp", level: 60 },
+        { name: "Tailwind CSS", logo: "/skills/tailwind.webp", level: 45 },
         
       ]
     },
@@ -89,9 +87,9 @@ const Skills = () => {
       icon: <Database size={24} />, 
       color: "from-blue-500 to-cyan-600",
       skills: [
-        { name: "SQLite", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_sqlite_icon_130153.png", level: 70 },
-        { name: "PostgreSQL", logo: "https://images.icon-icons.com/2415/PNG/512/postgresql_original_wordmark_logo_icon_146392.png", level: 50 },
-        { name: "MongoDB", logo: "https://images.icon-icons.com/2107/PNG/512/file_type_mongo_icon_130383.png", level: 50 }
+        { name: "SQLite", logo: "/skills/sqlite.webp", level: 70 },
+        { name: "PostgreSQL", logo: "/skills/postgresql.webp", level: 50 },
+        { name: "MongoDB", logo: "/skills/mongodb.webp", level: 50 }
       ]
     },
     design: {
@@ -99,9 +97,9 @@ const Skills = () => {
       icon: <Palette size={24} />,
       color: "from-blue-500 to-cyan-600",
       skills: [
-        { name: "Photoshop", logo: "https://images.icon-icons.com/3053/PNG/512/adobe_photoshop_macos_bigsur_icon_190436.png", level: 75 },
-        { name: "Illustrator", logo: "https://images.icon-icons.com/3053/PNG/512/adobe_illustrator_macos_bigsur_icon_190447.png", level: 75 },
-        { name: "Figma", logo: "https://images.icon-icons.com/3053/PNG/512/figma_macos_bigsur_icon_190183.png", level: 60 }
+        { name: "Photoshop", logo: "/skills/photoshop.webp", level: 75 },
+        { name: "Illustrator", logo: "/skills/illustrator.webp", level: 75 },
+        { name: "Figma", logo: "/skills/figma.webp", level: 60 }
       ]
     },
     tools: {
@@ -109,17 +107,17 @@ const Skills = () => {
       icon: <Server size={24} />,
       color: "from-blue-500 to-cyan-600",
       skills: [
-        { name: "Docker", logo: "https://images.icon-icons.com/2415/PNG/512/docker_original_wordmark_logo_icon_146557.png", level: 60 },
-        { name: "Windows", logo: "https://images.icon-icons.com/836/PNG/512/Windows_Phone_icon-icons.com_66782.png", level: 70 },
-        { name: "Ubuntu", logo: "https://images.icon-icons.com/195/PNG/256/OS_Linux_23399.png", level: 70 }
+        { name: "Docker", logo: "/skills/docker.webp", level: 60 },
+        { name: "Windows", logo: "/skills/windows.webp", level: 70 },
+        { name: "Ubuntu", logo: "/skills/ubuntu.webp", level: 70 }
       ]
     }
   };
   const getSkillColor = (level: number) => {
-    if (level >= 80) return "from-orange-500 to-orange-600";
-    if (level >= 70) return "from-orange-600 to-orange-700";
-    if (level >= 60) return "from-orange-700 to-orange-800";
-    return "from-orange-800 to-orange-900";
+    if (level >= 75) return "from-cyan-400 to-blue-500";
+    if (level >= 65) return "from-blue-400 to-cyan-500";
+    if (level >= 50) return "from-blue-500 to-cyan-600";
+    return "from-blue-600 to-cyan-700";
   };
 
   return (
@@ -256,15 +254,15 @@ const Skills = () => {
                   {/* Skill Level Badge */}
                   <div className="mt-4 flex justify-between items-center">
                     <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      skill.level >= 80 ? 'bg-blue-500/20 text-blue-300' :
-                      skill.level >= 70 ? 'bg-blue-600/20 text-blue-400' :
-                      skill.level >= 60 ? 'bg-blue-700/20 text-blue-500' :
-                      'bg-blue-800/20 text-blue-600'
+                      skill.level >= 75 ? 'bg-cyan-500/20 text-cyan-300' :
+                      skill.level >= 65 ? 'bg-blue-500/20 text-blue-300' :
+                      skill.level >= 50 ? 'bg-blue-600/20 text-blue-400' :
+                      'bg-blue-700/20 text-blue-500'
                     }`}>
-                      {skill.level >= 80 ? 'Expert' :
-                       skill.level >= 70 ? 'Avancé' :
-                       skill.level >= 60 ? 'Intermédiaire' :
-                       'Débutant'}
+                      {skill.level >= 75 ? (language === 'fr' ? 'Expert' : 'Expert') :
+                       skill.level >= 65 ? (language === 'fr' ? 'Avancé' : 'Advanced') :
+                       skill.level >= 50 ? (language === 'fr' ? 'Intermédiaire' : 'Intermediate') :
+                       (language === 'fr' ? 'Débutant' : 'Beginner')}
                     </span>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => (

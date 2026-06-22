@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLanguageAndTheme } from './LanguageAndThemeContext';
+import { useLanguage } from './LanguageContext';
 import { Globe } from 'lucide-react';
 
 const translations = {
@@ -14,7 +14,7 @@ const translations = {
 };
 
 const LanguageSwitcher: React.FC = () => {
-  const { language, setLanguage } = useLanguageAndTheme();
+  const { language, setLanguage } = useLanguage();
   const t = translations[language];
 
   return (
