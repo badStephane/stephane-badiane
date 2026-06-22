@@ -100,7 +100,7 @@ const projects: Project[] = [
     coverLogo: true,
     url: 'https://restopro-demo.vercel.app',
     role: { fr: 'Conçu et développé en solo', en: 'Designed & built solo', type: 'solo' },
-    tech: ['React', 'TypeScript', 'Tauri', 'Supabase', 'Tailwind'],
+    tech: ['React', 'TypeScript', 'Vite', 'Supabase', 'Tauri', 'shadcn/ui'],
     year: '2026',
     description: {
       fr: "Logiciel complet de gestion de restaurant : caisse (POS), affichage cuisine en temps réel, suivi du service et administration. Disponible en web et en application desktop native (macOS, Windows, Linux).",
@@ -115,7 +115,7 @@ const projects: Project[] = [
     coverLogo: true,
     url: 'https://patho-lis-demo.vercel.app',
     role: { fr: 'Conçu et développé en solo', en: 'Designed & built solo', type: 'solo' },
-    tech: ['React', 'TypeScript', 'Vite', 'Supabase', 'Tailwind'],
+    tech: ['React', 'TypeScript', 'Vite', 'Supabase', 'shadcn/ui', 'Tailwind'],
     year: '2026',
     description: {
       fr: "Système d'information pour laboratoire d'anatomopathologie : gestion des patients et des dossiers, worklist, contrôle qualité, reporting et archivage, avec authentification et gestion des rôles.",
@@ -130,7 +130,7 @@ const projects: Project[] = [
     coverLogo: true,
     url: 'https://actio-demo.vercel.app',
     role: { fr: 'Conçu et développé en solo', en: 'Designed & built solo', type: 'solo' },
-    tech: ['React', 'TypeScript', 'Tauri', 'SQLite', 'Tailwind'],
+    tech: ['React', 'TypeScript', 'Vite', 'Tauri', 'SQLite', 'Tailwind'],
     year: '2026',
     description: {
       fr: "Application de gestion des inscriptions aux activités : enregistrement des participants, statistiques et journal d'audit. Disponible en web et en application desktop native (base SQLite locale).",
