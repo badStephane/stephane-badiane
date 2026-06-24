@@ -50,11 +50,11 @@ const Skills = () => {
       color: "from-blue-500 to-cyan-600",
       skills: [
         { name: "Django", logo: "/skills/django.webp", tier: "intermediate" },
-        { name: "Node.js", logo: "/skills/node.webp", tier: "advanced" },
-        { name: "Go", logo: "/skills/go.webp", tier: "advanced" },
-        { name: "Rust", logo: "/skills/rust.webp", tier: "advanced" },
-        { name: "REST", logo: "/skills/rest.webp", tier: "advanced" },
-        { name: "GraphQL", logo: "/skills/graphql.webp", tier: "advanced" },
+        { name: "Node.js", logo: "/skills/node.webp", tier: "intermediate" },
+        { name: "Go", logo: "/skills/go.webp", tier: "intermediate" },
+        { name: "Rust", logo: "/skills/rust.webp", tier: "intermediate" },
+        { name: "REST", logo: "/skills/rest.webp", tier: "intermediate" },
+        { name: "GraphQL", logo: "/skills/graphql.webp", tier: "intermediate" },
       ]
     },
     frontend: {
@@ -62,10 +62,10 @@ const Skills = () => {
       icon: <Globe size={24} />,
       color: "from-blue-500 to-cyan-600",
       skills: [
-        { name: "JavaScript", logo: "/skills/javascript.webp", tier: "expert" },
-        { name: "React", logo: "/skills/react.webp", tier: "advanced" },
+        { name: "JavaScript", logo: "/skills/javascript.webp", tier: "intermediate" },
+        { name: "React", logo: "/skills/react.webp", tier: "intermediate" },
         { name: "Angular", logo: "/skills/angular.webp", tier: "intermediate" },
-        { name: "Tailwind CSS", logo: "/skills/tailwind.webp", tier: "advanced" },
+        { name: "Tailwind CSS", logo: "/skills/tailwind.webp", tier: "intermediate" },
       ]
     },
     database: {
@@ -73,7 +73,7 @@ const Skills = () => {
       icon: <Database size={24} />,
       color: "from-blue-500 to-cyan-600",
       skills: [
-        { name: "SQLite", logo: "/skills/sqlite.webp", tier: "advanced" },
+        { name: "SQLite", logo: "/skills/sqlite.webp", tier: "intermediate" },
         { name: "PostgreSQL", logo: "/skills/postgresql.webp", tier: "intermediate" },
         { name: "MongoDB", logo: "/skills/mongodb.webp", tier: "intermediate" },
       ]
@@ -83,8 +83,8 @@ const Skills = () => {
       icon: <Palette size={24} />,
       color: "from-blue-500 to-cyan-600",
       skills: [
-        { name: "Photoshop", logo: "/skills/photoshop.webp", tier: "expert" },
-        { name: "Illustrator", logo: "/skills/illustrator.webp", tier: "expert" },
+        { name: "Photoshop", logo: "/skills/photoshop.webp", tier: "intermediate" },
+        { name: "Illustrator", logo: "/skills/illustrator.webp", tier: "intermediate" },
         { name: "Figma", logo: "/skills/figma.webp", tier: "intermediate" },
       ]
     },
