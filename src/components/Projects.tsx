@@ -3,6 +3,10 @@ import { ExternalLink, Github, ArrowRight, FolderGit2, User, Users, CreditCard }
 import { useLanguage } from './LanguageContext';
 import Reveal from './Reveal';
 
+/** Domaines d'expertise (ordre d'affichage des sections) */
+type Domain = 'fullstack' | 'uiux' | 'graphisme';
+const DOMAIN_ORDER: Domain[] = ['fullstack', 'uiux', 'graphisme'];
+
 type Project = {
   id: number;
   title: string;
@@ -12,10 +16,16 @@ type Project = {
   logo?: string;
   /** Si vrai : affiche le logo centré sur fond clair au lieu de la capture */
   coverLogo?: boolean;
+  /** Galerie de logos/visuels (carte branding) : remplace l'aperçu par une grille */
+  gallery?: string[];
+  /** Domaine d'expertise (défaut : fullstack) */
+  domain?: Domain;
   /** Rôle sur le projet (traduit) + type pour l'icône */
   role?: { fr: string; en: string; type: 'solo' | 'collab' | 'frontend' };
   /** Lien vers le site en ligne (laisser vide pour masquer le bouton) */
   url?: string;
+  /** Affiche le badge « Bientôt en ligne » quand il n'y a pas d'URL */
+  soon?: boolean;
   /** Lien vers le code source (optionnel) */
   github?: string;
   tech: string[];
@@ -33,6 +43,11 @@ const translations = {
     visit: 'Visit site',
     code: 'Code',
     soon: 'Coming soon',
+    domains: {
+      fullstack: 'FullStack Development',
+      uiux: 'UI/UX Design',
+      graphisme: 'Graphic Design',
+    },
   },
   fr: {
     badge: 'Mes réalisations',
@@ -42,6 +57,11 @@ const translations = {
     visit: 'Voir le site',
     code: 'Code',
     soon: 'Bientôt en ligne',
+    domains: {
+      fullstack: 'Développement FullStack',
+      uiux: 'UI/UX Design',
+      graphisme: 'Graphisme',
+    },
   },
 };
 
@@ -137,6 +157,57 @@ const projects: Project[] = [
       en: 'Activity registration management app: participant enrollment, statistics and audit log. Available on the web and as a native desktop app (local SQLite database).',
     },
   },
+  {
+    id: 7,
+    title: 'Design System · RestoPro',
+    image: '/projects/uiux/restopro-ds.webp',
+    logo: '/projects/logos/restopro.svg',
+    coverLogo: true,
+    domain: 'uiux',
+    url: 'https://restopro-demo.vercel.app',
+    role: { fr: 'Recherche, UI & design system', en: 'Research, UI & design system', type: 'solo' },
+    tech: ['Design System', 'Prototypage', 'shadcn/ui', 'Tailwind'],
+    year: '2026',
+    description: {
+      fr: "Conception de l'interface et du design system de RestoPro : recherche utilisateur, palette, typographie, tokens et composants (caisse, écran cuisine) avec leurs états (chargement, erreur, vide) pour une expérience cohérente sur web et desktop.",
+      en: 'UI and design system for RestoPro: user research, palette, typography, tokens and components (POS, kitchen screen) with their loading, error and empty states, for a consistent experience across web and desktop.',
+    },
+  },
+  {
+    id: 8,
+    title: 'Parcours billetterie · LaB',
+    image: '/projects/uiux/lab-flow.webp',
+    logo: '/projects/logos/lab.webp',
+    coverLogo: true,
+    domain: 'uiux',
+    url: 'https://paskclab.com',
+    role: { fr: 'UX & parcours utilisateur', en: 'UX & user flow', type: 'solo' },
+    tech: ['User Research', 'Wireframing', 'Prototypage', 'Mobile-first'],
+    year: '2026',
+    description: {
+      fr: "Conception du parcours d'achat de LaB : de la découverte d'une soirée à la réservation d'une table VIP et au paiement. Wireframes, prototypage et optimisation mobile-first pour réduire les étapes du checkout.",
+      en: 'Purchase flow design for LaB: from discovering a party to booking a VIP table and paying. Wireframes, prototyping and mobile-first optimization to shorten the checkout.',
+    },
+  },
+  {
+    id: 9,
+    title: 'Identités de marque · Logos',
+    image: '/projects/graphisme/branding.webp',
+    gallery: [
+      '/projects/logos/patho-lis.svg',
+      '/projects/logos/restopro.svg',
+      '/projects/logos/actio.svg',
+      '/projects/logos/emargix.webp',
+    ],
+    domain: 'graphisme',
+    role: { fr: 'Création des logos & identité', en: 'Logo & identity design', type: 'solo' },
+    tech: ['Logo', 'Branding', 'Vectoriel (SVG)', 'Déclinaisons'],
+    year: '2026',
+    description: {
+      fr: "Création des identités visuelles de mes produits : conception des logos Patho-LIS, RestoPro, Actio et Emargix, du concept au vectoriel, avec leurs déclinaisons (icône, version horizontale, fond clair et foncé).",
+      en: 'Visual identities for my products: logo design for Patho-LIS, RestoPro, Actio and Emargix, from concept to vector, with their variations (icon, horizontal, light and dark backgrounds).',
+    },
+  },
 ];
 
 const Projects = () => {
@@ -172,9 +243,20 @@ const Projects = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full mt-8"></div>
         </Reveal>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+        {/* Projets groupés par domaine */}
+        {DOMAIN_ORDER.map((domain) => {
+          const items = projects.filter((p) => (p.domain ?? 'fullstack') === domain);
+          if (items.length === 0) return null;
+          return (
+            <div key={domain} className="mb-16 last:mb-0">
+              <Reveal className="mb-8 flex items-center gap-4">
+                <h3 className="text-2xl md:text-3xl font-bold text-white whitespace-nowrap">
+                  {t.domains[domain]}
+                </h3>
+                <span className="h-px flex-1 bg-gradient-to-r from-blue-500/40 to-transparent" />
+              </Reveal>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {items.map((project, index) => (
             <Reveal
               key={project.id}
               delay={(index % 3) * 100}
@@ -182,7 +264,24 @@ const Projects = () => {
             >
               {/* Aperçu */}
               <div className="relative h-52 overflow-hidden bg-gradient-to-br from-slate-800 to-blue-900">
-                {project.coverLogo && project.logo ? (
+                {project.gallery ? (
+                  /* Galerie de logos (carte branding) */
+                  <div className="grid grid-cols-2 gap-3 w-full h-full bg-gradient-to-br from-white to-blue-50 p-5">
+                    {project.gallery.map((src) => (
+                      <div
+                        key={src}
+                        className="flex items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-blue-100 p-3"
+                      >
+                        <img
+                          src={src}
+                          alt=""
+                          loading="lazy"
+                          className="max-h-12 w-auto object-contain transition-transform duration-500 ease-out-expo group-hover:scale-105"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : project.coverLogo && project.logo ? (
                   /* Logo de marque centré sur fond clair */
                   <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-white to-blue-50 p-8">
                     <img
@@ -228,6 +327,7 @@ const Projects = () => {
                 </div>
 
                 {/* Overlay au survol */}
+                {(project.url || project.soon || project.github) && (
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-320">
                   <div className="absolute bottom-4 left-4 right-4 flex gap-3">
                     {project.url ? (
@@ -240,11 +340,11 @@ const Projects = () => {
                         <ExternalLink size={16} />
                         {t.visit}
                       </a>
-                    ) : (
+                    ) : project.soon ? (
                       <span className="flex-1 bg-white/10 text-blue-200 py-2 px-4 rounded-xl font-semibold flex items-center justify-center gap-2">
                         {t.soon}
                       </span>
-                    )}
+                    ) : null}
                     {project.github && (
                       <a
                         href={project.github}
@@ -258,6 +358,7 @@ const Projects = () => {
                     )}
                   </div>
                 </div>
+                )}
               </div>
 
               {/* Contenu */}
@@ -313,8 +414,11 @@ const Projects = () => {
               {/* Lueur au survol */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-600 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none"></div>
             </Reveal>
-          ))}
-        </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
