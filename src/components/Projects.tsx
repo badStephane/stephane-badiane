@@ -7,6 +7,9 @@ import Reveal from './Reveal';
 type Domain = 'fullstack' | 'uiux' | 'graphisme';
 const DOMAIN_ORDER: Domain[] = ['fullstack', 'uiux', 'graphisme'];
 
+/** Léger décalage vertical par colonne (effet masonry) : casse la grille trop régulière */
+const MASONRY_OFFSET = ['lg:mt-0', 'lg:mt-8', 'lg:mt-4'];
+
 type Project = {
   id: number;
   title: string;
@@ -220,27 +223,27 @@ const Projects = () => {
     <section id="projects" className="py-20 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-20 right-20 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <Reveal className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-6 py-2 mb-6">
-            <FolderGit2 className="text-blue-400" size={16} />
-            <span className="text-blue-200 font-medium">{t.badge}</span>
+          <div className="inline-flex items-center gap-2 bg-emerald-500/10 backdrop-blur-sm border border-emerald-400/20 rounded-full px-6 py-2 mb-6">
+            <FolderGit2 className="text-emerald-400" size={16} />
+            <span className="font-mono text-xs tracking-[0.2em] uppercase text-emerald-300">{t.badge}</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
             {t.title}
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-white to-emerald-200 bg-clip-text text-transparent">
               {t.highlight}
             </span>
           </h2>
           <p className="text-xl text-blue-200 max-w-3xl mx-auto leading-relaxed">
             {t.intro}
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full mt-8"></div>
+          <div className="w-24 h-1 bg-emerald-400 mx-auto rounded-full mt-8"></div>
         </Reveal>
 
         {/* Projets groupés par domaine */}
@@ -253,24 +256,25 @@ const Projects = () => {
                 <h3 className="text-2xl md:text-3xl font-bold text-white whitespace-nowrap">
                   {t.domains[domain]}
                 </h3>
-                <span className="h-px flex-1 bg-gradient-to-r from-blue-500/40 to-transparent" />
+                <span className="h-px flex-1 bg-gradient-to-r from-emerald-400/30 to-transparent" />
               </Reveal>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {items.map((project, index) => (
             <Reveal
               key={project.id}
+              variant={index % 3 === 1 ? 'scale' : 'up'}
               delay={(index % 3) * 100}
-              className="group relative flex flex-col overflow-hidden rounded-3xl bg-white/5 backdrop-blur-sm border border-blue-500/20 hover:bg-white/10 transition-all duration-320 ease-out-expo hover:-translate-y-2"
+              className={`group relative flex flex-col overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/[0.07] hover:border-emerald-400/30 transition-all duration-320 ease-out-expo hover:-translate-y-2 ${MASONRY_OFFSET[index % 3]}`}
             >
               {/* Aperçu */}
-              <div className="relative h-52 overflow-hidden bg-gradient-to-br from-slate-800 to-blue-900">
+              <div className="relative h-52 overflow-hidden bg-gradient-to-br from-slate-800 to-slate-950">
                 {project.gallery ? (
                   /* Galerie de logos (carte branding) */
-                  <div className="grid grid-cols-2 gap-3 w-full h-full bg-gradient-to-br from-white to-blue-50 p-5">
+                  <div className="grid grid-cols-2 gap-3 w-full h-full bg-gradient-to-br from-white to-slate-50 p-5">
                     {project.gallery.map((src) => (
                       <div
                         key={src}
-                        className="flex items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-blue-100 p-3"
+                        className="flex items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-3"
                       >
                         <img
                           src={src}
@@ -283,7 +287,7 @@ const Projects = () => {
                   </div>
                 ) : project.coverLogo && project.logo ? (
                   /* Logo de marque centré sur fond clair */
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-white to-blue-50 p-8">
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-white to-slate-50 p-8">
                     <img
                       src={project.logo}
                       alt={`Logo ${project.title}`}
@@ -335,7 +339,7 @@ const Projects = () => {
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 bg-gradient-to-r from-blue-500 to-cyan-600 text-white py-2 px-4 rounded-xl font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+                        className="flex-1 bg-gradient-to-r from-emerald-400 to-lime-500 text-slate-900 py-2 px-4 rounded-xl font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
                       >
                         <ExternalLink size={16} />
                         {t.visit}
@@ -412,7 +416,7 @@ const Projects = () => {
               </div>
 
               {/* Lueur au survol */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-600 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-blue-600 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none"></div>
             </Reveal>
                 ))}
               </div>

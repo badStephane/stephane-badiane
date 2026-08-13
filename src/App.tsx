@@ -16,7 +16,7 @@ function App() {
       <div className="min-h-screen">
         <Navigation />
         <Hero />
-        <div className='flex flex-col w-full bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800'>
+        <div className='flex flex-col w-full bg-slate-950 bg-dot-grid'>
           <About />
           {/* <hr className='w-full border-blue-500' /> */}
           <Skills />

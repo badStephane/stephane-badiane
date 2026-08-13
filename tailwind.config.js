@@ -3,6 +3,10 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['Syne', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+      },
       transitionTimingFunction: {
         // Entrée (apparition) : départ rapide, atterrissage doux → réactif
         'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',

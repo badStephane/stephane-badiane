@@ -21,14 +21,14 @@ const LanguageSwitcher: React.FC = () => {
     <div className="flex items-center gap-4">
       {/* Language Switcher */}
       <button
-        className={`p-2 rounded-full border border-blue-500/20 ${language === 'en' ? 'bg-blue-500/20 text-blue-600' : 'text-blue-200 hover:bg-blue-500/10'}`}
+        className={`p-2 rounded-lg border font-mono text-sm ${language === 'en' ? 'bg-emerald-500/15 border-emerald-400/40 text-emerald-300' : 'border-white/10 text-blue-200 hover:bg-white/5'}`}
         onClick={() => setLanguage('en')}
         aria-label={t.switchToEn}
       >
         <Globe size={18} className="inline mr-1" /> EN
       </button>
       <button
-        className={`p-2 rounded-full border border-blue-500/20 ${language === 'fr' ? 'bg-blue-500/20 text-blue-600' : 'text-blue-200 hover:bg-blue-500/10'}`}
+        className={`p-2 rounded-lg border font-mono text-sm ${language === 'fr' ? 'bg-emerald-500/15 border-emerald-400/40 text-emerald-300' : 'border-white/10 text-blue-200 hover:bg-white/5'}`}
         onClick={() => setLanguage('fr')}
         aria-label={t.switchToFr}
       >

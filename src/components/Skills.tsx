@@ -47,7 +47,7 @@ const Skills = () => {
     backend: {
       title: language === 'fr' ? 'Backend' : 'Backend',
       icon: <Code size={24} />,
-      color: "from-blue-500 to-cyan-600",
+      color: "from-emerald-400 to-lime-500",
       skills: [
         { name: "Django", logo: "/skills/django.webp", tier: "intermediate" },
         { name: "Node.js", logo: "/skills/node.webp", tier: "intermediate" },
@@ -60,7 +60,7 @@ const Skills = () => {
     frontend: {
       title: language === 'fr' ? 'Frontend' : 'Frontend',
       icon: <Globe size={24} />,
-      color: "from-blue-500 to-cyan-600",
+      color: "from-emerald-400 to-lime-500",
       skills: [
         { name: "JavaScript", logo: "/skills/javascript.webp", tier: "intermediate" },
         { name: "React", logo: "/skills/react.webp", tier: "intermediate" },
@@ -71,7 +71,7 @@ const Skills = () => {
     database: {
       title: language === 'fr' ? 'Bases de données' : 'Databases',
       icon: <Database size={24} />,
-      color: "from-blue-500 to-cyan-600",
+      color: "from-emerald-400 to-lime-500",
       skills: [
         { name: "SQLite", logo: "/skills/sqlite.webp", tier: "intermediate" },
         { name: "PostgreSQL", logo: "/skills/postgresql.webp", tier: "intermediate" },
@@ -81,7 +81,7 @@ const Skills = () => {
     design: {
       title: language === 'fr' ? 'Design' : 'Design',
       icon: <Palette size={24} />,
-      color: "from-blue-500 to-cyan-600",
+      color: "from-emerald-400 to-lime-500",
       skills: [
         { name: "Photoshop", logo: "/skills/photoshop.webp", tier: "intermediate" },
         { name: "Illustrator", logo: "/skills/illustrator.webp", tier: "intermediate" },
@@ -91,7 +91,7 @@ const Skills = () => {
     tools: {
       title: language === 'fr' ? 'Outils & Systèmes' : 'Tools & Systems',
       icon: <Server size={24} />,
-      color: "from-blue-500 to-cyan-600",
+      color: "from-emerald-400 to-lime-500",
       skills: [
         { name: "Docker", logo: "/skills/docker.webp", tier: "intermediate" },
         { name: "Windows", logo: "/skills/windows.webp", tier: "advanced" },
@@ -106,23 +106,22 @@ const Skills = () => {
     <section className="py-20 relative overflow-hidden bg-slate-950">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-20 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <Reveal className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-6 py-3 mb-8">
-            <Zap className="text-blue-400" size={18} />
-            <span className="text-blue-200 font-semibold">{t.badge}</span>
+          <div className="inline-flex items-center gap-2 bg-emerald-500/10 backdrop-blur-sm border border-emerald-400/20 rounded-full px-6 py-3 mb-8">
+            <Zap className="text-emerald-400" size={18} />
+            <span className="font-mono text-xs tracking-[0.2em] uppercase text-emerald-300">{t.badge}</span>
           </div>
 
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-8 leading-tight break-words">
             {t.sectionTitle}
             <br />
-            <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-blue-200 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-white to-emerald-200 bg-clip-text text-transparent">
               {t.sectionSubtitle}
             </span>
           </h2>
@@ -135,13 +134,13 @@ const Skills = () => {
         {/* Achievements Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {t.achievements.map((achievement, index) => (
-            <Reveal key={index} delay={index * 80} className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-blue-500/20 p-6 hover:bg-white/10 transition-all duration-320 ease-out-expo hover:-translate-y-1">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <Reveal key={index} variant="scale" delay={index * 80} className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-6 hover:bg-white/10 transition-all duration-320 ease-out-expo hover:-translate-y-1">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative text-center">
-                <div className="flex justify-center mb-3 text-blue-400">
+                <div className="flex justify-center mb-3 text-emerald-400">
                   {achievement.icon}
                 </div>
-                <div className="text-3xl md:text-4xl font-black text-white mb-2">
+                <div className="font-mono text-3xl md:text-4xl font-bold text-white mb-2">
                   {achievement.number}
                 </div>
                 <div className="text-sm text-blue-200 font-medium">
@@ -160,8 +159,8 @@ const Skills = () => {
               onClick={() => setActiveCategory(key)}
               className={`group relative overflow-hidden px-6 py-3 rounded-full font-semibold transition-all duration-240 ease-out-expo transform hover:scale-105 active:scale-95 ${
                 activeCategory === key
-                  ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
-                  : 'bg-white/10 backdrop-blur-sm text-blue-200 hover:bg-white/20 border border-blue-500/20'
+                  ? `bg-gradient-to-r ${category.color} text-slate-900 shadow-lg`
+                  : 'bg-white/5 backdrop-blur-sm text-blue-200 hover:bg-white/10 border border-white/10'
               }`}
             >
               <div className="flex items-center gap-2">

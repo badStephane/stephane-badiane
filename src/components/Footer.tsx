@@ -39,9 +39,9 @@ const Footer = () => {
     <footer className="bg-slate-950 text-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500"></div>
-        <div className="absolute top-20 right-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 via-blue-500 to-emerald-400"></div>
+        <div className="absolute top-20 right-20 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -121,9 +121,9 @@ const Footer = () => {
               &copy; {currentYear} Stephane Portfolio. {t.copyright} <Heart className="text-red-500" size={16} /> {t.copyrightEnd}
             </p>
             
-            <button 
+            <button
               onClick={scrollToTop}
-              className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-3 rounded-full hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 transform hover:scale-110 shadow-lg"
+              className="bg-gradient-to-r from-emerald-400 to-lime-500 text-slate-900 p-3 rounded-xl hover:from-emerald-300 hover:to-lime-400 transition-all duration-300 transform hover:scale-110 shadow-lg"
               aria-label={t.scrollTop}
             >
               <ArrowUp size={20} />

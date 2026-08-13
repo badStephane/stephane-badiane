@@ -48,8 +48,8 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-      isScrolled 
-        ? 'bg-slate-950 backdrop-blur-xl shadow-2xl border-b border-blue-500/20' 
+      isScrolled
+        ? 'bg-slate-950/95 backdrop-blur-xl shadow-2xl border-b border-white/10'
         : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,7 +69,7 @@ const Navigation = () => {
                   className="relative text-blue-200 hover:text-white transition-colors duration-240 font-medium group py-2"
                 >
                   {item.label}
-                  <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                  <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-emerald-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
                 </button>
               ))}
               <button 
@@ -78,14 +78,14 @@ const Navigation = () => {
                     relative overflow-hidden
                     px-6 py-3 rounded-full shadow-lg font-semibold
 
-                    bg-gradient-to-r from-amber-400 to-orange-500
+                    bg-gradient-to-r from-emerald-400 to-lime-500
                     bg-[length:200%_200%] bg-left
 
                     text-slate-900
                     transition-all duration-240 ease-out-expo
 
                     hover:scale-105 active:scale-95
-                    hover:shadow-lg hover:shadow-amber-500/30
+                    hover:shadow-lg hover:shadow-emerald-500/30
                   "
 
               >
@@ -107,20 +107,20 @@ const Navigation = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-slate-900/98 backdrop-blur-xl border-t border-blue-500/20 motion-safe:animate-fade-up">
+        <div className="md:hidden bg-slate-950/98 backdrop-blur-xl border-t border-white/10 motion-safe:animate-fade-up">
           <div className="px-4 pt-4 pb-6 space-y-3">
             {t.navLinks.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="block text-blue-200 hover:text-white px-4 py-3 w-full text-left transition-colors duration-300 rounded-lg hover:bg-white hover:text-blue-500"
+                className="block text-blue-200 hover:text-white px-4 py-3 w-full text-left transition-colors duration-300 rounded-lg hover:bg-white/10"
               >
                 {item.label}
               </button>
             ))}
             <button 
               onClick={() => scrollToSection('contact')}
-              className="block bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 font-semibold px-4 py-3 rounded-lg hover:from-amber-300 hover:to-orange-400 transition-all duration-300 mx-4 mt-4 text-center"
+              className="block bg-gradient-to-r from-emerald-400 to-lime-500 text-slate-900 font-semibold px-4 py-3 rounded-lg hover:from-emerald-300 hover:to-lime-400 transition-all duration-300 mx-4 mt-4 text-center"
             >
               {t.talk}
             </button>

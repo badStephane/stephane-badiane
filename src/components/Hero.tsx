@@ -65,7 +65,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="pt-20 min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 flex items-center relative overflow-hidden">
+    <section id="home" className="pt-20 min-h-screen bg-slate-950 flex items-center relative overflow-hidden">
       {/* Animated Background */}
       {/* Video Background Positioned Absolutely */}
       {showVideo ? (
@@ -90,27 +90,30 @@ const Hero = () => {
       {/* Content container with relative to keep content above the video */}
       <div className='flex relative z-10 w-full'>
 
+      <div className="absolute inset-0 bg-dot-grid [mask-image:radial-gradient(ellipse_60%_60%_at_50%_40%,black,transparent)]"></div>
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(52,211,153,0.08),transparent_60%)]"></div>
         {/* Halo qui suit la souris · animé via ref (cf. plus haut), désactivé sur mobile */}
         <div
           ref={blobRef}
-          className="absolute left-1/4 top-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-xl animate-pulse hidden sm:block will-change-transform"
+          className="absolute left-1/4 top-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-xl animate-pulse hidden sm:block will-change-transform"
         ></div>
-        <div className="absolute top-20 right-20 w-72 h-72 bg-cyan-500/5 rounded-full blur-lg animate-pulse hidden md:block"></div>
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-blue-600/5 rounded-full blur-lg animate-pulse hidden md:block"></div>
       </div>
 
       {/* Floating Elements */}
-      <div className="absolute top-1/4 left-10 w-3 h-3 bg-blue-400 rounded-full animate-ping hidden sm:block"></div>
+      <div className="absolute top-1/4 left-10 w-3 h-3 bg-emerald-400 rounded-full animate-ping hidden sm:block"></div>
       <div className="absolute bottom-1/4 right-10 w-4 h-4 bg-blue-300 rounded-full animate-pulse hidden sm:block"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 gap-x-12 items-center">
           <div className="text-white text-center lg:text-left motion-safe:animate-fade-up">
-            <h1 className=" font-black mb-8 leading-tight">
-              <span className="text-xl sm:text-3xl md:text-5xl lg:text-6xl block">{t.sectionTitle}</span>
-              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-300 bg-clip-text text-transparent">
+            <div className="inline-flex items-center gap-2 mb-6 font-mono text-xs sm:text-sm tracking-[0.2em] text-emerald-300 uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              {t.sectionTitle}
+            </div>
+            <h1 className="font-black mb-8 leading-tight">
+              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl block bg-gradient-to-br from-white via-white to-emerald-200 bg-clip-text text-transparent">
                 {t.sectionSubtitle}
               </span>
             </h1>
@@ -122,14 +125,14 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
                 href="#projects"
-                className="group bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-blue-400/30 text-white px-8 py-4 rounded-full font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+                className="group bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/15 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
               >
                 {t.viewWork}
                 <ArrowRight className="group-hover:translate-x-1 transition-transform duration-240" size={20} />
               </a>
               <a
                 href="#contact"
-                className="group bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 px-8 py-4 rounded-full font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 hover:shadow-lg hover:shadow-amber-500/30 flex items-center justify-center gap-2"
+                className="group bg-gradient-to-r from-emerald-400 to-lime-500 text-slate-900 px-8 py-4 rounded-xl font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 hover:shadow-lg hover:shadow-emerald-500/30 flex items-center justify-center gap-2"
               >
                 {t.contact}
                 <Send className="group-hover:translate-x-0.5 transition-transform duration-240" size={18} />
@@ -139,7 +142,7 @@ const Hero = () => {
           
           <div className="flex justify-center lg:justify-end mt-8">
             <div className="relative">
-              <div className="w-48 h-48 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm flex items-center justify-center overflow-hidden border-4 border-blue-400/30 shadow-2xl">
+              <div className="w-48 h-48 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-emerald-500/10 to-blue-500/10 backdrop-blur-sm flex items-center justify-center overflow-hidden border-4 border-white/10 shadow-2xl">
                 <img
                   src="/mypp.webp"
                   alt={t.alt}
@@ -148,14 +151,14 @@ const Hero = () => {
                   className="w-full h-full object-cover rounded-full transform hover:scale-110 transition-transform duration-500"
                 />
               </div>
-              
+
               {/* Floating Cards */}
-              <div className="absolute -top-6 -right-6 bg-gradient-to-r from-blue-500 to-cyan-600 p-4 rounded-2xl shadow-2xl animate-float">
-                <Code2 className="text-white" size={24} />
+              <div className="absolute -top-6 -right-6 bg-gradient-to-r from-emerald-400 to-lime-500 p-4 rounded-2xl shadow-2xl animate-float">
+                <Code2 className="text-slate-900" size={24} />
               </div>
 
-              <div className="absolute bottom-6 -left-6 bg-gradient-to-r from-cyan-500 to-blue-500 p-4 rounded-2xl shadow-2xl animate-float [animation-delay:1.5s]">
-                <Palette className="text-white" size={24} />
+              <div className="absolute bottom-6 -left-6 bg-slate-900 border border-blue-500/30 p-4 rounded-2xl shadow-2xl animate-float [animation-delay:1.5s]">
+                <Palette className="text-blue-300" size={24} />
               </div>
             </div>
           </div>
@@ -164,8 +167,8 @@ const Hero = () => {
       
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
-        <div className="w-6 h-10 border-2 border-blue-400 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-blue-400 rounded-full mt-2 animate-pulse"></div>
+        <div className="w-6 h-10 border-2 border-emerald-400/60 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-emerald-400 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
       </div>

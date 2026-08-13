@@ -33,6 +33,13 @@
   }
 }
 
+/* Signature : trame de points (esprit schéma technique), en fond de page.
+   Remplace la répétition de blobs flous par un seul motif discret et cohérent. */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(52, 211, 153, 0.16) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
 /* Signature : fin grain/texture sur tout le site (SVG inline, sans réseau).
    pointer-events:none → n'intercepte aucun clic. */
 .grain-overlay {

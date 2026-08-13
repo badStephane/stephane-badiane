@@ -25,16 +25,15 @@ const About = () => {
     <section id="about" className="py-20 flex items-center relative overflow-hidden">      
     {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 right-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-20 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl"></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <Reveal className="relative order-2 lg:order-1">
+          <Reveal variant="left" className="relative order-2 lg:order-1">
             <div className="relative w-full max-w-lg mx-auto group">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/10 rounded-3xl backdrop-blur-sm transform rotate-6 transition-transform duration-500 ease-out-expo group-hover:rotate-3"></div>
-              <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-2 border border-white/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-blue-500/10 rounded-3xl backdrop-blur-sm transform rotate-6 transition-transform duration-500 ease-out-expo group-hover:rotate-3"></div>
+              <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl p-2 border border-white/10">
                 <img
                   src="/metoo.webp"
                   alt={t.alt}
@@ -45,10 +44,10 @@ const About = () => {
             </div>
           </Reveal>
 
-          <Reveal delay={120} className="text-white order-1 lg:order-2">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2 mb-8">
-              <Target size={16} />
-              <span className="font-medium">{t.badge}</span>
+          <Reveal variant="right" delay={120} className="text-white order-1 lg:order-2">
+            <div className="inline-flex items-center gap-2 bg-emerald-500/10 backdrop-blur-sm border border-emerald-400/20 rounded-full px-6 py-2 mb-8">
+              <Target size={16} className="text-emerald-400" />
+              <span className="font-mono text-xs tracking-[0.2em] uppercase text-emerald-300">{t.badge}</span>
             </div>
 
             <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
