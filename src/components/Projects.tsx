@@ -103,7 +103,7 @@ const projects: Project[] = [
     image: '/projects/emargix.webp',
     logo: '/projects/logos/emargix.webp',
     coverLogo: true,
-    url: 'https://emargix.onrender.com',
+    url: 'https://emargix.com',
     role: { fr: 'Conçu et développé en solo', en: 'Designed & built solo', type: 'solo' },
     tech: ['Next.js', 'TypeScript', 'Tailwind', 'Render', 'Supabase'],
     year: '2026',
