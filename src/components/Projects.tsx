@@ -194,6 +194,22 @@ const projects: Project[] = [
   },
   {
     id: 9,
+    title: 'Interface & parcours · Emargix',
+    image: '/projects/uiux/emargix-flow.webp',
+    logo: '/projects/logos/emargix.webp',
+    coverLogo: true,
+    domain: 'uiux',
+    url: 'https://emargix.com',
+    role: { fr: 'Recherche, UI & parcours utilisateur', en: 'Research, UI & user flow', type: 'solo' },
+    tech: ['User Research', 'Wireframing', 'Prototypage', 'Mobile-first'],
+    year: '2026',
+    description: {
+      fr: "Conception de l'interface d'Emargix : parcours de signature électronique en temps réel, écrans de feuille de présence et d'export, pensés pour une prise en main rapide sur le terrain (tablette et mobile).",
+      en: 'UI design for Emargix: real-time e-signature flow, sign-in sheet and export screens, designed for quick pickup in the field (tablet and mobile).',
+    },
+  },
+  {
+    id: 10,
     title: 'Identités de marque · Logos',
     image: '/projects/graphisme/branding.webp',
     gallery: [
