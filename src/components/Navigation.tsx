@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -38,7 +38,8 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (e: MouseEvent, sectionId: string) => {
+    e.preventDefault();
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -63,17 +64,19 @@ const Navigation = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
               {t.navLinks.map((item) => (
-                <button
+                <a
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  href={`#${item.id}`}
+                  onClick={(e) => scrollToSection(e, item.id)}
                   className="relative text-blue-200 hover:text-white transition-colors duration-240 font-medium group py-2"
                 >
                   {item.label}
                   <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-emerald-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
-                </button>
+                </a>
               ))}
-              <button 
-                onClick={() => scrollToSection('contact')}
+              <a
+                href="#contact"
+                onClick={(e) => scrollToSection(e, 'contact')}
                 className="
                     relative overflow-hidden
                     px-6 py-3 rounded-full shadow-lg font-semibold
@@ -90,7 +93,7 @@ const Navigation = () => {
 
               >
                 {t.talk}
-              </button>
+              </a>
               <LanguageSwitcher />
             </div>
           </div>
@@ -110,20 +113,22 @@ const Navigation = () => {
         <div className="md:hidden bg-slate-950/98 backdrop-blur-xl border-t border-white/10 motion-safe:animate-fade-up">
           <div className="px-4 pt-4 pb-6 space-y-3">
             {t.navLinks.map((item) => (
-              <button
+              <a
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                href={`#${item.id}`}
+                onClick={(e) => scrollToSection(e, item.id)}
                 className="block text-blue-200 hover:text-white px-4 py-3 w-full text-left transition-colors duration-300 rounded-lg hover:bg-white/10"
               >
                 {item.label}
-              </button>
+              </a>
             ))}
-            <button 
-              onClick={() => scrollToSection('contact')}
+            <a
+              href="#contact"
+              onClick={(e) => scrollToSection(e, 'contact')}
               className="block bg-gradient-to-r from-emerald-400 to-lime-500 text-slate-900 font-semibold px-4 py-3 rounded-lg hover:from-emerald-300 hover:to-lime-400 transition-all duration-300 mx-4 mt-4 text-center"
             >
               {t.talk}
-            </button>
+            </a>
             <div className="mt-6 flex justify-center">
               <LanguageSwitcher />
             </div>

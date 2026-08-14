@@ -44,6 +44,13 @@ const Reveal = ({ children, delay = 0, variant = 'up', className = '' }: RevealP
       return;
     }
 
+    // Navigateur/webview sans IntersectionObserver → on affiche directement
+    // plutôt que de laisser le contenu invisible en permanence.
+    if (typeof IntersectionObserver === 'undefined') {
+      setVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -55,7 +62,18 @@ const Reveal = ({ children, delay = 0, variant = 'up', className = '' }: RevealP
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
+
+    // Filet de sécurité : certains navigateurs/webviews (in-app browsers, vieux
+    // Android/iOS) ne déclenchent jamais l'observer de façon fiable. Sans ce
+    // filet, le contenu reste invisible pour toujours (bug constaté en audit
+    // mobile). On force l'affichage après un court délai si rien ne s'est
+    // encore produit.
+    const fallback = window.setTimeout(() => setVisible(true), 1200);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, []);
 
   return (
