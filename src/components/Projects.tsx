@@ -358,7 +358,7 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="flex-1 bg-gradient-to-r from-emerald-400 to-lime-500 text-slate-900 py-2 px-4 rounded-xl font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
                       >
-                        <ExternalLink size={16} />
+                        <AnimatedIcon><ExternalLink size={16} /></AnimatedIcon>
                         {t.visit}
                       </a>
                     ) : project.soon ? (
@@ -374,7 +374,7 @@ const Projects = () => {
                         aria-label={`${t.code} · ${project.title}`}
                         className="bg-white/10 hover:bg-white/20 text-white py-2 px-4 rounded-xl font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
                       >
-                        <Github size={16} />
+                        <AnimatedIcon><Github size={16} /></AnimatedIcon>
                       </a>
                     )}
                   </div>
@@ -389,13 +389,15 @@ const Projects = () => {
                 </h3>
                 {project.role && (
                   <div className="flex items-center gap-1.5 text-blue-300 text-xs font-semibold mb-3">
-                    {project.role.type === 'solo' ? (
-                      <User size={14} />
-                    ) : project.role.type === 'collab' ? (
-                      <Users size={14} />
-                    ) : (
-                      <CreditCard size={14} />
-                    )}
+                    <AnimatedIcon>
+                      {project.role.type === 'solo' ? (
+                        <User size={14} />
+                      ) : project.role.type === 'collab' ? (
+                        <Users size={14} />
+                      ) : (
+                        <CreditCard size={14} />
+                      )}
+                    </AnimatedIcon>
                     {project.role[language]}
                   </div>
                 )}
@@ -424,10 +426,9 @@ const Projects = () => {
                     className="group/btn inline-flex items-center gap-2 text-blue-200 hover:text-white font-semibold text-sm transition-colors duration-240"
                   >
                     {t.visit}
-                    <ArrowRight
-                      size={16}
-                      className="group-hover/btn:translate-x-1 transition-transform duration-240"
-                    />
+                    <AnimatedIcon className="group-hover/btn:translate-x-1 transition-transform duration-240">
+                      <ArrowRight size={16} />
+                    </AnimatedIcon>
                   </a>
                 )}
               </div>

@@ -2,6 +2,7 @@ import { useState, useEffect, MouseEvent } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
+import AnimatedIcon from './AnimatedIcon';
 
 const translations = {
   en: {
@@ -103,7 +104,9 @@ const Navigation = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-blue-200 hover:text-white transition-colors duration-300"
             >
-              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              <AnimatedIcon key={isMenuOpen ? 'close' : 'open'}>
+                {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              </AnimatedIcon>
             </button>
           </div>
         </div>

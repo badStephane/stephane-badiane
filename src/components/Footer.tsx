@@ -119,7 +119,7 @@ const Footer = () => {
         <div className="border-t border-blue-500/20 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-blue-200 flex items-center gap-2">
-              &copy; {currentYear} Stephane Portfolio. {t.copyright} <Heart className="text-red-500" size={16} /> {t.copyrightEnd}
+              &copy; {currentYear} Stephane Portfolio. {t.copyright} <AnimatedIcon className="animate-pulse"><Heart className="text-red-500" size={16} /></AnimatedIcon> {t.copyrightEnd}
             </p>
             
             <button

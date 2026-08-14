@@ -287,12 +287,12 @@ const Contact = () => {
               <div aria-live="polite" className="min-h-[1.5rem]">
                 {status === 'success' && (
                   <p className="flex items-center justify-center gap-2 text-sky-400 font-medium animate-fade-up">
-                    <CheckCircle2 size={20} /> {feedback.success}
+                    <AnimatedIcon><CheckCircle2 size={20} /></AnimatedIcon> {feedback.success}
                   </p>
                 )}
                 {status === 'error' && (
                   <p className="flex items-center justify-center gap-2 text-red-400 font-medium animate-fade-up">
-                    <AlertCircle size={20} /> {feedback.error}
+                    <AnimatedIcon><AlertCircle size={20} /></AnimatedIcon> {feedback.error}
                   </p>
                 )}
               </div>
@@ -309,7 +309,7 @@ const Contact = () => {
                     </>
                   ) : (
                     <>
-                      {t.sendButton} <Send size={20} />
+                      {t.sendButton} <AnimatedIcon><Send size={20} /></AnimatedIcon>
                     </>
                   )}
                 </button>
