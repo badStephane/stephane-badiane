@@ -3,6 +3,7 @@ import { Mail, Phone, Send, MessageCircle, Loader2, CheckCircle2, AlertCircle } 
 import { useLanguage } from './LanguageContext';
 import emailjs from '@emailjs/browser';
 import Reveal from './Reveal';
+import AnimatedIcon from './AnimatedIcon';
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -180,7 +181,7 @@ const Contact = () => {
           <div className="lg:sticky lg:top-28">
             <Reveal variant="left">
               <div className="inline-flex items-center gap-2 bg-emerald-500/10 backdrop-blur-sm border border-emerald-400/20 rounded-full px-6 py-2 mb-6">
-                <MessageCircle className="text-emerald-400" size={16} />
+                <AnimatedIcon><MessageCircle className="text-emerald-400" size={16} /></AnimatedIcon>
                 <span className="font-mono text-xs tracking-[0.2em] uppercase text-emerald-300">{t.badge}</span>
               </div>
               <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
@@ -197,8 +198,8 @@ const Contact = () => {
                 <Reveal key={index} variant="left" delay={index * 100} className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-6 hover:bg-white/[0.07] transition-all duration-320 ease-out-expo">
                   <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                   <div className="relative flex flex-wrap items-center gap-4">
-                    <div className={`shrink-0 inline-flex p-4 rounded-2xl bg-gradient-to-r ${card.gradient} ${card.textOn}`}>
-                      {card.icon}
+                    <div className={`shrink-0 inline-flex p-4 rounded-2xl bg-gradient-to-r ${card.gradient} ${card.textOn} transition-transform duration-320 ease-out-expo group-hover:scale-110 group-hover:-rotate-6`}>
+                      <AnimatedIcon delay={index * 100}>{card.icon}</AnimatedIcon>
                     </div>
                     <div className="min-w-0 flex-1">
                       <h3 className="text-lg font-bold text-white">{card.title}</h3>

@@ -1,5 +1,6 @@
 import { Github, Linkedin, Twitter, Heart, ArrowUp, Instagram } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
+import AnimatedIcon from './AnimatedIcon';
 
 const translations = {
   en: {
@@ -71,8 +72,8 @@ const Footer = () => {
                     aria-label={social.label}
                     className="group bg-blue-500/10 hover:bg-gradient-to-r hover:from-blue-600 hover:to-cyan-600 p-4 rounded-2xl transition-all duration-300 transform hover:scale-110 border border-blue-500/20"
                   >
-                    <div className="text-blue-400 group-hover:text-white transition-colors duration-300">
-                      {social.icon}
+                    <div className="text-blue-400 group-hover:text-white transition-all duration-300 group-hover:rotate-12">
+                      <AnimatedIcon delay={index * 100}>{social.icon}</AnimatedIcon>
                     </div>
                   </a>
                 ))}
@@ -126,7 +127,7 @@ const Footer = () => {
               className="bg-gradient-to-r from-emerald-400 to-lime-500 text-slate-900 p-3 rounded-xl hover:from-emerald-300 hover:to-lime-400 transition-all duration-300 transform hover:scale-110 shadow-lg"
               aria-label={t.scrollTop}
             >
-              <ArrowUp size={20} />
+              <AnimatedIcon><ArrowUp size={20} /></AnimatedIcon>
             </button>
           </div>
         </div>

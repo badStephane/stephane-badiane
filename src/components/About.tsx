@@ -2,6 +2,7 @@ import { Target } from 'lucide-react';
 
 import { useLanguage } from './LanguageContext';
 import Reveal from './Reveal';
+import AnimatedIcon from './AnimatedIcon';
 
 const translations = {
   en: {
@@ -46,7 +47,7 @@ const About = () => {
 
           <Reveal variant="right" delay={120} className="text-white order-1 lg:order-2">
             <div className="inline-flex items-center gap-2 bg-emerald-500/10 backdrop-blur-sm border border-emerald-400/20 rounded-full px-6 py-2 mb-8">
-              <Target size={16} className="text-emerald-400" />
+              <AnimatedIcon><Target size={16} className="text-emerald-400" /></AnimatedIcon>
               <span className="font-mono text-xs tracking-[0.2em] uppercase text-emerald-300">{t.badge}</span>
             </div>
 

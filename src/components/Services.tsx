@@ -1,6 +1,7 @@
 import { Palette, Code, Zap, Tangent } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import Reveal from './Reveal';
+import AnimatedIcon from './AnimatedIcon';
 
 const translations = {
   en: {
@@ -115,7 +116,7 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <Reveal className="text-center mb-20">
           <div className="inline-flex items-center gap-2 bg-emerald-500/10 backdrop-blur-sm border border-emerald-400/20 rounded-full px-6 py-2 mb-6">
-            <Zap className="text-emerald-400" size={16} />
+            <AnimatedIcon><Zap className="text-emerald-400" size={16} /></AnimatedIcon>
             <span className="font-mono text-xs tracking-[0.2em] uppercase text-emerald-300">{t.sectionSubtitle}</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
@@ -139,7 +140,7 @@ const Services = () => {
               <div className="p-8 h-full flex flex-col">
                 <div className="flex items-start justify-between mb-6">
                   <div className={`p-4 rounded-2xl ${a.icon} shadow-lg transition-transform duration-320 ease-out-expo group-hover:-rotate-6 group-hover:scale-110`}>
-                    {service.icon}
+                    <AnimatedIcon delay={index * 120}>{service.icon}</AnimatedIcon>
                   </div>
                   <div className="text-right">
                     <span className={`font-mono text-6xl font-bold ${a.number}`}>

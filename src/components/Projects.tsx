@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ExternalLink, Github, ArrowRight, FolderGit2, User, Users, CreditCard } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import Reveal from './Reveal';
+import AnimatedIcon from './AnimatedIcon';
 
 /** Domaines d'expertise (ordre d'affichage des sections) */
 type Domain = 'fullstack' | 'uiux' | 'graphisme';
@@ -247,7 +248,7 @@ const Projects = () => {
         {/* Header */}
         <Reveal className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-emerald-500/10 backdrop-blur-sm border border-emerald-400/20 rounded-full px-6 py-2 mb-6">
-            <FolderGit2 className="text-emerald-400" size={16} />
+            <AnimatedIcon><FolderGit2 className="text-emerald-400" size={16} /></AnimatedIcon>
             <span className="font-mono text-xs tracking-[0.2em] uppercase text-emerald-300">{t.badge}</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-6">

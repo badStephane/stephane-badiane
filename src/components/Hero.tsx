@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Code2, Palette, ArrowRight, Send } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
+import AnimatedIcon from './AnimatedIcon';
 
 const translations = {
   en: {
@@ -154,11 +155,15 @@ const Hero = () => {
 
               {/* Floating Cards */}
               <div className="absolute -top-6 -right-6 bg-gradient-to-r from-emerald-400 to-lime-500 p-4 rounded-2xl shadow-2xl animate-float">
-                <Code2 className="text-slate-900" size={24} />
+                <AnimatedIcon delay={300} className="transition-transform duration-320 ease-out-expo hover:scale-110 hover:-rotate-6">
+                  <Code2 className="text-slate-900" size={24} />
+                </AnimatedIcon>
               </div>
 
               <div className="absolute bottom-6 -left-6 bg-slate-900 border border-blue-500/30 p-4 rounded-2xl shadow-2xl animate-float [animation-delay:1.5s]">
-                <Palette className="text-blue-300" size={24} />
+                <AnimatedIcon delay={600} className="transition-transform duration-320 ease-out-expo hover:scale-110 hover:rotate-6">
+                  <Palette className="text-blue-300" size={24} />
+                </AnimatedIcon>
               </div>
             </div>
           </div>
