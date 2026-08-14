@@ -104,7 +104,7 @@ const Navigation = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-blue-200 hover:text-white transition-colors duration-300"
             >
-              <AnimatedIcon key={isMenuOpen ? 'close' : 'open'}>
+              <AnimatedIcon key={isMenuOpen ? 'close' : 'open'} loop={false}>
                 {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
               </AnimatedIcon>
             </button>

@@ -26,14 +26,14 @@ const LanguageSwitcher: React.FC = () => {
         onClick={() => setLanguage('en')}
         aria-label={t.switchToEn}
       >
-        <AnimatedIcon className="inline mr-1"><Globe size={18} /></AnimatedIcon> EN
+        <AnimatedIcon motion="spin" className="inline mr-1"><Globe size={18} /></AnimatedIcon> EN
       </button>
       <button
         className={`p-2 rounded-lg border font-mono text-sm ${language === 'fr' ? 'bg-emerald-500/15 border-emerald-400/40 text-emerald-300' : 'border-white/10 text-blue-200 hover:bg-white/5'}`}
         onClick={() => setLanguage('fr')}
         aria-label={t.switchToFr}
       >
-        <AnimatedIcon className="inline mr-1"><Globe size={18} /></AnimatedIcon> FR
+        <AnimatedIcon motion="spin" className="inline mr-1"><Globe size={18} /></AnimatedIcon> FR
       </button>
     </div>
   );

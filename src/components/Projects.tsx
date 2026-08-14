@@ -426,7 +426,7 @@ const Projects = () => {
                     className="group/btn inline-flex items-center gap-2 text-blue-200 hover:text-white font-semibold text-sm transition-colors duration-240"
                   >
                     {t.visit}
-                    <AnimatedIcon className="group-hover/btn:translate-x-1 transition-transform duration-240">
+                    <AnimatedIcon motion="nudge-x" className="group-hover/btn:translate-x-1 transition-transform duration-240">
                       <ArrowRight size={16} />
                     </AnimatedIcon>
                   </a>

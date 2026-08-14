@@ -292,7 +292,7 @@ const Contact = () => {
                 )}
                 {status === 'error' && (
                   <p className="flex items-center justify-center gap-2 text-red-400 font-medium animate-fade-up">
-                    <AnimatedIcon><AlertCircle size={20} /></AnimatedIcon> {feedback.error}
+                    <AnimatedIcon motion="flash"><AlertCircle size={20} /></AnimatedIcon> {feedback.error}
                   </p>
                 )}
               </div>
@@ -309,7 +309,7 @@ const Contact = () => {
                     </>
                   ) : (
                     <>
-                      {t.sendButton} <AnimatedIcon><Send size={20} /></AnimatedIcon>
+                      {t.sendButton} <AnimatedIcon motion="nudge-x"><Send size={20} /></AnimatedIcon>
                     </>
                   )}
                 </button>

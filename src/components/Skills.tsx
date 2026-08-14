@@ -102,6 +102,8 @@ const Skills = () => {
   };
 
   const active = skillCategories[activeCategory as keyof typeof skillCategories];
+  // Le globe "Frontend" tourne, les autres catégories gardent le tracé par défaut.
+  const iconMotion = (key: string) => (key === 'frontend' ? 'spin' : 'draw');
 
   return (
     <section className="py-20 relative overflow-hidden bg-slate-950">
@@ -139,7 +141,7 @@ const Skills = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative text-center">
                 <div className="flex justify-center mb-3 text-emerald-400">
-                  <AnimatedIcon delay={index * 80}>{achievement.icon}</AnimatedIcon>
+                  <AnimatedIcon delay={index * 80} motion={index === 1 ? 'flash' : 'draw'}>{achievement.icon}</AnimatedIcon>
                 </div>
                 <div className="font-mono text-3xl md:text-4xl font-bold text-white mb-2">
                   {achievement.number}
@@ -165,7 +167,10 @@ const Skills = () => {
               }`}
             >
               <div className="flex items-center gap-2">
-                <AnimatedIcon className="transition-transform duration-320 ease-out-expo group-hover:scale-110 group-hover:-rotate-6">
+                <AnimatedIcon
+                  motion={iconMotion(key)}
+                  className="transition-transform duration-320 ease-out-expo group-hover:scale-110 group-hover:-rotate-6"
+                >
                   {category.icon}
                 </AnimatedIcon>
                 <span className="hidden sm:inline">{category.title}</span>
@@ -179,7 +184,7 @@ const Skills = () => {
           <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-blue-500/20">
             <div className="text-center mb-10">
               <h3 className="text-3xl font-bold text-white mb-2 flex items-center justify-center gap-3">
-                <AnimatedIcon key={activeCategory}>{active.icon}</AnimatedIcon>
+                <AnimatedIcon key={activeCategory} motion={iconMotion(activeCategory)}>{active.icon}</AnimatedIcon>
                 {active.title}
               </h3>
               <div className={`w-24 h-1 bg-gradient-to-r ${active.color} mx-auto rounded-full`}></div>

@@ -119,7 +119,7 @@ const Footer = () => {
         <div className="border-t border-blue-500/20 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-blue-200 flex items-center gap-2">
-              &copy; {currentYear} Stephane Portfolio. {t.copyright} <AnimatedIcon className="animate-pulse"><Heart className="text-red-500" size={16} /></AnimatedIcon> {t.copyrightEnd}
+              &copy; {currentYear} Stephane Portfolio. {t.copyright} <AnimatedIcon motion="flash"><Heart className="text-red-500" size={16} /></AnimatedIcon> {t.copyrightEnd}
             </p>
             
             <button
@@ -127,7 +127,7 @@ const Footer = () => {
               className="bg-gradient-to-r from-emerald-400 to-lime-500 text-slate-900 p-3 rounded-xl hover:from-emerald-300 hover:to-lime-400 transition-all duration-300 transform hover:scale-110 shadow-lg"
               aria-label={t.scrollTop}
             >
-              <AnimatedIcon><ArrowUp size={20} /></AnimatedIcon>
+              <AnimatedIcon motion="nudge-y"><ArrowUp size={20} /></AnimatedIcon>
             </button>
           </div>
         </div>

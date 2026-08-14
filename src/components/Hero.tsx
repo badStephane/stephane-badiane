@@ -129,7 +129,7 @@ const Hero = () => {
                 className="group bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/15 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
               >
                 {t.viewWork}
-                <AnimatedIcon className="group-hover:translate-x-1 transition-transform duration-240">
+                <AnimatedIcon motion="nudge-x" className="group-hover:translate-x-1 transition-transform duration-240">
                   <ArrowRight size={20} />
                 </AnimatedIcon>
               </a>
@@ -138,7 +138,7 @@ const Hero = () => {
                 className="group bg-gradient-to-r from-emerald-400 to-lime-500 text-slate-900 px-8 py-4 rounded-xl font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 hover:shadow-lg hover:shadow-emerald-500/30 flex items-center justify-center gap-2"
               >
                 {t.contact}
-                <AnimatedIcon className="group-hover:translate-x-0.5 transition-transform duration-240">
+                <AnimatedIcon motion="nudge-x" className="group-hover:translate-x-0.5 transition-transform duration-240">
                   <Send size={18} />
                 </AnimatedIcon>
               </a>

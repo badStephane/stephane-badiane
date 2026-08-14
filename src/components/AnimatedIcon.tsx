@@ -1,12 +1,28 @@
 import { useEffect, useRef, ReactElement } from 'react';
 
+type Motion = 'draw' | 'spin' | 'nudge-x' | 'nudge-y' | 'flash';
+
 type AnimatedIconProps = {
-  /** Icône lucide-react (SVG stroke) à faire "se dessiner" en boucle */
+  /** Icône lucide-react (SVG stroke) à animer */
   children: ReactElement;
-  /** Délai avant le premier tracé, en ms (utile pour décaler une grille) */
+  /** Délai avant le premier passage, en ms (utile pour décaler une grille) */
   delay?: number;
   /** Classes appliquées au conteneur (ex: micro-interaction au survol du parent) */
   className?: string;
+  /**
+   * Type de mouvement, choisi selon ce que représente l'icône :
+   *  - 'draw' (défaut) : le contour se trace (pastilles pleines type
+   *    Palette : voir plus bas) — pour les icônes "objet/outil".
+   *  - 'spin' : rotation continue — pour un globe.
+   *  - 'nudge-x' / 'nudge-y' : léger va-et-vient directionnel — pour
+   *    une flèche qui pointe horizontalement/verticalement.
+   *  - 'flash' : pulsation scale + luminosité — pour un éclair, une
+   *    étoile, un cœur : tout ce qui "scintille" plutôt que se dessine.
+   */
+  motion?: Motion;
+  /** Anime en boucle continue tant que visible (défaut true). À couper
+   *  pour une icône de contrôle (ex: bascule menu) plutôt que décorative. */
+  loop?: boolean;
 };
 
 /** Durée du tracé du contour, en ms */
@@ -20,27 +36,53 @@ const UNDRAW_MS = 450;
 /** Pause à l'état effacé avant de redessiner, en ms */
 const GAP_MS = 250;
 
+const CSS_MOTION: Record<Exclude<Motion, 'draw'>, { name: string; duration: string; timing: string }> = {
+  spin: { name: 'icon-spin', duration: '5s', timing: 'linear' },
+  'nudge-x': { name: 'icon-nudge-x', duration: '1.6s', timing: 'ease-in-out' },
+  'nudge-y': { name: 'icon-nudge-y', duration: '1.6s', timing: 'ease-in-out' },
+  flash: { name: 'icon-flash', duration: '1.8s', timing: 'ease-in-out' },
+};
+
 /**
- * Fait "se dessiner" une icône SVG stroke-based (lucide-react) en boucle
- * continue tant qu'elle est visible à l'écran. Deux types de formes sont
- * traités différemment :
- *  - les contours (path/line/rect/…) se tracent via `getTotalLength()`,
- *    supporté nativement sur toutes les formes SVG de base dans les
- *    navigateurs modernes ;
- *  - les pastilles pleines (`fill="currentColor"`, ex : les points de couleur
- *    de l'icône Palette) sont trop petites pour qu'un tracé de contour se
- *    voie : elles "se posent" une à une (scale + fondu) une fois le contour
- *    terminé, plutôt que de se dessiner en même temps que lui.
- * La boucle se met en pause quand l'icône sort du viewport (perf/batterie)
- * et reprend à son retour. Respecte `prefers-reduced-motion`.
+ * Anime une icône lucide-react quand elle entre dans le viewport, avec un
+ * motif adapté à ce qu'elle représente (voir `motion`). Se met en pause hors
+ * du viewport (perf/batterie) et reprend au retour. Respecte
+ * `prefers-reduced-motion`.
  */
-const AnimatedIcon = ({ children, delay = 0, className = '' }: AnimatedIconProps) => {
+const AnimatedIcon = ({ children, delay = 0, className = '', motion = 'draw', loop = true }: AnimatedIconProps) => {
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hasIO = typeof IntersectionObserver !== 'undefined';
+
+    // --- Motifs CSS simples (rotation, nudge, flash) : une seule animation
+    // posée sur le conteneur, mise en pause/reprise selon la visibilité. ---
+    if (motion !== 'draw') {
+      if (reduced) return;
+      const { name, duration, timing } = CSS_MOTION[motion];
+      el.style.animation = `${name} ${duration} ${timing} ${loop ? 'infinite' : '1'}`;
+      el.style.animationPlayState = 'paused';
+      el.style.animationDelay = `${delay}ms`;
+
+      if (!hasIO) {
+        el.style.animationPlayState = 'running';
+        return;
+      }
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          el.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+        },
+        { threshold: 0.4 }
+      );
+      observer.observe(el);
+      return () => observer.disconnect();
+    }
+
+    // --- Motif 'draw' : tracé du contour + pastilles pleines qui se posent ---
     const shapes = el.querySelectorAll<SVGGeometryElement>('path, circle, line, polyline, polygon, rect, ellipse');
     if (shapes.length === 0) return;
 
@@ -65,10 +107,7 @@ const AnimatedIcon = ({ children, delay = 0, className = '' }: AnimatedIconProps
       });
     };
 
-    if (
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
-      typeof IntersectionObserver === 'undefined'
-    ) {
+    if (reduced || !hasIO) {
       showStatic();
       return;
     }
@@ -105,6 +144,7 @@ const AnimatedIcon = ({ children, delay = 0, className = '' }: AnimatedIconProps
           shape.style.opacity = '1';
         }, (outlines.length ? DRAW_MS : 0) + i * DOT_STAGGER_MS);
       });
+      if (!loop) return;
       const total = (outlines.length ? DRAW_MS : 0) + dots.length * DOT_STAGGER_MS;
       schedule(undraw, total + HOLD_MS);
     };
@@ -130,10 +170,9 @@ const AnimatedIcon = ({ children, delay = 0, className = '' }: AnimatedIconProps
             started = true;
             schedule(drawIn, delay);
           }
-        } else {
-          // Hors champ : on suspend la boucle (perf), l'icône reste dans son
-          // état courant et reprendra au prochain redraw plutôt qu'à la
-          // reprise exacte du cycle précédent.
+        } else if (loop) {
+          // Hors champ : on suspend la boucle (perf). Sans boucle (loop=false),
+          // une fois tracée, l'icône reste dans son état final.
           clearTimers();
           started = false;
         }
@@ -158,7 +197,7 @@ const AnimatedIcon = ({ children, delay = 0, className = '' }: AnimatedIconProps
       clearTimers();
       window.clearTimeout(safety);
     };
-  }, [delay]);
+  }, [delay, motion, loop]);
 
   return (
     <span ref={ref} className={`inline-flex ${className}`}>
