@@ -1,188 +1,77 @@
-import { useEffect, useRef, useState } from 'react';
-import { Code2, Palette, ArrowRight, Send } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
-import AnimatedIcon from './AnimatedIcon';
+import PillButton from './ui/PillButton';
 
 const translations = {
   en: {
-    sectionTitle: 'Welcome',
-    sectionSubtitle: 'I AM STEPHANE BADIANE',
-    description: 'Creative designer & developer crafting exceptional digital experiences with passion, innovation, and cutting-edge technology.',
-    alt: 'GDNIGHTMARE - Creative Professional',
+    kicker: 'PORTFOLIO — 2026',
+    titleLine1: 'FULL-STACK',
+    titleLine2: 'DEVELOPER &',
+    titleLine3: 'DESIGNER',
+    description:
+      'I design and build complete digital products from interface to backend for founders and teams who need it done right, end to end.',
     viewWork: 'View my work',
     contact: 'Contact me',
+    alt: 'Stéphane Badiane, développeur full-stack et designer',
   },
   fr: {
-    sectionTitle: 'Bienvenue',
-    sectionSubtitle: 'JE SUIS STEPHANE BADIANE',
-    description: 'Concepteur et développeur créatif qui conçoit des expériences numériques exceptionnelles avec passion, innovation et technologie de pointe.',
-    alt: 'GDNIGHTMARE - Professionnel Créatif',
+    kicker: 'PORTFOLIO — 2026',
+    titleLine1: 'DÉVELOPPEUR',
+    titleLine2: 'FULL-STACK &',
+    titleLine3: 'DESIGNER',
+    description:
+      "Je conçois et je développe des produits numériques complets, de l'interface au backend, pour des porteurs de projet qui veulent que ce soit bien fait, du début à la fin.",
     viewWork: 'Voir mes projets',
     contact: 'Me contacter',
+    alt: 'Stéphane Badiane, développeur full-stack et designer',
   },
 };
+
+const DISPLAY_FONT = "font-['Space_Grotesk'] uppercase tracking-tight";
 
 const Hero = () => {
   const { language } = useLanguage();
   const t = translations[language];
-  // Halo qui suit la souris : piloté en direct via ref + rAF (aucun re-render React)
-  const blobRef = useRef<HTMLDivElement>(null);
-  // La vidéo n'est chargée que sur desktop (économie de data sur mobile / bas débit)
-  const [showVideo, setShowVideo] = useState(
-    () => typeof window !== 'undefined' && window.matchMedia('(min-width: 640px)').matches
-  );
-
-  useEffect(() => {
-    const mql = window.matchMedia('(min-width: 640px)');
-    const update = () => setShowVideo(mql.matches);
-    mql.addEventListener('change', update);
-    return () => mql.removeEventListener('change', update);
-  }, []);
-
-  useEffect(() => {
-    // Pas de parallaxe sur écran tactile ou si l'utilisateur réduit les animations
-    if (
-      !window.matchMedia('(pointer: fine)').matches ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    ) {
-      return;
-    }
-
-    let raf = 0;
-    const handleMouseMove = (e: MouseEvent) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        if (blobRef.current) {
-          // translate3d = composité sur le GPU → pas de layout/paint
-          blobRef.current.style.transform = `translate3d(${e.clientX * 0.02}px, ${e.clientY * 0.02}px, 0)`;
-        }
-      });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
 
   return (
-    <section id="home" className="pt-20 min-h-screen bg-slate-950 flex items-center relative overflow-hidden">
-      {/* Animated Background */}
-      {/* Video Background Positioned Absolutely */}
-      {showVideo ? (
-        <video
-          className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
-          role="presentation"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          poster="/hero-poster.jpg"
-          src="/hero-bg.mp4"
-        />
-      ) : (
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center z-0 pointer-events-none"
-          style={{ backgroundImage: 'url(/hero-poster.jpg)' }}
-          role="presentation"
-        />
-      )}
-      {/* Content container with relative to keep content above the video */}
-      <div className='flex relative z-10 w-full'>
+    <section
+      id="home"
+      className="relative flex min-h-screen items-end overflow-hidden bg-[linear-gradient(135deg,#5b84b5_0%,#2e4a70_100%)] pt-20"
+    >
+      <img
+        src="/images/profile-cutout.png"
+        alt={t.alt}
+        className="pointer-events-none absolute bottom-0 left-1/2 z-0 h-[58%] w-auto -translate-x-1/2 select-none object-contain object-bottom sm:h-[70%] lg:left-auto lg:right-[6%] lg:h-[84%] lg:translate-x-0"
+      />
 
-      <div className="absolute inset-0 bg-dot-grid [mask-image:radial-gradient(ellipse_60%_60%_at_50%_40%,black,transparent)]"></div>
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(52,211,153,0.08),transparent_60%)]"></div>
-        {/* Halo qui suit la souris · animé via ref (cf. plus haut), désactivé sur mobile */}
-        <div
-          ref={blobRef}
-          className="absolute left-1/4 top-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-xl animate-pulse hidden sm:block will-change-transform"
-        ></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-blue-600/5 rounded-full blur-lg animate-pulse hidden md:block"></div>
-      </div>
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 px-4 pb-12 pt-16 sm:px-6 lg:grid-cols-[1.3fr_1fr] lg:px-8 lg:pb-20">
+        <div>
+          <p className={`mb-6 text-sm font-semibold tracking-[0.3em] text-white/70 ${DISPLAY_FONT}`}>
+            {t.kicker}
+          </p>
+          <h1
+            className={`text-[clamp(2.75rem,7vw,6.25rem)] font-semibold leading-none text-white ${DISPLAY_FONT}`}
+          >
+            <span className="block">{t.titleLine1}</span>
+            <span className="block">{t.titleLine2}</span>
+            <span className="block text-white/40">{t.titleLine3}</span>
+          </h1>
 
-      {/* Floating Elements */}
-      <div className="absolute top-1/4 left-10 w-3 h-3 bg-emerald-400 rounded-full animate-ping hidden sm:block"></div>
-      <div className="absolute bottom-1/4 right-10 w-4 h-4 bg-blue-300 rounded-full animate-pulse hidden sm:block"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 gap-x-12 items-center">
-          <div className="text-white text-center lg:text-left motion-safe:animate-fade-up">
-            <div className="inline-flex items-center gap-2 mb-6 font-mono text-xs sm:text-sm tracking-[0.2em] text-emerald-300 uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              {t.sectionTitle}
-            </div>
-            <h1 className="font-black mb-8 leading-tight">
-              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl block bg-gradient-to-br from-white via-white to-emerald-200 bg-clip-text text-transparent">
-                {t.sectionSubtitle}
-              </span>
-            </h1>
-
-            <p className="text-xl md:text-2xl mb-10 text-blue-100 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              {t.description}
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a
-                href="#projects"
-                className="group bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/15 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
-              >
+          <div className="mt-8 max-w-md">
+            <p className="text-lg font-semibold leading-relaxed text-white/85">{t.description}</p>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <PillButton href="#projects" tone="light">
                 {t.viewWork}
-                <AnimatedIcon motion="nudge-x" className="group-hover:translate-x-1 transition-transform duration-240">
-                  <ArrowRight size={20} />
-                </AnimatedIcon>
-              </a>
-              <a
-                href="#contact"
-                className="group bg-gradient-to-r from-emerald-400 to-lime-500 text-slate-900 px-8 py-4 rounded-xl font-semibold transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95 hover:shadow-lg hover:shadow-emerald-500/30 flex items-center justify-center gap-2"
-              >
+                <ArrowRight size={18} />
+              </PillButton>
+              <PillButton href="#contact" tone="dark" className="border border-white/20">
                 {t.contact}
-                <AnimatedIcon motion="nudge-x" className="group-hover:translate-x-0.5 transition-transform duration-240">
-                  <Send size={18} />
-                </AnimatedIcon>
-              </a>
-            </div>
-          </div>
-          
-          <div className="flex justify-center lg:justify-end mt-8">
-            <div className="relative">
-              <div className="w-48 h-48 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-emerald-500/10 to-blue-500/10 backdrop-blur-sm flex items-center justify-center overflow-hidden border-4 border-white/10 shadow-2xl">
-                <img
-                  src="/mypp.webp"
-                  alt={t.alt}
-                  width={384}
-                  height={384}
-                  className="w-full h-full object-cover rounded-full transform hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-
-              {/* Floating Cards */}
-              <div className="absolute -top-6 -right-6 bg-gradient-to-r from-emerald-400 to-lime-500 p-4 rounded-2xl shadow-2xl animate-float">
-                <AnimatedIcon delay={300} className="transition-transform duration-320 ease-out-expo hover:scale-110 hover:-rotate-6">
-                  <Code2 className="text-slate-900" size={24} />
-                </AnimatedIcon>
-              </div>
-
-              <div className="absolute bottom-6 -left-6 bg-slate-900 border border-blue-500/30 p-4 rounded-2xl shadow-2xl animate-float [animation-delay:1.5s]">
-                <AnimatedIcon delay={600} className="transition-transform duration-320 ease-out-expo hover:scale-110 hover:rotate-6">
-                  <Palette className="text-blue-300" size={24} />
-                </AnimatedIcon>
-              </div>
+              </PillButton>
             </div>
           </div>
         </div>
-      </div>
-      
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
-        <div className="w-6 h-10 border-2 border-emerald-400/60 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-emerald-400 rounded-full mt-2 animate-pulse"></div>
-        </div>
-      </div>
       </div>
     </section>
-    
   );
 };
 
