@@ -36,15 +36,16 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-end overflow-hidden bg-[linear-gradient(135deg,#5b84b5_0%,#2e4a70_100%)] pt-20"
+      className="relative flex min-h-screen items-center overflow-hidden bg-[linear-gradient(135deg,#5b84b5_0%,#2e4a70_100%)] pt-20 lg:items-end"
     >
       <img
         src="/images/profile-cutout.png"
         alt={t.alt}
-        className="pointer-events-none absolute bottom-0 left-1/2 z-0 h-[58%] w-auto -translate-x-1/2 select-none object-contain object-bottom sm:h-[70%] lg:left-auto lg:right-[6%] lg:h-[84%] lg:translate-x-0"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[48%] w-full select-none object-cover object-bottom [mask-image:linear-gradient(to_bottom,transparent_0%,black_35%)] lg:inset-auto lg:bottom-0 lg:left-auto lg:right-[6%] lg:top-auto lg:h-[84%] lg:w-auto lg:object-contain lg:[mask-image:none]"
       />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#2e4a70]/15 via-transparent to-[#0a0a0a]/75 lg:hidden" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 px-4 pb-12 pt-16 sm:px-6 lg:grid-cols-[1.3fr_1fr] lg:px-8 lg:pb-20">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 px-6 pb-12 pt-16 text-center sm:px-6 lg:grid-cols-[1.3fr_1fr] lg:px-8 lg:pb-20 lg:text-left">
         <div>
           <p className={`mb-6 text-sm font-semibold tracking-[0.3em] text-white/70 ${DISPLAY_FONT}`}>
             {t.kicker}
@@ -57,9 +58,9 @@ const Hero = () => {
             <span className="block text-white/40">{t.titleLine3}</span>
           </h1>
 
-          <div className="mt-8 max-w-md">
+          <div className="mx-auto mt-8 max-w-md lg:mx-0">
             <p className="text-lg font-semibold leading-relaxed text-white/85">{t.description}</p>
-            <div className="mt-6 flex flex-wrap gap-4">
+            <div className="mt-6 flex flex-wrap justify-center gap-4 lg:justify-start">
               <PillButton href="#projects" tone="light">
                 {t.viewWork}
                 <ArrowRight size={18} />
