@@ -9,7 +9,7 @@ const DOMAIN_ORDER: Domain[] = ['fullstack', 'uiux', 'graphisme'];
 
 const translations = {
   en: {
-    label: 'OUR WORK',
+    label: 'MY WORK',
     title: 'RECENT PROJECTS',
     intro:
       'A selection of websites and applications I have designed and developed, from concept to deployment.',

@@ -4,23 +4,23 @@ import PillButton from './ui/PillButton';
 
 const translations = {
   en: {
-    kicker: 'CODANIS · DAKAR',
-    titleLine1: 'DIGITAL TOOLS',
-    titleLine2: 'THAT KEEP',
-    titleLine3: 'RUNNING',
+    kicker: 'STÉPHANE BADIANE · DAKAR',
+    titleLine1: 'FULL-STACK',
+    titleLine2: 'DEVELOPER',
+    titleLine3: '& DESIGNER',
     description:
-      'I design and run websites and applications for SMEs and startups in West Africa. One point of contact, from the first conversation to launch.',
+      "I design and build web applications, from the first mockup to launch. Here you'll find my projects, the tools I use and how to reach me.",
     viewWork: 'View my work',
     contact: 'Contact me',
     alt: 'Stéphane Badiane, développeur full-stack et designer',
   },
   fr: {
-    kicker: 'CODANIS · DAKAR',
-    titleLine1: 'DES OUTILS',
-    titleLine2: 'NUMÉRIQUES',
-    titleLine3: 'QUI TOURNENT',
+    kicker: 'STÉPHANE BADIANE · DAKAR',
+    titleLine1: 'DÉVELOPPEUR',
+    titleLine2: 'FULL-STACK',
+    titleLine3: 'ET DESIGNER',
     description:
-      "Je conçois et je fais tourner les sites et les applications des PME et des startups d'Afrique de l'Ouest. Un seul interlocuteur, du premier échange à la mise en ligne.",
+      "Je conçois et je développe des applications web, de la première maquette à la mise en ligne. Ici, vous trouverez mes projets, les outils que j'utilise et comment me joindre.",
     viewWork: 'Voir mes projets',
     contact: 'Me contacter',
     alt: 'Stéphane Badiane, développeur full-stack et designer',

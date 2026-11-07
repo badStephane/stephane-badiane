@@ -3,7 +3,7 @@ import { useLanguage } from './LanguageContext';
 
 const translations = {
   en: {
-    baseline: 'Websites, applications and digital tools for SMEs and startups in West Africa.',
+    baseline: 'Full-stack developer and designer in Dakar. I build web products, from design to deployment.',
     navigation: 'NAVIGATION',
     connect: 'CONNECT',
     navLinks: [
@@ -16,7 +16,7 @@ const translations = {
     scrollTop: 'Back to top',
   },
   fr: {
-    baseline: "Sites, applications et outils numériques pour les PME et les startups d'Afrique de l'Ouest.",
+    baseline: 'Développeur full-stack et designer à Dakar. Je construis des produits web, du design au déploiement.',
     navigation: 'NAVIGATION',
     connect: 'CONNECT',
     navLinks: [
@@ -51,12 +51,12 @@ const Footer = () => {
           <div className="sm:col-span-1">
             <a href="#home" className="-ml-2.5 inline-block">
               <img
-                src="/images/codanis-horizontal-color-dark-bg.svg"
-                width={178}
-                height={44}
+                src="/brand/gdnightmare-logo-dark.svg"
+                width={180}
+                height={40}
                 loading="lazy"
-                alt="Codanis"
-                className="h-11 w-auto"
+                alt="gdnightmare"
+                className="h-10 w-auto"
               />
             </a>
             <p className="mt-6 max-w-xs font-body text-sm font-medium leading-relaxed text-white/50">

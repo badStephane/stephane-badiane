@@ -16,12 +16,12 @@ const translations = {
   en: {
     label: 'TECHNICAL EXPERTISE',
     title: 'SKILLS & TECHNOLOGIES',
-    description: 'Full-stack developer and designer, I work with a wide range of modern technologies.',
+    description: 'The tools I work with, across front end, back end and design.',
   },
   fr: {
     label: 'EXPERTISE TECHNIQUE',
     title: 'COMPÉTENCES & TECHNOLOGIES',
-    description: 'Développeur et designer full-stack, je travaille avec un large éventail de technologies modernes.',
+    description: "Les outils avec lesquels je travaille, du front au back en passant par le design.",
   },
 };
 

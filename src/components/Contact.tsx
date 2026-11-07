@@ -18,16 +18,16 @@ const CONTACT_PHONE_HREF = 'tel:+221773548342';
 const translations = {
   en: {
     label: 'GET IN TOUCH',
-    titleLine1: "LET'S TALK ABOUT",
-    titleLine2: 'YOUR PROJECT',
+    titleLine1: 'A PROJECT,',
+    titleLine2: 'A QUESTION?',
     intro:
-      "Have a project in mind? I'd love to hear about it and see how we can bring it to life.",
+      "A project, a collaboration, or just want to talk about code or design? Write to me, I read every message.",
     labels: { name: 'Full name', email: 'Email address', subject: 'Subject', message: 'Message' },
     placeholders: {
       name: 'John Doe',
       email: 'john@example.com',
-      subject: 'Project discussion',
-      message: 'Tell me about your project...',
+      subject: 'Project, collaboration, question…',
+      message: 'Your message...',
     },
     sendButton: 'Send message',
     mailSubjectFallback: 'New contact message',
@@ -39,15 +39,15 @@ const translations = {
   },
   fr: {
     label: 'CONTACT',
-    titleLine1: 'PARLONS DE',
-    titleLine2: 'VOTRE PROJET',
-    intro: "Un projet en tête ? J'aimerais en discuter et voir comment le concrétiser.",
+    titleLine1: 'UN PROJET,',
+    titleLine2: 'UNE QUESTION ?',
+    intro: "Un projet, une collaboration, ou simplement envie de parler code ou design ? Écrivez-moi, je lis tous les messages.",
     labels: { name: 'Nom complet', email: 'Adresse email', subject: 'Sujet', message: 'Message' },
     placeholders: {
       name: 'Jean Dupont',
       email: 'jean@example.com',
-      subject: 'Discussion de projet',
-      message: 'Parlez-moi de votre projet...',
+      subject: 'Projet, collaboration, question…',
+      message: 'Votre message...',
     },
     sendButton: 'Envoyer',
     mailSubjectFallback: 'Nouveau message de contact',

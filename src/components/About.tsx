@@ -7,20 +7,20 @@ import PillButton from './ui/PillButton';
 const translations = {
   en: {
     label: 'WHO I AM',
-    title: 'One point of contact, from start to finish.',
+    title: 'I like seeing a product through, end to end.',
     paragraphs: [
-      "I'm Stéphane Badiane, founder of Codanis, a full-stack developer and designer based in Dakar. For 3 years, I've been designing websites and applications for real projects, from the interface through to launch.",
-      "With me, you don't have to coordinate several providers. You talk to the person who designs and codes. I explain each choice in plain terms, and your tool stays looked after once it's live.",
+      "I'm Stéphane Badiane, a full-stack developer and designer based in Dakar. For more than 5 years, I've been designing websites and applications for real projects, from the interface through to launch.",
+      "I draw the interface, write the code, then follow the product once it's in real users' hands. That's how LaB, RestoPro and Emargix were built.",
     ],
     cta: 'See my work',
     alt: 'Stéphane Badiane au travail',
   },
   fr: {
     label: 'QUI JE SUIS',
-    title: 'Un seul interlocuteur, du début à la fin.',
+    title: "J'aime suivre un produit de bout en bout.",
     paragraphs: [
-      "Je suis Stéphane Badiane, fondateur de Codanis, développeur full-stack et designer à Dakar. Depuis 3 ans, je conçois des sites et des applications pour des projets concrets, de l'interface jusqu'à la mise en ligne.",
-      "Avec moi, vous n'avez pas à coordonner plusieurs prestataires. Vous parlez à la personne qui conçoit et qui code. Je vous explique chaque choix simplement, et votre outil reste suivi une fois en ligne.",
+      "Je suis Stéphane Badiane, développeur full-stack et designer à Dakar. Depuis plus de 5 ans, je conçois des sites et des applications pour des projets concrets, de l'interface jusqu'à la mise en ligne.",
+      "Je dessine l'interface, j'écris le code, puis je suis le produit une fois entre les mains de vrais utilisateurs. C'est comme ça que LaB, RestoPro et Emargix ont été construits.",
     ],
     cta: 'Voir mes projets',
     alt: 'Stéphane Badiane au travail',

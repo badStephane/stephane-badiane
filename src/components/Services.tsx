@@ -7,14 +7,14 @@ import AnimatedIcon from './AnimatedIcon';
 const translations = {
   en: {
     label: 'WHAT I DO',
-    titleLine1: 'EVERYTHING YOUR PRODUCT',
-    titleLine2: 'NEEDS TO SHIP',
+    titleLine1: 'FROM DESIGN',
+    titleLine2: 'TO DEPLOYMENT',
     services: [
       {
         id: 1,
-        title: 'Websites & Apps',
+        title: 'Web development',
         description:
-          'Fast websites and applications, built for your business.',
+          'I build fast websites and applications, front end and back end.',
         icon: <Code size={40} />,
         features: ['React / Vue.js', 'TypeScript', 'Responsive design', 'Performance'],
       },
@@ -22,15 +22,15 @@ const translations = {
         id: 2,
         title: 'Design',
         description:
-          'Clear interfaces and a consistent image, from logo to business card.',
+          'I design clear interfaces and visual identities, from logo to social media graphics.',
         icon: <Palette size={40} />,
         features: ['UI/UX', 'Prototyping', 'Logo', 'Social media graphics'],
       },
       {
         id: 3,
-        title: 'Hosting & Security',
+        title: 'Deployment & Security',
         description:
-          'Your site stays online, secure and up to date.',
+          'I put my projects online and keep them secure and up to date.',
         icon: <ShieldCheck size={40} />,
         features: ['Deployment', 'Updates', 'Security', 'Monitoring'],
       },
@@ -38,22 +38,22 @@ const translations = {
         id: 4,
         title: 'Mobile Payment & AI',
         description:
-          'Mobile payment built into your tools, and AI features where they genuinely help.',
+          'I integrate mobile payment and, where it genuinely helps, simple AI features.',
         icon: <Smartphone size={40} />,
-        features: ['WAEMU mobile payment', 'Integration with your tools', 'Simple AI features'],
+        features: ['WAEMU mobile payment', 'API integration', 'Simple AI features'],
       },
     ],
   },
   fr: {
     label: 'CE QUE JE FAIS',
-    titleLine1: 'TOUT CE DONT VOTRE',
-    titleLine2: 'PROJET A BESOIN',
+    titleLine1: 'DU DESIGN',
+    titleLine2: 'AU DÉPLOIEMENT',
     services: [
       {
         id: 1,
-        title: 'Sites et applications',
+        title: 'Développement web',
         description:
-          'Des sites et des applications rapides, conçus pour votre activité.',
+          'Je construis des sites et des applications rapides, du front au back.',
         icon: <Code size={40} />,
         features: ['React / Vue.js', 'TypeScript', 'Design responsive', 'Performance'],
       },
@@ -61,15 +61,15 @@ const translations = {
         id: 2,
         title: 'Design',
         description:
-          'Des interfaces claires, et une image cohérente, du logo à la carte de visite.',
+          'Je dessine des interfaces claires et des identités visuelles, du logo aux visuels réseaux sociaux.',
         icon: <Palette size={40} />,
         features: ['UI/UX', 'Prototypage', 'Logo', 'Visuels réseaux sociaux'],
       },
       {
         id: 3,
-        title: 'Hébergement et sécurité',
+        title: 'Déploiement et sécurité',
         description:
-          'Votre site reste en ligne, sécurisé et à jour.',
+          'Je mets mes projets en ligne et je les garde sécurisés et à jour.',
         icon: <ShieldCheck size={40} />,
         features: ['Mise en ligne', 'Mises à jour', 'Sécurité', 'Suivi'],
       },
@@ -77,9 +77,9 @@ const translations = {
         id: 4,
         title: 'Paiement mobile et IA',
         description:
-          "Le paiement mobile intégré à vos outils, et des fonctions d'IA quand elles sont vraiment utiles.",
+          "J'intègre le paiement mobile et, quand c'est vraiment utile, des fonctions d'IA simples.",
         icon: <Smartphone size={40} />,
-        features: ['Paiement mobile UEMOA', 'Intégration à vos outils', 'Fonctions IA simples'],
+        features: ['Paiement mobile UEMOA', "Intégration d'API", 'Fonctions IA simples'],
       },
     ],
   },

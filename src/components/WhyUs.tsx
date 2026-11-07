@@ -5,62 +5,72 @@ import SectionLabel from './ui/SectionLabel';
 import AnimatedIcon from './AnimatedIcon';
 import { projects } from './projectsData';
 
-const YEARS_OF_EXPERIENCE = '3+';
-const totalProjects = projects.length;
-const liveProjects = projects.filter((project) => Boolean(project.url)).length;
+const YEARS_OF_EXPERIENCE = '5+';
+/** Les liens de démo contiennent ce marqueur : ils ne comptent pas comme en production */
+const DEMO_URL_MARKER = '-demo';
+/** Une carte design ou logo reprend un produit déjà compté : seules les fiches full-stack comptent */
+const builtProjects = projects.filter((project) => (project.domain ?? 'fullstack') === 'fullstack');
+const totalProjects = builtProjects.length;
+const liveProjects = builtProjects.filter(
+  (project) => project.url && !project.url.includes(DEMO_URL_MARKER)
+).length;
 
 const translations = {
   en: {
-    label: 'WHY WORK WITH ME',
-    titleLine1: 'ONE PERSON,',
-    titleLine2: 'THE FULL PROCESS',
+    label: 'IN PRACTICE',
+    titleLine1: 'REAL PRODUCTS,',
+    titleLine2: 'LIVE FOR YOU TO SEE',
     points: [
       {
         icon: <Rocket size={28} />,
-        title: 'End-to-end delivery',
-        description: 'From wireframe to production deploy, I own the whole build, with no handoff friction.',
+        title: 'Products that sell',
+        description:
+          'LaB sells its tickets online in Dakar, with payments and order management. Emargix sells its online attendance service.',
       },
       {
         icon: <ShieldCheck size={28} />,
-        title: 'Design + engineering',
-        description: 'UI/UX and full-stack development under one roof, so the product stays coherent.',
+        title: 'Demanding trades',
+        description: "RestoPro covers a restaurant's till and kitchen, Patho-LIS a laboratory's patient files.",
       },
       {
         icon: <Sparkles size={28} />,
-        title: 'Built to last',
-        description: 'Typed codebases, clear architecture, and interfaces designed for real users.',
+        title: 'Design and code in one place',
+        description:
+          'I designed the interface and wrote the code of LaB, RestoPro and Emargix, from the first screen to the last line.',
       },
     ],
     stats: [
-      { number: `${totalProjects}`, label: 'Projects built' },
-      { number: `${liveProjects}`, label: 'Live in production' },
+      { number: `${totalProjects}`, label: 'Websites and applications built' },
+      { number: `${liveProjects}`, label: 'Live on their own domain' },
       { number: YEARS_OF_EXPERIENCE, label: 'Years of experience' },
     ],
   },
   fr: {
-    label: 'POURQUOI TRAVAILLER AVEC MOI',
-    titleLine1: 'UNE SEULE PERSONNE,',
-    titleLine2: 'TOUT LE PROCESSUS',
+    label: 'EN PRATIQUE',
+    titleLine1: 'DES PRODUITS RÉELS,',
+    titleLine2: 'À VOIR EN LIGNE',
     points: [
       {
         icon: <Rocket size={28} />,
-        title: 'Livraison de bout en bout',
-        description: 'Du wireframe au déploiement en production, je porte le projet entier, sans friction de passation.',
+        title: 'Des produits qui vendent',
+        description:
+          "LaB vend ses billets en ligne à Dakar, avec paiement et gestion des commandes. Emargix vend son service d'émargement en ligne.",
       },
       {
         icon: <ShieldCheck size={28} />,
-        title: 'Design + ingénierie',
-        description: "UI/UX et développement full-stack au même endroit, pour un produit cohérent.",
+        title: 'Métiers exigeants',
+        description: "RestoPro couvre la caisse et la cuisine d'un restaurant, Patho-LIS les dossiers d'un laboratoire.",
       },
       {
         icon: <Sparkles size={28} />,
-        title: 'Fait pour durer',
-        description: 'Code typé, architecture claire et interfaces pensées pour de vrais utilisateurs.',
+        title: 'Design et code au même endroit',
+        description:
+          "J'ai conçu l'interface et écrit le code de LaB, RestoPro et Emargix, du premier écran à la dernière ligne.",
       },
     ],
     stats: [
-      { number: `${totalProjects}`, label: 'Projets réalisés' },
-      { number: `${liveProjects}`, label: 'En ligne en production' },
+      { number: `${totalProjects}`, label: 'Sites et applications développés' },
+      { number: `${liveProjects}`, label: 'En ligne sur leur propre domaine' },
       { number: YEARS_OF_EXPERIENCE, label: "Années d'expérience" },
     ],
   },

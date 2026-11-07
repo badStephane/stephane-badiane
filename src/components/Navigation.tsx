@@ -14,7 +14,7 @@ const translations = {
       { id: 'projects', label: 'Work' },
       { id: 'skills', label: 'Skills' },
     ],
-    talk: 'Contact us',
+    talk: 'Contact me',
   },
   fr: {
     navLinks: [
@@ -61,15 +61,15 @@ const Navigation = () => {
           className="-ml-2.5 shrink-0"
         >
           <img
-            src="/images/codanis-horizontal-color-dark-bg.svg"
-            width={178}
-            height={44}
-            alt="Codanis"
-            className="h-11 w-auto"
+            src="/brand/gdnightmare-logo-dark.svg"
+            width={180}
+            height={40}
+            alt="gdnightmare"
+            className="h-10 w-auto"
           />
         </a>
 
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center gap-8 xl:flex">
           {t.navLinks.map((item, index) => (
             <SpacedNavLink
               key={item.id}
@@ -86,7 +86,7 @@ const Navigation = () => {
         </div>
 
         <button
-          className="text-white lg:hidden"
+          className="text-white xl:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
         >
@@ -95,7 +95,7 @@ const Navigation = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="border-t border-white/10 bg-ink/98 backdrop-blur-xl lg:hidden">
+        <div className="border-t border-white/10 bg-ink/98 backdrop-blur-xl xl:hidden">
           <div className="space-y-3 px-4 pb-6 pt-4">
             {t.navLinks.map((item) => (
               <a
