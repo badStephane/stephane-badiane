@@ -69,7 +69,7 @@ const Navigation = () => {
           />
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-8 lg:flex">
           {t.navLinks.map((item, index) => (
             <SpacedNavLink
               key={item.id}
@@ -86,7 +86,7 @@ const Navigation = () => {
         </div>
 
         <button
-          className="text-white md:hidden"
+          className="text-white lg:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
         >
@@ -95,7 +95,7 @@ const Navigation = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="border-t border-white/10 bg-ink/98 backdrop-blur-xl md:hidden">
+        <div className="border-t border-white/10 bg-ink/98 backdrop-blur-xl lg:hidden">
           <div className="space-y-3 px-4 pb-6 pt-4">
             {t.navLinks.map((item) => (
               <a

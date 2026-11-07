@@ -1,4 +1,4 @@
-import { Code, Palette, Tangent, Zap } from 'lucide-react';
+import { Code, Palette, ShieldCheck, Smartphone } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import Reveal from './Reveal';
 import SectionLabel from './ui/SectionLabel';
@@ -12,34 +12,35 @@ const translations = {
     services: [
       {
         id: 1,
-        title: 'Full-Stack Development',
+        title: 'Websites & Apps',
         description:
-          'Building fast, responsive web applications using modern technologies and solid development practices.',
+          'Fast websites and applications, built for your business.',
         icon: <Code size={40} />,
         features: ['React / Vue.js', 'TypeScript', 'Responsive design', 'Performance'],
       },
       {
         id: 2,
-        title: 'UI/UX Design',
+        title: 'Design',
         description:
-          'Designing intuitive, visually consistent interfaces for a great experience across every device.',
+          'Clear interfaces and a consistent image, from logo to business card.',
         icon: <Palette size={40} />,
-        features: ['User research', 'Wireframing', 'Prototyping', 'Design systems'],
+        features: ['UI/UX', 'Prototyping', 'Logo', 'Social media graphics'],
       },
       {
         id: 3,
-        title: 'Graphic Design',
-        description: 'Creating visuals that communicate ideas clearly and capture attention.',
-        icon: <Tangent size={40} />,
-        features: ['Social media graphics', 'Business cards', 'Logo design', 'Photo retouching'],
+        title: 'Hosting & Security',
+        description:
+          'Your site stays online, secure and up to date.',
+        icon: <ShieldCheck size={40} />,
+        features: ['Deployment', 'Updates', 'Security', 'Monitoring'],
       },
       {
         id: 4,
-        title: 'IT Maintenance',
+        title: 'Mobile Payment & AI',
         description:
-          'Support, troubleshooting and maintenance of IT equipment to keep it secure and performant.',
-        icon: <Zap size={40} />,
-        features: ['PC troubleshooting', 'Software installation', 'Security & antivirus', 'Remote assistance'],
+          'Mobile payment built into your tools, and AI features where they genuinely help.',
+        icon: <Smartphone size={40} />,
+        features: ['WAEMU mobile payment', 'Integration with your tools', 'Simple AI features'],
       },
     ],
   },
@@ -50,34 +51,35 @@ const translations = {
     services: [
       {
         id: 1,
-        title: 'Développement Full-Stack',
+        title: 'Sites et applications',
         description:
-          "Création d'applications web rapides et réactives avec des technologies modernes et de bonnes pratiques de développement.",
+          'Des sites et des applications rapides, conçus pour votre activité.',
         icon: <Code size={40} />,
         features: ['React / Vue.js', 'TypeScript', 'Design responsive', 'Performance'],
       },
       {
         id: 2,
-        title: 'UI/UX Design',
+        title: 'Design',
         description:
-          "Conception d'interfaces intuitives et cohérentes pour une expérience de qualité sur tous les supports.",
+          'Des interfaces claires, et une image cohérente, du logo à la carte de visite.',
         icon: <Palette size={40} />,
-        features: ['Recherche utilisateur', 'Wireframing', 'Prototypage', 'Design systems'],
+        features: ['UI/UX', 'Prototypage', 'Logo', 'Visuels réseaux sociaux'],
       },
       {
         id: 3,
-        title: 'Graphisme',
-        description: "Création de visuels qui communiquent clairement et captent l'attention.",
-        icon: <Tangent size={40} />,
-        features: ['Visuels réseaux sociaux', 'Cartes de visite', 'Logo', 'Retouche photo'],
+        title: 'Hébergement et sécurité',
+        description:
+          'Votre site reste en ligne, sécurisé et à jour.',
+        icon: <ShieldCheck size={40} />,
+        features: ['Mise en ligne', 'Mises à jour', 'Sécurité', 'Suivi'],
       },
       {
         id: 4,
-        title: 'Maintenance Informatique',
+        title: 'Paiement mobile et IA',
         description:
-          'Assistance, dépannage et maintenance de vos équipements informatiques pour garantir sécurité et performance.',
-        icon: <Zap size={40} />,
-        features: ['Dépannage PC', 'Installation logicielle', 'Sécurité & antivirus', 'Assistance à distance'],
+          "Le paiement mobile intégré à vos outils, et des fonctions d'IA quand elles sont vraiment utiles.",
+        icon: <Smartphone size={40} />,
+        features: ['Paiement mobile UEMOA', 'Intégration à vos outils', 'Fonctions IA simples'],
       },
     ],
   },

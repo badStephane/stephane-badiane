@@ -18,7 +18,7 @@ const translations = {
       {
         icon: <Rocket size={28} />,
         title: 'End-to-end delivery',
-        description: 'From wireframe to production deploy, I own the whole build — no handoff friction.',
+        description: 'From wireframe to production deploy, I own the whole build, with no handoff friction.',
       },
       {
         icon: <ShieldCheck size={28} />,
@@ -45,7 +45,7 @@ const translations = {
       {
         icon: <Rocket size={28} />,
         title: 'Livraison de bout en bout',
-        description: 'Du wireframe au déploiement en production, je porte le projet entier — sans friction de passation.',
+        description: 'Du wireframe au déploiement en production, je porte le projet entier, sans friction de passation.',
       },
       {
         icon: <ShieldCheck size={28} />,

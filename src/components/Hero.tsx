@@ -4,23 +4,23 @@ import PillButton from './ui/PillButton';
 
 const translations = {
   en: {
-    kicker: 'PORTFOLIO — 2026',
-    titleLine1: 'FULL-STACK',
-    titleLine2: 'DEVELOPER &',
-    titleLine3: 'DESIGNER',
+    kicker: 'CODANIS · DAKAR',
+    titleLine1: 'DIGITAL TOOLS',
+    titleLine2: 'THAT KEEP',
+    titleLine3: 'RUNNING',
     description:
-      'I design and build complete digital products from interface to backend for founders and teams who need it done right, end to end.',
+      'I design and run websites and applications for SMEs and startups in West Africa. One point of contact, from the first conversation to launch.',
     viewWork: 'View my work',
     contact: 'Contact me',
     alt: 'Stéphane Badiane, développeur full-stack et designer',
   },
   fr: {
-    kicker: 'PORTFOLIO — 2026',
-    titleLine1: 'DÉVELOPPEUR',
-    titleLine2: 'FULL-STACK &',
-    titleLine3: 'DESIGNER',
+    kicker: 'CODANIS · DAKAR',
+    titleLine1: 'DES OUTILS',
+    titleLine2: 'NUMÉRIQUES',
+    titleLine3: 'QUI TOURNENT',
     description:
-      "Je conçois et je développe des produits numériques complets, de l'interface au backend, pour des porteurs de projet qui veulent que ce soit bien fait, du début à la fin.",
+      "Je conçois et je fais tourner les sites et les applications des PME et des startups d'Afrique de l'Ouest. Un seul interlocuteur, du premier échange à la mise en ligne.",
     viewWork: 'Voir mes projets',
     contact: 'Me contacter',
     alt: 'Stéphane Badiane, développeur full-stack et designer',
@@ -34,20 +34,20 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-end overflow-hidden bg-secondary pt-20"
+      className="relative flex min-h-screen flex-col overflow-hidden bg-secondary pt-20 lg:flex-row lg:items-end"
     >
       <img
         src="/images/profile-cutout.png"
         alt={t.alt}
-        className="pointer-events-none absolute bottom-0 left-1/2 z-0 h-[58%] w-auto -translate-x-1/2 select-none object-contain object-bottom sm:h-[70%] lg:left-auto lg:right-[6%] lg:h-[84%] lg:translate-x-0"
+        className="pointer-events-none mx-auto min-h-[18rem] w-full max-w-md flex-1 basis-0 select-none object-cover object-top lg:absolute lg:bottom-0 lg:right-0 xl:right-[6%] lg:z-0 lg:mx-0 lg:h-[84%] lg:min-h-0 lg:w-auto lg:max-w-none lg:flex-none lg:basis-auto lg:object-contain lg:object-bottom"
       />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 px-4 pb-12 pt-16 sm:px-6 lg:grid-cols-[1.3fr_1fr] lg:px-8 lg:pb-20">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 px-4 pb-12 pt-6 sm:px-6 lg:grid-cols-[1.3fr_1fr] lg:px-8 lg:pb-20 lg:pt-16">
         <div>
           <p className="mb-6 font-body text-sm font-medium uppercase tracking-[0.3em] text-white/70">
             {t.kicker}
           </p>
-          <h1 className="text-h1 text-white">
+          <h1 className="text-h1 text-white lg:whitespace-nowrap">
             <span className="block">{t.titleLine1}</span>
             <span className="block">{t.titleLine2}</span>
             <span className="block text-white/40">{t.titleLine3}</span>
