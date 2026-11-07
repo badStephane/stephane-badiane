@@ -2,28 +2,33 @@ import { useState, useEffect, MouseEvent } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
-import AnimatedIcon from './AnimatedIcon';
+import SpacedNavLink from './ui/SpacedNavLink';
+import PillButton from './ui/PillButton';
 
 const translations = {
   en: {
     navLinks: [
       { id: 'home', label: 'Home' },
       { id: 'about', label: 'About' },
-      { id: 'projects', label: 'Projects' },
       { id: 'services', label: 'Services' },
+      { id: 'projects', label: 'Work' },
+      { id: 'skills', label: 'Skills' },
     ],
-    talk: "Let's Talk",
+    talk: 'Contact me',
   },
   fr: {
     navLinks: [
       { id: 'home', label: 'Accueil' },
       { id: 'about', label: 'À propos' },
-      { id: 'projects', label: 'Projets' },
       { id: 'services', label: 'Services' },
+      { id: 'projects', label: 'Projets' },
+      { id: 'skills', label: 'Compétences' },
     ],
-    talk: 'Contactez-moi',
+    talk: 'Me contacter',
   },
 };
+
+const SCROLL_THRESHOLD_PX = 24;
 
 const Navigation = () => {
   const { language } = useLanguage();
@@ -32,107 +37,86 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > SCROLL_THRESHOLD_PX);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (e: MouseEvent, sectionId: string) => {
     e.preventDefault();
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-      isScrolled
-        ? 'bg-slate-950/95 backdrop-blur-xl shadow-2xl border-b border-white/10'
-        : 'bg-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <div className="flex items-center">
-            <div className="relative">
-                <img src="/monlogo.webp" width={150} height={100} alt="Logo Stephane Badiane" />
-            </div>
-          </div>
-          
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-8">
-              {t.navLinks.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={(e) => scrollToSection(e, item.id)}
-                  className="relative text-blue-200 hover:text-white transition-colors duration-240 font-medium group py-2"
-                >
-                  {item.label}
-                  <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-emerald-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
-                </a>
-              ))}
-              <a
-                href="#contact"
-                onClick={(e) => scrollToSection(e, 'contact')}
-                className="
-                    relative overflow-hidden
-                    px-6 py-3 rounded-full shadow-lg font-semibold
+    <nav
+      className={`fixed top-0 z-50 w-full transition-all duration-320 ${
+        isScrolled ? 'bg-ink/90 backdrop-blur-xl border-b border-white/10' : 'bg-transparent'
+      }`}
+    >
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <a
+          href="#home"
+          onClick={(e) => scrollToSection(e, 'home')}
+          className="-ml-2.5 shrink-0"
+        >
+          <img
+            src="/brand/gdnightmare-logo-dark.svg"
+            width={180}
+            height={40}
+            alt="gdnightmare"
+            className="h-10 w-auto"
+          />
+        </a>
 
-                    bg-gradient-to-r from-emerald-400 to-lime-500
-                    bg-[length:200%_200%] bg-left
-
-                    text-slate-900
-                    transition-all duration-240 ease-out-expo
-
-                    hover:scale-105 active:scale-95
-                    hover:shadow-lg hover:shadow-emerald-500/30
-                  "
-
-              >
-                {t.talk}
-              </a>
-              <LanguageSwitcher />
-            </div>
-          </div>
-          
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-blue-200 hover:text-white transition-colors duration-300"
-            >
-              <AnimatedIcon key={isMenuOpen ? 'close' : 'open'} loop={false}>
-                {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-              </AnimatedIcon>
-            </button>
-          </div>
+        <div className="hidden items-center gap-8 xl:flex">
+          {t.navLinks.map((item, index) => (
+            <SpacedNavLink
+              key={item.id}
+              label={item.label}
+              index={index + 1}
+              href={`#${item.id}`}
+              onClick={(e) => scrollToSection(e, item.id)}
+            />
+          ))}
+          <LanguageSwitcher />
+          <PillButton href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>
+            {t.talk}
+          </PillButton>
         </div>
+
+        <button
+          className="text-white xl:hidden"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+        >
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-slate-950/98 backdrop-blur-xl border-t border-white/10 motion-safe:animate-fade-up">
-          <div className="px-4 pt-4 pb-6 space-y-3">
+        <div className="border-t border-white/10 bg-ink/98 backdrop-blur-xl xl:hidden">
+          <div className="space-y-3 px-4 pb-6 pt-4">
             {t.navLinks.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => scrollToSection(e, item.id)}
-                className="block text-blue-200 hover:text-white px-4 py-3 w-full text-left transition-colors duration-300 rounded-lg hover:bg-white/10"
+                className="block rounded-lg px-4 py-3 font-body text-white/80 transition-colors duration-240 hover:bg-white/10 hover:text-white"
               >
                 {item.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={(e) => scrollToSection(e, 'contact')}
-              className="block bg-gradient-to-r from-emerald-400 to-lime-500 text-slate-900 font-semibold px-4 py-3 rounded-lg hover:from-emerald-300 hover:to-lime-400 transition-all duration-300 mx-4 mt-4 text-center"
-            >
-              {t.talk}
-            </a>
-            <div className="mt-6 flex justify-center">
+            <div className="px-4 pt-2">
+              <PillButton
+                href="#contact"
+                onClick={(e) => scrollToSection(e, 'contact')}
+                className="w-full"
+              >
+                {t.talk}
+              </PillButton>
+            </div>
+            <div className="flex justify-center pt-4">
               <LanguageSwitcher />
             </div>
           </div>

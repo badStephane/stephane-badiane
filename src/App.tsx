@@ -2,35 +2,28 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
+import Projects from './components/Projects';
+import WhyUs from './components/WhyUs';
+import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-
 import { LanguageProvider } from './components/LanguageContext';
 
 function App() {
   return (
-    <div style={{fontFamily: "'Inter', system-ui, -apple-system, sans-serif"}}>
     <LanguageProvider>
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-ink">
         <Navigation />
         <Hero />
-        <div className='flex flex-col w-full bg-slate-950 bg-dot-grid'>
-          <About />
-          {/* <hr className='w-full border-blue-500' /> */}
-          <Skills />
-          <Projects />
-          <Services />
-          {/* <hr className='w-full border-blue-500' /> */}
-          <Contact />
-        </div>
+        <About />
+        <Services />
+        <Projects />
+        <WhyUs />
+        <Skills />
+        <Contact />
         <Footer />
       </div>
     </LanguageProvider>
-    {/* Signature : grain/texture global */}
-    <div aria-hidden="true" className="grain-overlay" />
-    </div>
   );
 }
 

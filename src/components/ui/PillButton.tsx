@@ -1,14 +1,14 @@
 import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
 
-type Tone = 'light' | 'dark';
+type Tone = 'primary' | 'outline';
 
 const TONE_CLASS: Record<Tone, string> = {
-  light: 'bg-white text-slate-950 hover:bg-white/90',
-  dark: 'bg-slate-950 text-white hover:bg-slate-950/90',
+  primary: 'bg-primary text-ink hover:bg-primary/90',
+  outline: 'border-2 border-accent bg-secondary text-accent hover:bg-ink',
 };
 
 const BASE_CLASS =
-  'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold text-sm transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95';
+  'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-body text-sm font-medium transition-all duration-240 ease-out-expo hover:scale-105 active:scale-95';
 
 type PillButtonBaseProps = {
   children: ReactNode;
@@ -25,7 +25,7 @@ type PillButtonAsButton = PillButtonBaseProps &
 type PillButtonProps = PillButtonAsAnchor | PillButtonAsButton;
 
 /** Bouton pilule (fond plein, coins totalement arrondis) — rend un <a> si `href` est fourni, sinon un <button>. */
-const PillButton = ({ children, tone = 'light', className = '', ...rest }: PillButtonProps) => {
+const PillButton = ({ children, tone = 'primary', className = '', ...rest }: PillButtonProps) => {
   const classes = `${BASE_CLASS} ${TONE_CLASS[tone]} ${className}`;
 
   if ('href' in rest && rest.href) {

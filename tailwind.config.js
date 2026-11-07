@@ -3,17 +3,27 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      colors: {
+        ink: '#020617',
+        paper: '#F8FAFC',
+        primary: '#059669',
+        secondary: '#0F172A',
+        accent: '#34D399',
+      },
       fontFamily: {
-        display: ['Syne', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        display: ['Outfit', 'system-ui', 'sans-serif'],
+        body: ['"DM Sans"', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        h1: ['clamp(2.75rem, 7vw, 6.25rem)', { lineHeight: '1.05', fontWeight: '600' }],
+        h2: ['clamp(2rem, 5vw, 3.75rem)', { lineHeight: '1.1', fontWeight: '600' }],
+        h4: ['clamp(1.25rem, 2vw, 1.5rem)', { lineHeight: '1.1', fontWeight: '600' }],
+        h5: ['1.25rem', { lineHeight: '1.2', fontWeight: '600' }],
       },
       transitionTimingFunction: {
-        // Entrée (apparition) : départ rapide, atterrissage doux → réactif
         'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
-        // Sortie (disparition) : départ doux, fin rapide → s'efface
         'in-quart': 'cubic-bezier(0.7, 0, 0.84, 0)',
-        // Changement d'état (morph) : équilibré (Material standard)
-        'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
+        smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
       transitionDuration: {
         '160': '160ms',

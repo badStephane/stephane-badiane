@@ -1,7 +1,4 @@
-import React from 'react';
 import { useLanguage } from './LanguageContext';
-import { Globe } from 'lucide-react';
-import AnimatedIcon from './AnimatedIcon';
 
 const translations = {
   en: {
@@ -14,26 +11,29 @@ const translations = {
   },
 };
 
-const LanguageSwitcher: React.FC = () => {
+const LanguageSwitcher = () => {
   const { language, setLanguage } = useLanguage();
   const t = translations[language];
 
   return (
-    <div className="flex items-center gap-4">
-      {/* Language Switcher */}
+    <div className="flex items-center gap-1 rounded-full border border-white/15 p-1">
       <button
-        className={`p-2 rounded-lg border font-mono text-sm ${language === 'en' ? 'bg-emerald-500/15 border-emerald-400/40 text-emerald-300' : 'border-white/10 text-blue-200 hover:bg-white/5'}`}
+        className={`rounded-full px-3 py-1.5 font-body text-xs font-medium transition-colors duration-240 ${
+          language === 'en' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'
+        }`}
         onClick={() => setLanguage('en')}
         aria-label={t.switchToEn}
       >
-        <AnimatedIcon motion="spin" className="inline mr-1"><Globe size={18} /></AnimatedIcon> EN
+        EN
       </button>
       <button
-        className={`p-2 rounded-lg border font-mono text-sm ${language === 'fr' ? 'bg-emerald-500/15 border-emerald-400/40 text-emerald-300' : 'border-white/10 text-blue-200 hover:bg-white/5'}`}
+        className={`rounded-full px-3 py-1.5 font-body text-xs font-medium transition-colors duration-240 ${
+          language === 'fr' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'
+        }`}
         onClick={() => setLanguage('fr')}
         aria-label={t.switchToFr}
       >
-        <AnimatedIcon motion="spin" className="inline mr-1"><Globe size={18} /></AnimatedIcon> FR
+        FR
       </button>
     </div>
   );

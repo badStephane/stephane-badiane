@@ -1,136 +1,118 @@
-import { Github, Linkedin, Twitter, Heart, ArrowUp, Instagram } from 'lucide-react';
+import { Github, Linkedin, Twitter, Instagram, ArrowUp } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
-import AnimatedIcon from './AnimatedIcon';
 
 const translations = {
   en: {
-    description: 'Creative designer and developer passionate about crafting exceptional digital experiences that inspire, engage, and drive results.',
-    quickLinks: 'Quick Links',
-    quickLinksList: ['#home', '#about', '#projects', '#services', '#contact'],
-    quickLinksLabels: ['Home', 'About', 'Projects', 'Services', 'Contact'],
-    services: 'Services',
-    servicesList: ['UI/UX Design', 'FullStack Development', 'Graphic Design', 'IT Maintenance'],
-    copyright: 'Made with',
-    copyrightEnd: 'and lots of coffee.',
-    scrollTop: 'Scroll to top',
+    baseline: 'Full-stack developer and designer in Dakar. I build web products, from design to deployment.',
+    navigation: 'NAVIGATION',
+    connect: 'CONNECT',
+    navLinks: [
+      { id: 'home', label: 'Home' },
+      { id: 'about', label: 'About' },
+      { id: 'services', label: 'Services' },
+      { id: 'projects', label: 'Work' },
+      { id: 'contact', label: 'Contact' },
+    ],
+    scrollTop: 'Back to top',
   },
   fr: {
-    description: 'Designer et développeur passionné par la création d’expériences numériques exceptionnelles qui inspirent, engagent et apportent des résultats.',
-    quickLinks: 'Liens rapides',
-    quickLinksList: ['#home', '#about', '#projects', '#services', '#contact'],
-    quickLinksLabels: ['Accueil', 'À propos', 'Projets', 'Services', 'Contact'],
-    services: 'Services',
-    servicesList: ['UI/UX Design', 'Développement FullStack', 'Design Graphique', 'Maintenance IT'],
-    copyright: 'Réalisé avec',
-    copyrightEnd: 'et beaucoup de café.',
+    baseline: 'Développeur full-stack et designer à Dakar. Je construis des produits web, du design au déploiement.',
+    navigation: 'NAVIGATION',
+    connect: 'CONNECT',
+    navLinks: [
+      { id: 'home', label: 'Accueil' },
+      { id: 'about', label: 'À propos' },
+      { id: 'services', label: 'Services' },
+      { id: 'projects', label: 'Projets' },
+      { id: 'contact', label: 'Contact' },
+    ],
     scrollTop: 'Remonter en haut',
   },
 };
+
+const SOCIAL_LINKS = [
+  { icon: <Github size={20} />, href: 'https://github.com/badStephane', label: 'GitHub' },
+  { icon: <Linkedin size={20} />, href: 'https://www.linkedin.com/in/st%C3%A9phane-badiane-652812287/', label: 'LinkedIn' },
+  { icon: <Twitter size={20} />, href: 'https://twitter.com/badiane_steph', label: 'Twitter' },
+  { icon: <Instagram size={20} />, href: 'https://www.instagram.com/gd_nightmare', label: 'Instagram' },
+];
 
 const Footer = () => {
   const { language } = useLanguage();
   const t = translations[language];
   const currentYear = new Date().getFullYear();
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <footer className="bg-slate-950 text-white relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 via-blue-500 to-emerald-400"></div>
-        <div className="absolute top-20 right-20 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            <div className="col-span-1 md:col-span-2">
-              <div className="mb-8">
-                <div className="mb-8">
-
-              <img src="/monlogo.webp" width={150} height={100} loading="lazy" alt="Logo Stephane Badiane" />
-                </div>
-                <p className="text-blue-200 mb-8 max-w-md leading-relaxed">
-                  {t.description}
-                </p>
-              </div>
-              
-              <div className="flex space-x-4">
-                {[
-                  { icon: <Github size={20} />, href: "https://github.com/badStephane", label: "GitHub" },
-                  { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/st%C3%A9phane-badiane-652812287/", label: "LinkedIn" },
-                  { icon: <Twitter size={20} />, href: "https://twitter.com/badiane_steph", label: "Twitter" },
-                  { icon: <Instagram size={20} />, href: "https://www.instagram.com/gd_nightmare", label: "Instagram" }
-                ].map((social, index) => (
-                  <a 
-                    key={index}
-                    href={social.href} 
-                    aria-label={social.label}
-                    className="group bg-blue-500/10 hover:bg-gradient-to-r hover:from-blue-600 hover:to-cyan-600 p-4 rounded-2xl transition-all duration-300 transform hover:scale-110 border border-blue-500/20"
-                  >
-                    <div className="text-blue-400 group-hover:text-white transition-all duration-300 group-hover:rotate-12">
-                      <AnimatedIcon delay={index * 100}>{social.icon}</AnimatedIcon>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-bold mb-8 text-white">{t.quickLinks}</h4>
-              <ul className="space-y-4">
-                {t.quickLinksList.map((link, index) => (
-                  <li key={link}>
-                    <a 
-                      href={link} 
-                      className="text-blue-200 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
-                    >
-                      <span className="w-2 h-2 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                      {t.quickLinksLabels[index]}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-bold mb-8 text-white">{t.services}</h4>
-              <ul className="space-y-4">
-                {t.servicesList.map((service) => (
-                  <li key={service}>
-                    <a 
-                      href="#services" 
-                      className="text-blue-200 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
-                    >
-                      <span className="w-2 h-2 bg-cyan-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                      {service}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        <div className="border-t border-blue-500/20 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-blue-200 flex items-center gap-2">
-              &copy; {currentYear} Stephane Portfolio. {t.copyright} <AnimatedIcon motion="flash"><Heart className="text-red-500" size={16} /></AnimatedIcon> {t.copyrightEnd}
+    <footer className="bg-ink text-white">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-12 border-b border-white/10 pb-16 sm:grid-cols-3">
+          <div className="sm:col-span-1">
+            <a href="#home" className="-ml-2.5 inline-block">
+              <img
+                src="/brand/gdnightmare-logo-dark.svg"
+                width={180}
+                height={40}
+                loading="lazy"
+                alt="gdnightmare"
+                className="h-10 w-auto"
+              />
+            </a>
+            <p className="mt-6 max-w-xs font-body text-sm font-medium leading-relaxed text-white/50">
+              {t.baseline}
             </p>
-            
-            <button
-              onClick={scrollToTop}
-              className="bg-gradient-to-r from-emerald-400 to-lime-500 text-slate-900 p-3 rounded-xl hover:from-emerald-300 hover:to-lime-400 transition-all duration-300 transform hover:scale-110 shadow-lg"
-              aria-label={t.scrollTop}
-            >
-              <AnimatedIcon motion="nudge-y"><ArrowUp size={20} /></AnimatedIcon>
-            </button>
+          </div>
+
+          <div>
+            <h4 className="font-display text-sm uppercase tracking-widest text-white/40">{t.navigation}</h4>
+            <ul className="mt-6 space-y-3">
+              {t.navLinks.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    className="font-body text-white/70 transition-colors duration-240 hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display text-sm uppercase tracking-widest text-white/40">{t.connect}</h4>
+            <div className="mt-6 flex gap-3">
+              {SOCIAL_LINKS.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 text-white/70 transition-all duration-240 hover:border-accent hover:text-accent"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
+
+        <div className="flex flex-col items-center justify-between gap-6 pt-10 sm:flex-row">
+          <p className="font-body text-sm text-white/40">&copy; {currentYear} Stéphane Badiane.</p>
+          <button
+            onClick={scrollToTop}
+            aria-label={t.scrollTop}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white text-ink transition-transform duration-240 hover:scale-110"
+          >
+            <ArrowUp size={20} />
+          </button>
+        </div>
+
+        <p className="mt-10 select-none font-display text-[clamp(2.5rem,10vw,7rem)] uppercase leading-none text-white">
+          Stéphane Badiane
+        </p>
       </div>
     </footer>
   );

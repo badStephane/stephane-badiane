@@ -4,30 +4,28 @@ import PillButton from './ui/PillButton';
 
 const translations = {
   en: {
-    kicker: 'PORTFOLIO — 2026',
+    kicker: 'STÉPHANE BADIANE · DAKAR',
     titleLine1: 'FULL-STACK',
-    titleLine2: 'DEVELOPER &',
-    titleLine3: 'DESIGNER',
+    titleLine2: 'DEVELOPER',
+    titleLine3: '& DESIGNER',
     description:
-      'I design and build complete digital products from interface to backend for founders and teams who need it done right, end to end.',
+      "I design and build web applications, from the first mockup to launch. Here you'll find my projects, the tools I use and how to reach me.",
     viewWork: 'View my work',
     contact: 'Contact me',
     alt: 'Stéphane Badiane, développeur full-stack et designer',
   },
   fr: {
-    kicker: 'PORTFOLIO — 2026',
+    kicker: 'STÉPHANE BADIANE · DAKAR',
     titleLine1: 'DÉVELOPPEUR',
-    titleLine2: 'FULL-STACK &',
-    titleLine3: 'DESIGNER',
+    titleLine2: 'FULL-STACK',
+    titleLine3: 'ET DESIGNER',
     description:
-      "Je conçois et je développe des produits numériques complets, de l'interface au backend, pour des porteurs de projet qui veulent que ce soit bien fait, du début à la fin.",
+      "Je conçois et je développe des applications web, de la première maquette à la mise en ligne. Ici, vous trouverez mes projets, les outils que j'utilise et comment me joindre.",
     viewWork: 'Voir mes projets',
     contact: 'Me contacter',
     alt: 'Stéphane Badiane, développeur full-stack et designer',
   },
 };
-
-const DISPLAY_FONT = "font-['Space_Grotesk'] uppercase tracking-tight";
 
 const Hero = () => {
   const { language } = useLanguage();
@@ -36,36 +34,35 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden bg-[linear-gradient(135deg,#5b84b5_0%,#2e4a70_100%)] pt-20 lg:items-end"
+      className="relative flex min-h-screen flex-col overflow-hidden bg-secondary pt-20 lg:flex-row lg:items-end"
     >
       <img
         src="/images/profile-cutout.png"
         alt={t.alt}
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[48%] w-full select-none object-cover object-bottom [mask-image:linear-gradient(to_bottom,transparent_0%,black_35%)] lg:inset-auto lg:bottom-0 lg:left-auto lg:right-[6%] lg:top-auto lg:h-[84%] lg:w-auto lg:object-contain lg:[mask-image:none]"
+        className="pointer-events-none mx-auto min-h-[18rem] w-full max-w-md flex-1 basis-0 select-none object-cover object-top lg:absolute lg:bottom-0 lg:right-0 xl:right-[6%] lg:z-0 lg:mx-0 lg:h-[84%] lg:min-h-0 lg:w-auto lg:max-w-none lg:flex-none lg:basis-auto lg:object-contain lg:object-bottom"
       />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#2e4a70]/15 via-transparent to-[#0a0a0a]/75 lg:hidden" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 px-6 pb-12 pt-16 text-center sm:px-6 lg:grid-cols-[1.3fr_1fr] lg:px-8 lg:pb-20 lg:text-left">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 px-4 pb-12 pt-6 sm:px-6 lg:grid-cols-[1.3fr_1fr] lg:px-8 lg:pb-20 lg:pt-16">
         <div>
-          <p className={`mb-6 text-sm font-semibold tracking-[0.3em] text-white/70 ${DISPLAY_FONT}`}>
+          <p className="mb-6 font-body text-sm font-medium uppercase tracking-[0.3em] text-white/70">
             {t.kicker}
           </p>
-          <h1
-            className={`text-[clamp(2.75rem,7vw,6.25rem)] font-semibold leading-none text-white ${DISPLAY_FONT}`}
-          >
+          <h1 className="text-h1 text-white lg:whitespace-nowrap">
             <span className="block">{t.titleLine1}</span>
             <span className="block">{t.titleLine2}</span>
             <span className="block text-white/40">{t.titleLine3}</span>
           </h1>
 
-          <div className="mx-auto mt-8 max-w-md lg:mx-0">
-            <p className="text-lg font-semibold leading-relaxed text-white/85">{t.description}</p>
-            <div className="mt-6 flex flex-wrap justify-center gap-4 lg:justify-start">
-              <PillButton href="#projects" tone="light">
+          <div className="mt-8 max-w-md">
+            <p className="font-body text-lg font-medium leading-relaxed text-white/85">
+              {t.description}
+            </p>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <PillButton href="#projects">
                 {t.viewWork}
                 <ArrowRight size={18} />
               </PillButton>
-              <PillButton href="#contact" tone="dark" className="border border-white/20">
+              <PillButton href="#contact" tone="outline">
                 {t.contact}
               </PillButton>
             </div>

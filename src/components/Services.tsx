@@ -1,180 +1,142 @@
-import { Palette, Code, Zap, Tangent } from 'lucide-react';
+import { Code, Palette, ShieldCheck, Smartphone } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import Reveal from './Reveal';
+import SectionLabel from './ui/SectionLabel';
 import AnimatedIcon from './AnimatedIcon';
 
 const translations = {
   en: {
-    sectionTitle: 'My Services',
-    sectionSubtitle: 'What I Do',
+    label: 'WHAT I DO',
+    titleLine1: 'FROM DESIGN',
+    titleLine2: 'TO DEPLOYMENT',
     services: [
       {
         id: 1,
-        title: 'FullStack Development',
-        description: 'Building lightning-fast, responsive web applications using cutting-edge technologies and modern development practices.',
-        icon: <Code size={32} />,
-        features: ['React/Vue.js', 'TypeScript', 'Responsive Design', 'Performance'],
-        accent: 'amber',
+        title: 'Web development',
+        description:
+          'I build fast websites and applications, front end and back end.',
+        icon: <Code size={40} />,
+        features: ['React / Vue.js', 'TypeScript', 'Responsive design', 'Performance'],
       },
       {
         id: 2,
-        title: 'UI/UX Design',
-        description: 'Designing intuitive and visually appealing user interfaces for outstanding experiences across all platforms and devices.',
-        icon: <Palette size={32} />,
-        features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
-        accent: 'blue',
+        title: 'Design',
+        description:
+          'I design clear interfaces and visual identities, from logo to social media graphics.',
+        icon: <Palette size={40} />,
+        features: ['UI/UX', 'Prototyping', 'Logo', 'Social media graphics'],
       },
       {
         id: 3,
-        title: 'Graphic Design',
-        description: 'Creating visually engaging graphics that communicate ideas effectively and capture attention.',
-        icon: <Tangent size={32} />,
-        features: ['Social Media Graphics', 'Business Cards', 'Logo Design', 'Photo Retouching'],
-        accent: 'amber',
+        title: 'Deployment & Security',
+        description:
+          'I put my projects online and keep them secure and up to date.',
+        icon: <ShieldCheck size={40} />,
+        features: ['Deployment', 'Updates', 'Security', 'Monitoring'],
       },
       {
         id: 4,
-        title: 'IT Maintenance',
-        description: 'Support, troubleshooting, and maintenance of your IT equipment to ensure optimal performance and security.',
-        icon: <Zap size={32} />,
-        features: ['PC Troubleshooting', 'Software Installation', 'Security & Antivirus', 'Remote Assistance'],
-        accent: 'blue',
-      }
-    ]
+        title: 'Mobile Payment & AI',
+        description:
+          'I integrate mobile payment and, where it genuinely helps, simple AI features.',
+        icon: <Smartphone size={40} />,
+        features: ['WAEMU mobile payment', 'API integration', 'Simple AI features'],
+      },
+    ],
   },
   fr: {
-    sectionTitle: 'Mes Services',
-    sectionSubtitle: 'Ce que je fais',
+    label: 'CE QUE JE FAIS',
+    titleLine1: 'DU DESIGN',
+    titleLine2: 'AU DÉPLOIEMENT',
     services: [
       {
         id: 1,
-        title: 'Développement FullStack',
-        description: 'Création d’applications web rapides et réactives avec les technologies les plus modernes.',
-        icon: <Code size={32} />,
-        features: ['React/Vue.js', 'TypeScript', 'Design Responsive', 'Performance'],
-        accent: 'amber',
+        title: 'Développement web',
+        description:
+          'Je construis des sites et des applications rapides, du front au back.',
+        icon: <Code size={40} />,
+        features: ['React / Vue.js', 'TypeScript', 'Design responsive', 'Performance'],
       },
       {
         id: 2,
-        title: 'UI/UX Design',
-        description: 'Conception d’interfaces intuitives et esthétiques pour des expériences remarquables sur tous supports.',
-        icon: <Palette size={32} />,
-        features: ['Recherche utilisateur', 'Wireframing', 'Prototypage', 'Design Systems'],
-        accent: 'blue',
+        title: 'Design',
+        description:
+          'Je dessine des interfaces claires et des identités visuelles, du logo aux visuels réseaux sociaux.',
+        icon: <Palette size={40} />,
+        features: ['UI/UX', 'Prototypage', 'Logo', 'Visuels réseaux sociaux'],
       },
       {
         id: 3,
-        title: 'Graphisme',
-        description: 'Création de visuels impactants pour communiquer efficacement et capter l’attention.',
-        icon: <Tangent size={32} />,
-        features: ['Visuels réseaux sociaux', 'Cartes de visite', 'Logo', 'Retouche photo'],
-        accent: 'amber',
+        title: 'Déploiement et sécurité',
+        description:
+          'Je mets mes projets en ligne et je les garde sécurisés et à jour.',
+        icon: <ShieldCheck size={40} />,
+        features: ['Mise en ligne', 'Mises à jour', 'Sécurité', 'Suivi'],
       },
       {
         id: 4,
-        title: 'Maintenance Informatique',
-        description: 'Assistance, dépannage et maintenance de vos équipements informatiques pour garantir leur bon fonctionnement et leur sécurité.',
-        icon: <Zap size={32} />,
-        features: ['Dépannage PC', 'Installation logicielle', 'Sécurité & Antivirus', 'Assistance à distance'],
-        accent: 'blue',
-      }
-    ]
-  }
+        title: 'Paiement mobile et IA',
+        description:
+          "J'intègre le paiement mobile et, quand c'est vraiment utile, des fonctions d'IA simples.",
+        icon: <Smartphone size={40} />,
+        features: ['Paiement mobile UEMOA', "Intégration d'API", 'Fonctions IA simples'],
+      },
+    ],
+  },
 };
 
-const ACCENT = {
-  amber: {
-    icon: 'bg-gradient-to-r from-emerald-400 to-lime-500 text-slate-900',
-    number: 'text-emerald-500/20',
-    border: 'border-emerald-400/20',
-    chip: 'bg-emerald-500/10 text-emerald-200 border border-emerald-400/20',
-    glow: 'from-emerald-500 to-lime-500',
-  },
-  blue: {
-    icon: 'bg-gradient-to-r from-blue-500 to-cyan-600 text-white',
-    number: 'text-blue-500/20',
-    border: 'border-blue-400/20',
-    chip: 'bg-blue-500/10 text-blue-200 border border-blue-500/20',
-    glow: 'from-blue-500 to-cyan-600',
-  },
-} as const;
-
-/** Occupation des cellules du bento (index % 4) : casse la grille 2x2 symétrique */
-const BENTO_SPAN = ['lg:col-span-2', 'lg:col-span-1 lg:row-span-2', 'lg:col-span-1', 'lg:col-span-2'];
+const SERVICE_NUMBER_DIGITS = 2;
 
 const Services = () => {
   const { language } = useLanguage();
   const t = translations[language];
+
   return (
-    <section id="services" className="py-20 relative overflow-hidden bg-slate-950">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-emerald-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <Reveal className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 bg-emerald-500/10 backdrop-blur-sm border border-emerald-400/20 rounded-full px-6 py-2 mb-6">
-            <AnimatedIcon motion="flash"><Zap className="text-emerald-400" size={16} /></AnimatedIcon>
-            <span className="font-mono text-xs tracking-[0.2em] uppercase text-emerald-300">{t.sectionSubtitle}</span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
-            {t.sectionTitle}
+    <section id="services" className="bg-ink py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Reveal className="mb-16">
+          <SectionLabel className="mb-6">{t.label}</SectionLabel>
+          <h2 className="text-h2 text-white">
+            <span className="block">{t.titleLine1}</span>
+            <span className="block text-white/40">{t.titleLine2}</span>
           </h2>
-          <div className="w-24 h-1 bg-emerald-400 mx-auto rounded-full"></div>
         </Reveal>
 
-        {/* Bento : la 1re et la 4e carte s'étalent sur deux colonnes, la 2e s'étire sur deux lignes → casse la grille 2x2 symétrique */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-8">
-          {t.services.map((service, index) => {
-            const a = ACCENT[service.accent as keyof typeof ACCENT];
-            const span = BENTO_SPAN[index % BENTO_SPAN.length];
-            return (
+        <div className="divide-y divide-white/10 border-y border-white/10">
+          {t.services.map((service, index) => (
             <Reveal
               key={service.id}
               variant={index % 2 === 0 ? 'left' : 'right'}
-              delay={(index % 2) * 100}
-              className={`group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border ${a.border} hover:bg-white/[0.07] hover:shadow-2xl transition-all duration-320 ease-out-expo transform hover:-translate-y-2 ${span}`}
+              className="grid grid-cols-1 gap-8 py-10 lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-12"
             >
-              <div className="p-8 h-full flex flex-col">
-                <div className="flex items-start justify-between mb-6">
-                  <div className={`p-4 rounded-2xl ${a.icon} shadow-lg transition-transform duration-320 ease-out-expo group-hover:-rotate-6 group-hover:scale-110`}>
-                    <AnimatedIcon delay={index * 120} motion={service.id === 4 ? 'flash' : 'draw'}>{service.icon}</AnimatedIcon>
-                  </div>
-                  <div className="text-right">
-                    <span className={`font-mono text-6xl font-bold ${a.number}`}>
-                      0{service.id}
-                    </span>
-                  </div>
-                </div>
+              <span className="font-display text-h5 text-accent">
+                {String(service.id).padStart(SERVICE_NUMBER_DIGITS, '0')}
+              </span>
 
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+              <div>
+                <h3 className="font-display text-2xl uppercase tracking-tight text-white">
                   {service.title}
                 </h3>
-
-                <p className="leading-relaxed mb-6 text-blue-200">
+                <p className="mt-3 max-w-xl font-body text-base font-medium leading-relaxed text-white/60">
                   {service.description}
                 </p>
-
-                <div className="grid grid-cols-2 gap-3 mb-8 mt-auto">
-                  {service.features.map((feature, i) => (
-                    <div
-                      key={i}
-                      className={`px-3 py-2 rounded-lg text-sm font-medium ${a.chip}`}
+                <ul className="mt-4 flex flex-wrap gap-3">
+                  {service.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="rounded-full border border-white/15 px-3 py-1 font-body text-xs font-medium text-white/70"
                     >
                       {feature}
-                    </div>
+                    </li>
                   ))}
-                </div>
-
+                </ul>
               </div>
 
-              {/* Hover Effect */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${a.glow} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+              <div className="flex h-24 w-24 items-center justify-center justify-self-start rounded-2xl border border-white/10 bg-white/5 text-accent lg:justify-self-end">
+                <AnimatedIcon delay={index * 100}>{service.icon}</AnimatedIcon>
+              </div>
             </Reveal>
-            );
-          })}
+          ))}
         </div>
       </div>
     </section>

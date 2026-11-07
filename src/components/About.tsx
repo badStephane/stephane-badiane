@@ -1,65 +1,67 @@
-import { Target } from 'lucide-react';
-
+import { ArrowRight } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import Reveal from './Reveal';
-import AnimatedIcon from './AnimatedIcon';
+import SectionLabel from './ui/SectionLabel';
+import PillButton from './ui/PillButton';
 
 const translations = {
   en: {
-    badge: 'About Me',
-    title: 'Full-Stack Developer & Designer.',
-    description: `A versatile Full-stack Developer with a passion for design, I bring 3 years of experience in crafting captivating digital experiences. I blend my front-end and back-end development skills with a solid understanding of UX/UI and graphic design to conceive and implement comprehensive solutions. My adaptability and eagerness to learn allow me to approach new challenges with enthusiasm and quickly integrate into diverse environments. I believe that exceptional design, coupled with robust architecture, is key to forging meaningful connections between brands and their users.`,
-    alt: 'GDNIGHTMARE - Creative Professional',
+    label: 'WHO I AM',
+    title: 'I like seeing a product through, end to end.',
+    paragraphs: [
+      "I'm Stéphane Badiane, a full-stack developer and designer based in Dakar. For more than 5 years, I've been designing websites and applications for real projects, from the interface through to launch.",
+      "I draw the interface, write the code, then follow the product once it's in real users' hands. That's how LaB, RestoPro and Emargix were built.",
+    ],
+    cta: 'See my work',
+    alt: 'Stéphane Badiane au travail',
   },
   fr: {
-    badge: 'À propos de moi',
-    title: 'Développeur Full-Stack & Designer.',
-    description: `Développeur full-stack polyvalent passionné de design, je cumule 3 ans d’expérience dans la création d’expériences numériques captivantes. J’allie mes compétences front-end et back-end à une solide compréhension de l’UX/UI et du design graphique pour concevoir et mettre en œuvre des solutions complètes. Mon adaptabilité et ma soif d’apprendre me permettent d’aborder chaque nouveau défi avec enthousiasme et de m’intégrer rapidement dans des environnements variés. Je crois qu’un design d’exception, allié à une architecture robuste, est la clé pour créer des liens forts entre les marques et leurs utilisateurs.`,
-    alt: 'GDNIGHTMARE - Professionnel Créatif',
+    label: 'QUI JE SUIS',
+    title: "J'aime suivre un produit de bout en bout.",
+    paragraphs: [
+      "Je suis Stéphane Badiane, développeur full-stack et designer à Dakar. Depuis plus de 5 ans, je conçois des sites et des applications pour des projets concrets, de l'interface jusqu'à la mise en ligne.",
+      "Je dessine l'interface, j'écris le code, puis je suis le produit une fois entre les mains de vrais utilisateurs. C'est comme ça que LaB, RestoPro et Emargix ont été construits.",
+    ],
+    cta: 'Voir mes projets',
+    alt: 'Stéphane Badiane au travail',
   },
 };
 
 const About = () => {
   const { language } = useLanguage();
   const t = translations[language];
+
   return (
-    <section id="about" className="py-20 flex items-center relative overflow-hidden">      
-    {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 right-20 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl"></div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <Reveal variant="left" className="relative order-2 lg:order-1">
-            <div className="relative w-full max-w-lg mx-auto group">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-blue-500/10 rounded-3xl backdrop-blur-sm transform rotate-6 transition-transform duration-500 ease-out-expo group-hover:rotate-3"></div>
-              <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl p-2 border border-white/10">
-                <img
-                  src="/metoo.webp"
-                  alt={t.alt}
-                  loading="lazy"
-                  className="w-full h-80 sm:h-96 object-cover rounded-2xl transform scale-x-[-1]"
-                />
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal variant="right" delay={120} className="text-white order-1 lg:order-2">
-            <div className="inline-flex items-center gap-2 bg-emerald-500/10 backdrop-blur-sm border border-emerald-400/20 rounded-full px-6 py-2 mb-8">
-              <AnimatedIcon><Target size={16} className="text-emerald-400" /></AnimatedIcon>
-              <span className="font-mono text-xs tracking-[0.2em] uppercase text-emerald-300">{t.badge}</span>
+    <section id="about" className="relative overflow-hidden bg-ink py-24">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Reveal variant="scale">
+          <div className="grid grid-cols-1 gap-10 rounded-3xl bg-paper p-8 sm:p-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16 lg:p-16">
+            <div className="overflow-hidden rounded-2xl">
+              <img
+                src="/metoo.webp"
+                alt={t.alt}
+                loading="lazy"
+                className="h-72 w-full object-cover sm:h-96"
+              />
             </div>
 
-            <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
-              {t.title}
-            </h2>
-
-            <p className="text-xl text-white/90 mb-8 leading-relaxed">
-              {t.description}
-            </p>
-          </Reveal>
-        </div>
+            <div className="flex flex-col justify-center">
+              <SectionLabel tone="light" className="mb-6">
+                {t.label}
+              </SectionLabel>
+              <h2 className="text-h2 text-ink [text-wrap:balance]">{t.title}</h2>
+              {t.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="mt-6 font-body text-lg leading-relaxed text-ink/70">
+                  {paragraph}
+                </p>
+              ))}
+              <PillButton href="#projects" className="mt-8 w-fit">
+                {t.cta}
+                <ArrowRight size={18} />
+              </PillButton>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
