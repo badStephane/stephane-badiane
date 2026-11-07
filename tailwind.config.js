@@ -16,7 +16,7 @@ export default {
       },
       fontSize: {
         h1: ['clamp(2.75rem, 7vw, 6.25rem)', { lineHeight: '1.05', fontWeight: '600' }],
-        h2: ['clamp(2rem, 5vw, 3.75rem)', { lineHeight: '1.02', fontWeight: '600' }],
+        h2: ['clamp(2rem, 5vw, 3.75rem)', { lineHeight: '1.1', fontWeight: '600' }],
         h4: ['clamp(1.25rem, 2vw, 1.5rem)', { lineHeight: '1.1', fontWeight: '600' }],
         h5: ['1.25rem', { lineHeight: '1.2', fontWeight: '600' }],
       },

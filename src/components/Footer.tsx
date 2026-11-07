@@ -3,7 +3,7 @@ import { useLanguage } from './LanguageContext';
 
 const translations = {
   en: {
-    baseline: 'Full-stack developer & designer crafting complete digital products, end to end.',
+    baseline: 'Websites, applications and digital tools for SMEs and startups in West Africa.',
     navigation: 'NAVIGATION',
     connect: 'CONNECT',
     navLinks: [
@@ -16,7 +16,7 @@ const translations = {
     scrollTop: 'Back to top',
   },
   fr: {
-    baseline: 'Développeur full-stack & designer, produits numériques complets, de bout en bout.',
+    baseline: "Sites, applications et outils numériques pour les PME et les startups d'Afrique de l'Ouest.",
     navigation: 'NAVIGATION',
     connect: 'CONNECT',
     navLinks: [

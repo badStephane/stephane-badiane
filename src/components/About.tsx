@@ -7,17 +7,21 @@ import PillButton from './ui/PillButton';
 const translations = {
   en: {
     label: 'WHO I AM',
-    title: 'Full-stack developer & designer.',
-    description:
-      'A versatile full-stack developer with a passion for design, I bring 3 years of experience crafting captivating digital experiences. I blend front-end and back-end development skills with a solid understanding of UX/UI and graphic design to conceive and implement comprehensive solutions. My adaptability and eagerness to learn let me approach new challenges with enthusiasm and quickly integrate into diverse environments.',
+    title: 'One point of contact, from start to finish.',
+    paragraphs: [
+      "I'm Stéphane Badiane, founder of Codanis, a full-stack developer and designer based in Dakar. For 3 years, I've been designing websites and applications for real projects, from the interface through to launch.",
+      "With me, you don't have to coordinate several providers. You talk to the person who designs and codes. I explain each choice in plain terms, and your tool stays looked after once it's live.",
+    ],
     cta: 'See my work',
     alt: 'Stéphane Badiane au travail',
   },
   fr: {
     label: 'QUI JE SUIS',
-    title: 'Développeur Full-Stack & Designer.',
-    description:
-      "Développeur full-stack polyvalent passionné de design, je cumule 3 ans d'expérience dans la création d'expériences numériques captivantes. J'allie mes compétences front-end et back-end à une solide compréhension de l'UX/UI et du design graphique pour concevoir et mettre en œuvre des solutions complètes. Mon adaptabilité et ma soif d'apprendre me permettent d'aborder chaque nouveau défi avec enthousiasme et de m'intégrer rapidement dans des environnements variés.",
+    title: 'Un seul interlocuteur, du début à la fin.',
+    paragraphs: [
+      "Je suis Stéphane Badiane, fondateur de Codanis, développeur full-stack et designer à Dakar. Depuis 3 ans, je conçois des sites et des applications pour des projets concrets, de l'interface jusqu'à la mise en ligne.",
+      "Avec moi, vous n'avez pas à coordonner plusieurs prestataires. Vous parlez à la personne qui conçoit et qui code. Je vous explique chaque choix simplement, et votre outil reste suivi une fois en ligne.",
+    ],
     cta: 'Voir mes projets',
     alt: 'Stéphane Badiane au travail',
   },
@@ -45,10 +49,12 @@ const About = () => {
               <SectionLabel tone="light" className="mb-6">
                 {t.label}
               </SectionLabel>
-              <h2 className="text-h2 text-ink">{t.title}</h2>
-              <p className="mt-6 font-body text-lg leading-relaxed text-ink/70">
-                {t.description}
-              </p>
+              <h2 className="text-h2 text-ink [text-wrap:balance]">{t.title}</h2>
+              {t.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="mt-6 font-body text-lg leading-relaxed text-ink/70">
+                  {paragraph}
+                </p>
+              ))}
               <PillButton href="#projects" className="mt-8 w-fit">
                 {t.cta}
                 <ArrowRight size={18} />
