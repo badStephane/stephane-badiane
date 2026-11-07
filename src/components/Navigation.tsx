@@ -58,9 +58,15 @@ const Navigation = () => {
         <a
           href="#home"
           onClick={(e) => scrollToSection(e, 'home')}
-          className="font-display text-h5 uppercase tracking-wide text-white"
+          className="-ml-2.5 shrink-0"
         >
-          Stéphane Badiane
+          <img
+            src="/images/codanis-horizontal-color-dark-bg.svg"
+            width={178}
+            height={44}
+            alt="Codanis"
+            className="h-11 w-auto"
+          />
         </a>
 
         <div className="hidden items-center gap-8 md:flex">

@@ -29,10 +29,6 @@ const About = () => {
 
   return (
     <section id="about" className="relative overflow-hidden bg-ink py-24">
-      {/* Forme organique décorative en arrière-plan */}
-      <div className="pointer-events-none absolute -left-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-hero-from/20 blur-3xl" />
-      <div className="pointer-events-none absolute -right-24 top-1/4 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
-
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal variant="scale">
           <div className="grid grid-cols-1 gap-10 rounded-3xl bg-paper p-8 sm:p-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16 lg:p-16">
@@ -53,7 +49,7 @@ const About = () => {
               <p className="mt-6 font-body text-lg leading-relaxed text-ink/70">
                 {t.description}
               </p>
-              <PillButton href="#projects" tone="dark" className="mt-8 w-fit">
+              <PillButton href="#projects" className="mt-8 w-fit">
                 {t.cta}
                 <ArrowRight size={18} />
               </PillButton>

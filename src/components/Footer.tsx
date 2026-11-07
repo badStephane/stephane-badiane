@@ -49,8 +49,17 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 border-b border-white/10 pb-16 sm:grid-cols-3">
           <div className="sm:col-span-1">
-            <img src="/monlogo.webp" width={150} height={100} loading="lazy" alt="Logo Stéphane Badiane" />
-            <p className="mt-6 max-w-xs font-body text-sm font-semibold leading-relaxed text-white/50">
+            <a href="#home" className="-ml-2.5 inline-block">
+              <img
+                src="/images/codanis-horizontal-color-dark-bg.svg"
+                width={178}
+                height={44}
+                loading="lazy"
+                alt="Codanis"
+                className="h-11 w-auto"
+              />
+            </a>
+            <p className="mt-6 max-w-xs font-body text-sm font-medium leading-relaxed text-white/50">
               {t.baseline}
             </p>
           </div>

@@ -115,14 +115,14 @@ const Services = () => {
                 <h3 className="font-display text-2xl uppercase tracking-tight text-white">
                   {service.title}
                 </h3>
-                <p className="mt-3 max-w-xl font-body text-base font-semibold leading-relaxed text-white/60">
+                <p className="mt-3 max-w-xl font-body text-base font-medium leading-relaxed text-white/60">
                   {service.description}
                 </p>
                 <ul className="mt-4 flex flex-wrap gap-3">
                   {service.features.map((feature) => (
                     <li
                       key={feature}
-                      className="rounded-full border border-white/15 px-3 py-1 font-body text-xs font-semibold text-white/70"
+                      className="rounded-full border border-white/15 px-3 py-1 font-body text-xs font-medium text-white/70"
                     >
                       {feature}
                     </li>

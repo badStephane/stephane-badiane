@@ -93,7 +93,7 @@ const Skills = () => {
             {t.label}
           </SectionLabel>
           <h2 className="text-h2 text-ink">{t.title}</h2>
-          <p className="mt-6 max-w-2xl font-body text-lg font-semibold text-ink/60">{t.description}</p>
+          <p className="mt-6 max-w-2xl font-body text-lg font-medium text-ink/60">{t.description}</p>
         </Reveal>
 
         <div className="mb-10 flex flex-wrap gap-3">
@@ -101,7 +101,7 @@ const Skills = () => {
             <button
               key={key}
               onClick={() => setActiveCategory(key as CategoryKey)}
-              className={`inline-flex items-center gap-2 rounded-full border px-5 py-2.5 font-body text-sm font-semibold transition-all duration-240 ease-out-expo ${
+              className={`inline-flex items-center gap-2 rounded-full border px-5 py-2.5 font-body text-sm font-medium transition-all duration-240 ease-out-expo ${
                 activeCategory === key
                   ? 'border-ink bg-ink text-white'
                   : 'border-ink/15 text-ink/60 hover:border-ink/40'
@@ -124,7 +124,7 @@ const Skills = () => {
               </div>
               <div className="min-w-0">
                 <h3 className="font-body text-base font-bold leading-tight text-ink">{skill.name}</h3>
-                <span className="mt-1 inline-block rounded-full bg-ink/5 px-2.5 py-0.5 font-body text-xs font-semibold text-ink/60">
+                <span className="mt-1 inline-block rounded-full bg-ink/5 px-2.5 py-0.5 font-body text-xs font-medium text-ink/60">
                   {tiers[skill.tier as Tier][language]}
                 </span>
               </div>

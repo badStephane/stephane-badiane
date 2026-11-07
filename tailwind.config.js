@@ -4,15 +4,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#0A0A0A',
-        paper: '#F5F5F5',
-        'hero-from': '#5B84B5',
-        'hero-to': '#2E4A70',
-        accent: '#F2571C',
+        ink: '#020617',
+        paper: '#F8FAFC',
+        primary: '#059669',
+        secondary: '#0F172A',
+        accent: '#34D399',
       },
       fontFamily: {
-        display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Outfit', 'system-ui', 'sans-serif'],
+        body: ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         h1: ['clamp(2.75rem, 7vw, 6.25rem)', { lineHeight: '1', fontWeight: '600' }],

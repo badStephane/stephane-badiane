@@ -18,7 +18,7 @@ const SpacedNavLink = ({ label, index, onClick, href }: SpacedNavLinkProps) => {
     <a
       href={href}
       onClick={onClick}
-      className="group relative inline-flex items-baseline gap-1 font-body text-sm font-semibold text-white/70 transition-colors duration-240 hover:text-white"
+      className="group relative inline-flex items-baseline gap-1 font-body text-sm font-medium text-white/70 transition-colors duration-240 hover:text-white"
     >
       <span className="align-super text-[0.6rem] text-accent">{displayIndex}</span>
       <span className="flex">

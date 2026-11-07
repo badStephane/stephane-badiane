@@ -47,7 +47,7 @@ const Projects = () => {
             {t.label}
           </SectionLabel>
           <h2 className="text-h2 text-ink">{t.title}</h2>
-          <p className="mt-6 max-w-2xl font-body text-lg font-semibold text-ink/60">{t.intro}</p>
+          <p className="mt-6 max-w-2xl font-body text-lg font-medium text-ink/60">{t.intro}</p>
         </Reveal>
 
         {DOMAIN_ORDER.map((domain) => {
@@ -76,7 +76,7 @@ const Projects = () => {
                       rel={project.url ? 'noopener noreferrer' : undefined}
                       className={project.url ? '' : 'pointer-events-none'}
                     >
-                      <div className="relative h-56 overflow-hidden bg-gradient-to-br from-hero-from/10 to-hero-to/10">
+                      <div className="relative h-56 overflow-hidden bg-ink/5">
                         {project.gallery ? (
                           <div className="grid h-full grid-cols-2 gap-3 p-5">
                             {project.gallery.map((src) => (
@@ -107,13 +107,13 @@ const Projects = () => {
                           />
                         ) : (
                           <div className="flex h-full items-center justify-center">
-                            <span className="font-display text-5xl uppercase text-hero-to/30">
+                            <span className="font-display text-5xl uppercase text-ink/30">
                               {project.title.charAt(0)}
                             </span>
                           </div>
                         )}
 
-                        <div className="absolute right-4 top-4 rounded-full bg-ink/80 px-3 py-1 font-body text-xs font-semibold text-white backdrop-blur-sm">
+                        <div className="absolute right-4 top-4 rounded-full bg-ink/80 px-3 py-1 font-body text-xs font-medium text-white backdrop-blur-sm">
                           {project.year}
                         </div>
                       </div>
@@ -126,7 +126,7 @@ const Projects = () => {
                           {project.url && (
                             <ArrowUpRight
                               size={20}
-                              className="shrink-0 text-ink/40 transition-transform duration-240 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent"
+                              className="shrink-0 text-ink/40 transition-transform duration-240 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-primary"
                             />
                           )}
                         </div>

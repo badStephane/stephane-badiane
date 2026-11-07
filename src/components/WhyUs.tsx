@@ -88,7 +88,7 @@ const WhyUs = () => {
                 <AnimatedIcon delay={index * 100}>{point.icon}</AnimatedIcon>
               </div>
               <h3 className="font-display text-xl uppercase text-white">{point.title}</h3>
-              <p className="mt-3 font-body text-base font-semibold leading-relaxed text-white/60">
+              <p className="mt-3 font-body text-base font-medium leading-relaxed text-white/60">
                 {point.description}
               </p>
             </Reveal>
@@ -99,7 +99,7 @@ const WhyUs = () => {
           {t.stats.map((stat, index) => (
             <Reveal key={stat.label} variant="scale" delay={index * 80} className="text-center sm:text-left">
               <div className="font-display text-5xl text-white">{stat.number}</div>
-              <div className="mt-2 font-body text-sm font-semibold uppercase tracking-wide text-white/50">
+              <div className="mt-2 font-body text-sm font-medium uppercase tracking-wide text-white/50">
                 {stat.label}
               </div>
             </Reveal>

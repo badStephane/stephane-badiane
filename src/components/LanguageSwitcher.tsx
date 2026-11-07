@@ -18,7 +18,7 @@ const LanguageSwitcher = () => {
   return (
     <div className="flex items-center gap-1 rounded-full border border-white/15 p-1">
       <button
-        className={`rounded-full px-3 py-1.5 font-body text-xs font-semibold transition-colors duration-240 ${
+        className={`rounded-full px-3 py-1.5 font-body text-xs font-medium transition-colors duration-240 ${
           language === 'en' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'
         }`}
         onClick={() => setLanguage('en')}
@@ -27,7 +27,7 @@ const LanguageSwitcher = () => {
         EN
       </button>
       <button
-        className={`rounded-full px-3 py-1.5 font-body text-xs font-semibold transition-colors duration-240 ${
+        className={`rounded-full px-3 py-1.5 font-body text-xs font-medium transition-colors duration-240 ${
           language === 'fr' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'
         }`}
         onClick={() => setLanguage('fr')}

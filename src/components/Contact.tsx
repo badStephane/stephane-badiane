@@ -100,8 +100,6 @@ const Contact = () => {
 
   return (
     <section id="contact" className="relative overflow-hidden bg-ink py-24">
-      <div className="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-hero-from/15 blur-3xl" />
-
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
           <Reveal variant="left">
@@ -110,7 +108,7 @@ const Contact = () => {
               <span className="block">{t.titleLine1}</span>
               <span className="block text-white/40">{t.titleLine2}</span>
             </h2>
-            <p className="mt-6 font-body text-lg font-semibold leading-relaxed text-white/60">{t.intro}</p>
+            <p className="mt-6 font-body text-lg font-medium leading-relaxed text-white/60">{t.intro}</p>
 
             <div className="mt-10 space-y-4">
               <a
@@ -120,7 +118,7 @@ const Contact = () => {
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent/15 text-accent">
                   <Mail size={20} />
                 </span>
-                <span className="font-body font-semibold text-white/80">{CONTACT_EMAIL}</span>
+                <span className="font-body font-medium text-white/80">{CONTACT_EMAIL}</span>
               </a>
               <a
                 href={CONTACT_PHONE_HREF}
@@ -129,7 +127,7 @@ const Contact = () => {
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent/15 text-accent">
                   <Phone size={20} />
                 </span>
-                <span className="font-body font-semibold text-white/80">{CONTACT_PHONE_DISPLAY}</span>
+                <span className="font-body font-medium text-white/80">{CONTACT_PHONE_DISPLAY}</span>
               </a>
             </div>
           </Reveal>
@@ -138,7 +136,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-10">
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="font-body text-sm font-semibold text-white/60">
+                  <label htmlFor="name" className="font-body text-sm font-medium text-white/60">
                     {t.labels.name}
                   </label>
                   <input
@@ -153,7 +151,7 @@ const Contact = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="font-body text-sm font-semibold text-white/60">
+                  <label htmlFor="email" className="font-body text-sm font-medium text-white/60">
                     {t.labels.email}
                   </label>
                   <input
@@ -170,7 +168,7 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="subject" className="font-body text-sm font-semibold text-white/60">
+                <label htmlFor="subject" className="font-body text-sm font-medium text-white/60">
                   {t.labels.subject}
                 </label>
                 <input
@@ -186,7 +184,7 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="font-body text-sm font-semibold text-white/60">
+                <label htmlFor="message" className="font-body text-sm font-medium text-white/60">
                   {t.labels.message}
                 </label>
                 <textarea
@@ -214,7 +212,7 @@ const Contact = () => {
                 )}
               </div>
 
-              <PillButton type="submit" tone="light" className="w-full" disabled={status === 'sending'}>
+              <PillButton type="submit" className="w-full" disabled={status === 'sending'}>
                 {status === 'sending' ? (
                   <>
                     {t.feedback.sending} <Loader2 size={18} className="animate-spin" />

@@ -34,7 +34,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-end overflow-hidden bg-hero-gradient pt-20"
+      className="relative flex min-h-screen items-end overflow-hidden bg-secondary pt-20"
     >
       <img
         src="/images/profile-cutout.png"
@@ -44,7 +44,7 @@ const Hero = () => {
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 px-4 pb-12 pt-16 sm:px-6 lg:grid-cols-[1.3fr_1fr] lg:px-8 lg:pb-20">
         <div>
-          <p className="mb-6 font-body text-sm font-semibold uppercase tracking-[0.3em] text-white/70">
+          <p className="mb-6 font-body text-sm font-medium uppercase tracking-[0.3em] text-white/70">
             {t.kicker}
           </p>
           <h1 className="text-h1 text-white">
@@ -54,15 +54,15 @@ const Hero = () => {
           </h1>
 
           <div className="mt-8 max-w-md">
-            <p className="font-body text-lg font-semibold leading-relaxed text-white/85">
+            <p className="font-body text-lg font-medium leading-relaxed text-white/85">
               {t.description}
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
-              <PillButton href="#projects" tone="light">
+              <PillButton href="#projects">
                 {t.viewWork}
                 <ArrowRight size={18} />
               </PillButton>
-              <PillButton href="#contact" tone="dark" className="border border-white/20">
+              <PillButton href="#contact" tone="outline">
                 {t.contact}
               </PillButton>
             </div>
